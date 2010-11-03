@@ -29,6 +29,6 @@ bash "install npm - package manager for node" do
     curl -L http://github.com/isaacs/npm/tarball/v#{node[:nodejs][:npm]} | tar xzf - --strip-components=1 && \
     make uninstall install
   EOH
-  not_if {File.exists?("/usr/local/bin/npm-#{node[:nodejs][:npm]}")}
+  not_if {File.exists?("/usr/local/bin/npm@#{node[:nodejs][:npm]}")}
 end
 

@@ -38,6 +38,6 @@ bash "install nodejs from source" do
     make && \
     make install
   EOH
-  not_if {File.exists?("/usr/local/src/node-v#{node[:nodejs][:version]}/node")}
+  not_if do `#{node[:nodejs][:dir]}/bin/node -v`.include? "v#{node[:nodejs][:version]}" end
 end
 
