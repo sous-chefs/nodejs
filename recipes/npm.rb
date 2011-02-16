@@ -20,6 +20,8 @@
 
 include_recipe "nodejs"
 
+package "curl"
+
 bash "install npm - package manager for node" do
   cwd "/usr/local/src"
   user "root"
