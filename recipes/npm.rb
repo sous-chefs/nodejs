@@ -28,7 +28,7 @@ bash "install npm - package manager for node" do
   code <<-EOH
     mkdir -p npm-v#{node[:nodejs][:npm]} && \
     cd npm-v#{node[:nodejs][:npm]}
-    curl -L http://github.com/isaacs/npm/tarball/v#{node[:nodejs][:npm]} | tar xzf - --strip-components=1 && \
+    curl -L http://registry.npmjs.org/npm/-/npm-#{node[:nodejs][:npm]}.tgz | tar xzf - --strip-components=1 && \
     make uninstall install
   EOH
   not_if {File.exists?("/usr/local/bin/npm@#{node[:nodejs][:npm]}")}
