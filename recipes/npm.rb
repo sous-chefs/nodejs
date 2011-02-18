@@ -29,7 +29,7 @@ bash "install npm - package manager for node" do
     mkdir -p npm-v#{node[:nodejs][:npm]} && \
     cd npm-v#{node[:nodejs][:npm]}
     curl -L http://registry.npmjs.org/npm/-/npm-#{node[:nodejs][:npm]}.tgz | tar xzf - --strip-components=1 && \
-    make uninstall install
+    make uninstall dev
   EOH
   not_if {File.exists?("/usr/local/bin/npm@#{node[:nodejs][:npm]}")}
 end
