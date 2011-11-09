@@ -31,7 +31,7 @@ bash "install nodejs from source" do
   cwd "/usr/local/src"
   user "root"
   code <<-EOH
-    wget http://nodejs.org/dist/node-v#{node[:nodejs][:version]}.tar.gz && \
+    wget http://nodejs.org/dist/v#{node[:nodejs][:version]}/node-v#{node[:nodejs][:version]}.tar.gz && \
     tar zxf node-v#{node[:nodejs][:version]}.tar.gz && \
     cd node-v#{node[:nodejs][:version]} && \
     ./configure --prefix=#{node[:nodejs][:dir]} && \
