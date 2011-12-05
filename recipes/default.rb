@@ -8,9 +8,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
-# 
+#
 #     http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,11 +27,17 @@ case node[:platform]
     package "libssl-dev"
 end
 
+nodejs_tar_path = "node-v#{node[:nodejs][:version]}.tar.gz"
+
+if node[:nodejs][:version].split('.')[1].to_i >= 5
+  nodejs_tar_path = "v#{node[:nodejs][:version]}/#{nodejs_tar_path}"
+end
+
 bash "install nodejs from source" do
   cwd "/usr/local/src"
   user "root"
   code <<-EOH
-    wget http://nodejs.org/dist/v#{node[:nodejs][:version]}/node-v#{node[:nodejs][:version]}.tar.gz && \
+    wget http://nodejs.org/dist/#{nodejs_tar_path} && \
     tar zxf node-v#{node[:nodejs][:version]}.tar.gz && \
     cd node-v#{node[:nodejs][:version]} && \
     ./configure --prefix=#{node[:nodejs][:dir]} && \
