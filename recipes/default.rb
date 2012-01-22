@@ -27,22 +27,34 @@ case node[:platform]
     package "libssl-dev"
 end
 
-nodejs_tar_path = "node-v#{node[:nodejs][:version]}.tar.gz"
+nodejs_tar = "node-v#{node[:nodejs][:version]}.tar.gz"
+nodejs_tar_path = nodejs_tar
 
 if node[:nodejs][:version].split('.')[1].to_i >= 5
   nodejs_tar_path = "v#{node[:nodejs][:version]}/#{nodejs_tar_path}"
 end
 
-bash "install nodejs from source" do
+remote_file "/usr/local/src/#{nodejs_tar}" do
+  source "http://nodejs.org/dist/#{nodejs_tar_path}"
+  checksum node[:nodejs][:checksum]
+  mode 0644
+end
+
+execute "tar zxf #{nodejs_tar}" do
   cwd "/usr/local/src"
-  user "root"
+  creates "/usr/local/src/node-v#{node[:nodejs][:version]}"
+end
+
+bash "compile node.js" do
+  cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
   code <<-EOH
-    wget http://nodejs.org/dist/#{nodejs_tar_path} && \
-    tar zxf node-v#{node[:nodejs][:version]}.tar.gz && \
-    cd node-v#{node[:nodejs][:version]} && \
     ./configure --prefix=#{node[:nodejs][:dir]} && \
-    make && \
-    make install
+    make
   EOH
-  not_if "#{node[:nodejs][:dir]}/bin/node -v 2>&1 | grep 'v#{node[:nodejs][:version]}'"
+  creates "/usr/local/src/node-v#{node[:nodejs][:version]}/node"
+end
+
+execute "make install" do
+  cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
+  not_if "test `#{node[:nodejs][:dir]}/bin/node` == 'v#{node[:nodejs][:version]}'"
 end
