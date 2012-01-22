@@ -40,7 +40,9 @@ remote_file "/usr/local/src/#{nodejs_tar}" do
   mode 0644
 end
 
-execute "tar zxf #{nodejs_tar}" do
+# --no-same-owner required overcome "Cannot change ownership" bug
+# on NFS-mounted filesystem
+execute "tar --no-same-owner -zxf #{nodejs_tar}" do
   cwd "/usr/local/src"
   creates "/usr/local/src/node-v#{node[:nodejs][:version]}"
 end
