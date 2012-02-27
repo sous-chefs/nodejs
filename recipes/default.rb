@@ -56,7 +56,8 @@ bash "compile node.js" do
   creates "/usr/local/src/node-v#{node[:nodejs][:version]}/node"
 end
 
-execute "make install" do
+execute "nodejs make install" do
+  command "make install"
   cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
-  not_if { `#{node[:nodejs][:dir]}/bin/node --version`.chomp == "v#{node[:nodejs][:version]}" }
+  not_if {File.exists?("#{node[:nodejs][:dir]}/bin/node") && `#{node[:nodejs][:dir]}/bin/node --version`.chomp == "v#{node[:nodejs][:version]}" }
 end
