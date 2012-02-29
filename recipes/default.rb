@@ -1,9 +1,9 @@
 #
-# Author:: Marius Ducea (marius@promethost.com)
+# Author:: Nathan L Smith (nlloyds@gmail.com)
 # Cookbook Name:: nodejs
 # Recipe:: default
 #
-# Copyright 2010, Promet Solutions
+# Copyright 2012, Cramer Development, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,46 +18,36 @@
 # limitations under the License.
 #
 
-include_recipe "build-essential"
-
 case node[:platform]
-  when "centos","redhat","fedora"
-    package "openssl-devel"
-  when "debian","ubuntu"
-    package "libssl-dev"
-end
+  when 'centos', 'redhat', 'scientific'
+    file = '/usr/local/src/nodejs-stable-release.noarch.rpm'
 
-nodejs_tar = "node-v#{node[:nodejs][:version]}.tar.gz"
-nodejs_tar_path = nodejs_tar
+    remote_file file do
+      source 'http://nodejs.tchol.org/repocfg/el/nodejs-stable-release.noarch.rpm'
+      action :create_if_missing
+    end
 
-if node[:nodejs][:version].split('.')[1].to_i >= 5
-  nodejs_tar_path = "v#{node[:nodejs][:version]}/#{nodejs_tar_path}"
-end
+    yum_package 'nodejs-stable-release' do
+      source file
+      options '--nogpgcheck'
+    end
 
-remote_file "/usr/local/src/#{nodejs_tar}" do
-  source "http://nodejs.org/dist/#{nodejs_tar_path}"
-  checksum node[:nodejs][:checksum]
-  mode 0644
-end
+    %w{ nodejs nodejs-compat-symlinks npm }.each do |pkg|
+      package pkg
+    end
+  when 'ubuntu'
+    apt_repository 'node.js' do
+      uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+      distribution node['lsb']['codename']
+      components ['main']
+      keyserver "keyserver.ubuntu.com"
+      key "C7917B12"
+      action :add
+    end
 
-# --no-same-owner required overcome "Cannot change ownership" bug
-# on NFS-mounted filesystem
-execute "tar --no-same-owner -zxf #{nodejs_tar}" do
-  cwd "/usr/local/src"
-  creates "/usr/local/src/node-v#{node[:nodejs][:version]}"
-end
-
-bash "compile node.js" do
-  cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
-  code <<-EOH
-    ./configure --prefix=#{node[:nodejs][:dir]} && \
-    make
-  EOH
-  creates "/usr/local/src/node-v#{node[:nodejs][:version]}/node"
-end
-
-execute "nodejs make install" do
-  command "make install"
-  cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
-  not_if {File.exists?("#{node[:nodejs][:dir]}/bin/node") && `#{node[:nodejs][:dir]}/bin/node --version`.chomp == "v#{node[:nodejs][:version]}" }
+    %w{ nodejs npm }.each do |pkg|
+      package pkg
+    end
+  else
+    include_recipe 'nodejs::source'
 end

@@ -1,6 +1,6 @@
 = DESCRIPTION:
 
-Installs Node.JS from source.
+Installs Node.JS.
 
 = REQUIREMENTS:
 
@@ -22,12 +22,16 @@ Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
 
 = USAGE:
 
-Include the nodejs recipe to install node from source on your system:
+Include the nodejs recipe to install node on your system:
 
   include_recipe "nodejs"
 
+Include the nodejs recipe to install node from source on your system:
+
+  include_recipe "nodejs::source"
+
 Include the npm recipe to install npm:
-  
+
   include_recipe "nodejs::npm"
 
 = LICENSE and AUTHOR:
