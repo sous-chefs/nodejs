@@ -1,9 +1,9 @@
 #
-# Author:: Nathan L Smith (nlloyds@gmail.com)
+# Author:: Marius Ducea (marius@promethost.com)
 # Cookbook Name:: nodejs
 # Recipe:: default
 #
-# Copyright 2012, Cramer Development, Inc.
+# Copyright 2010-2012, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,36 +18,4 @@
 # limitations under the License.
 #
 
-case node[:platform]
-  when 'centos', 'redhat', 'scientific'
-    file = '/usr/local/src/nodejs-stable-release.noarch.rpm'
-
-    remote_file file do
-      source 'http://nodejs.tchol.org/repocfg/el/nodejs-stable-release.noarch.rpm'
-      action :create_if_missing
-    end
-
-    yum_package 'nodejs-stable-release' do
-      source file
-      options '--nogpgcheck'
-    end
-
-    %w{ nodejs nodejs-compat-symlinks npm }.each do |pkg|
-      package pkg
-    end
-  when 'ubuntu'
-    apt_repository 'node.js' do
-      uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
-      distribution node['lsb']['codename']
-      components ['main']
-      keyserver "keyserver.ubuntu.com"
-      key "C7917B12"
-      action :add
-    end
-
-    %w{ nodejs npm }.each do |pkg|
-      package pkg
-    end
-  else
-    include_recipe 'nodejs::source'
-end
+include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"

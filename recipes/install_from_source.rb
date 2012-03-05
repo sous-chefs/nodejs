@@ -1,9 +1,9 @@
 #
 # Author:: Marius Ducea (marius@promethost.com)
 # Cookbook Name:: nodejs
-# Recipe:: default
+# Recipe:: source
 #
-# Copyright 2010, Promet Solutions
+# Copyright 2010-2012, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,23 +20,23 @@
 
 include_recipe "build-essential"
 
-case node[:platform]
-  when "centos","redhat","fedora"
+case node['platform']
+  when 'centos','redhat','fedora'
     package "openssl-devel"
-  when "debian","ubuntu"
+  when 'debian','ubuntu'
     package "libssl-dev"
 end
 
-nodejs_tar = "node-v#{node[:nodejs][:version]}.tar.gz"
+nodejs_tar = "node-v#{node['nodejs']['version']}.tar.gz"
 nodejs_tar_path = nodejs_tar
 
-if node[:nodejs][:version].split('.')[1].to_i >= 5
-  nodejs_tar_path = "v#{node[:nodejs][:version]}/#{nodejs_tar_path}"
+if node['nodejs']['version'].split('.')[1].to_i >= 5
+  nodejs_tar_path = "v#{node['nodejs']['version']}/#{nodejs_tar_path}"
 end
 
 remote_file "/usr/local/src/#{nodejs_tar}" do
   source "http://nodejs.org/dist/#{nodejs_tar_path}"
-  checksum node[:nodejs][:checksum]
+  checksum node['nodejs']['checksum']
   mode 0644
 end
 
@@ -44,20 +44,20 @@ end
 # on NFS-mounted filesystem
 execute "tar --no-same-owner -zxf #{nodejs_tar}" do
   cwd "/usr/local/src"
-  creates "/usr/local/src/node-v#{node[:nodejs][:version]}"
+  creates "/usr/local/src/node-v#{node['nodejs']['version']}"
 end
 
 bash "compile node.js" do
-  cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
+  cwd "/usr/local/src/node-v#{node['nodejs']['version']}"
   code <<-EOH
-    ./configure --prefix=#{node[:nodejs][:dir]} && \
+    ./configure --prefix=#{node['nodejs']['dir']} && \
     make
   EOH
-  creates "/usr/local/src/node-v#{node[:nodejs][:version]}/node"
+  creates "/usr/local/src/node-v#{node['nodejs']['version']}/node"
 end
 
 execute "nodejs make install" do
   command "make install"
-  cwd "/usr/local/src/node-v#{node[:nodejs][:version]}"
-  not_if {File.exists?("#{node[:nodejs][:dir]}/bin/node") && `#{node[:nodejs][:dir]}/bin/node --version`.chomp == "v#{node[:nodejs][:version]}" }
+  cwd "/usr/local/src/node-v#{node['nodejs']['version']}"
+  not_if {File.exists?("#{node['nodejs']['dir']}/bin/node") && `#{node['nodejs']['dir']}/bin/node --version`.chomp == "v#{node['nodejs']['version']}" }
 end

@@ -3,7 +3,7 @@
 # Cookbook Name:: nodejs
 # Recipe:: npm
 #
-# Copyright 2010, Promet Solutions
+# Copyright 2010-2012, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe "nodejs"
+include_recipe "nodejs::install_from_source"
 
 package "curl"
 
@@ -26,11 +26,11 @@ bash "install npm - package manager for node" do
   cwd "/usr/local/src"
   user "root"
   code <<-EOH
-    mkdir -p npm-v#{node[:nodejs][:npm]} && \
-    cd npm-v#{node[:nodejs][:npm]}
-    curl -L http://registry.npmjs.org/npm/-/npm-#{node[:nodejs][:npm]}.tgz | tar xzf - --strip-components=1 && \
+    mkdir -p npm-v#{node['nodejs']['npm']} && \
+    cd npm-v#{node['nodejs']['npm']}
+    curl -L http://registry.npmjs.org/npm/-/npm-#{node['nodejs']['npm']}.tgz | tar xzf - --strip-components=1 && \
     make uninstall dev
   EOH
-  not_if "#{node[:nodejs][:dir]}/bin/npm -v 2>&1 | grep '#{node[:nodejs][:npm]}'"
+  not_if "#{node['nodejs']['dir']}/bin/npm -v 2>&1 | grep '#{node['nodejs']['npm']}'"
 end
 
