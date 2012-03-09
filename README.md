@@ -23,8 +23,10 @@ ATTRIBUTES
 
 * nodejs['install_method'] = source or package
 * nodejs['version'] - release version of node to install
+* nodejs['src_url'] - download location for node source tarball
 * nodejs['dir'] - location where node will be installed, default /usr/local
 * nodejs['npm'] - version of npm to install
+* nodejs['npm_src_url'] - download location for npm source tarball
 
 USAGE
 =====
