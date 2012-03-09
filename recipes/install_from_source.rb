@@ -28,14 +28,9 @@ case node['platform']
 end
 
 nodejs_tar = "node-v#{node['nodejs']['version']}.tar.gz"
-nodejs_tar_path = nodejs_tar
-
-if node['nodejs']['version'].split('.')[1].to_i >= 5
-  nodejs_tar_path = "v#{node['nodejs']['version']}/#{nodejs_tar_path}"
-end
 
 remote_file "/usr/local/src/#{nodejs_tar}" do
-  source "http://nodejs.org/dist/#{nodejs_tar_path}"
+  source node['nodejs']['src_url']
   checksum node['nodejs']['checksum']
   mode 0644
 end
