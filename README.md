@@ -11,7 +11,7 @@ REQUIREMENTS
 
 ## Platform
 
-* Tested on Debian 5+ and Ubuntu 10.04
+* Tested on Debian 6 and Ubuntu 10.04
 * Should work fine on Centos, RHEL, etc.
 
 ## Cookbooks:
