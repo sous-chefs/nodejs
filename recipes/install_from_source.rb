@@ -20,14 +20,6 @@
 
 include_recipe "build-essential"
 
-nodejs_tar_path = "node-v#{node['nodejs']['version']}.tar.gz"
-if node['nodejs']['version'].split('.')[1].to_i >= 5
-  nodejs_tar_path = "v#{node['nodejs']['version']}/#{nodejs_tar_path}"
-end
-
-node.set['nodejs']['src_url'] = "http://nodejs.org/dist/#{nodejs_tar_path}"
-node.set['nodejs']['npm_src_url'] = "http://registry.npmjs.org/npm/-/npm-#{node['nodejs']['npm']}.tgz"
-
 case node['platform']
   when 'centos','redhat','fedora','amazon','scientific'
     package "openssl-devel"
@@ -36,9 +28,14 @@ case node['platform']
 end
 
 nodejs_tar = "node-v#{node['nodejs']['version']}.tar.gz"
+nodejs_tar_path = nodejs_tar
+if node['nodejs']['version'].split('.')[1].to_i >= 5
+  nodejs_tar_path = "v#{node['nodejs']['version']}/#{nodejs_tar_path}"
+end
+nodejs_src_url = "http://nodejs.org/dist/#{nodejs_tar_path}"
 
 remote_file "/usr/local/src/#{nodejs_tar}" do
-  source node['nodejs']['src_url']
+  source nodejs_src_url
   checksum node['nodejs']['checksum']
   mode 0644
 end
