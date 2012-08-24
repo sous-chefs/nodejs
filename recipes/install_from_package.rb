@@ -48,6 +48,10 @@ case node['platform']
     %w{ nodejs npm }.each do |pkg|
       package pkg
     end
+  when 'smartos'
+    %w{ nodejs npm }.each do |pkg|
+      package pkg
+    end
   else
     include_recipe "nodejs::install_from_source"
 end
