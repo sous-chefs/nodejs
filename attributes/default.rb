@@ -18,15 +18,7 @@
 #
 
 default['nodejs']['install_method'] = 'source'
-default['nodejs']['version'] = '0.8.2'
-default['nodejs']['checksum'] = '94bbdb2d62645fd2ad5b96e41cfec68abf004fd03fabaaf7d71c48b39013cbd1'
+default['nodejs']['version'] = '0.8.6'
+default['nodejs']['checksum'] = 'dbd42800e69644beff5c2cf11a9d4cf6dfbd644a9a36ffdd5e8c6b8db9240854'
 default['nodejs']['dir'] = '/usr/local'
-default['nodejs']['npm'] = '1.1.39'
-
-nodejs_tar_path = "node-v#{node['nodejs']['version']}.tar.gz"
-if node['nodejs']['version'].split('.')[1].to_i >= 5
-  nodejs_tar_path = "v#{node['nodejs']['version']}/#{nodejs_tar_path}"
-end
-
-default['nodejs']['src_url'] = "http://nodejs.org/dist/#{nodejs_tar_path}"
-default['nodejs']['npm_src_url'] = "http://registry.npmjs.org/npm/-/npm-#{node['nodejs']['npm']}.tgz"
+default['nodejs']['npm'] = '1.1.48'
