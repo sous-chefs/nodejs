@@ -49,7 +49,7 @@ case node['platform']
       package pkg
     end
   when 'smartos'
-    %w{ nodejs npm }.each do |pkg|
+    %w{ nodejs }.each do |pkg|
       package pkg
     end
   else
