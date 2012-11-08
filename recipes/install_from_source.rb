@@ -20,10 +20,10 @@
 
 include_recipe "build-essential"
 
-case node['platform']
-  when 'centos','redhat','fedora','amazon','scientific'
+case node['platform_family']
+  when 'rhel','fedora'
     package "openssl-devel"
-  when 'debian','ubuntu'
+  when 'debian'
     package "libssl-dev"
 end
 
@@ -38,7 +38,7 @@ remote_file "/usr/local/src/#{nodejs_tar}" do
   source nodejs_src_url
   checksum node['nodejs']['checksum']
   mode 0644
-  action :create_if_missing 
+  action :create_if_missing
 end
 
 # --no-same-owner required overcome "Cannot change ownership" bug
