@@ -17,5 +17,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+case node.platform
+when "ubuntu", "debian"
+  include_recipe "apt"
+end
+end
 include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"
