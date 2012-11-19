@@ -18,8 +18,8 @@
 # limitations under the License.
 #
 
-case node['platform']
-  when 'centos', 'redhat', 'scientific', 'amazon', 'fedora'
+case node['platform_family']
+  when 'rhel', 'fedora'
     file = '/usr/local/src/nodejs-stable-release.noarch.rpm'
 
     remote_file file do
@@ -35,7 +35,7 @@ case node['platform']
     %w{ nodejs nodejs-compat-symlinks npm }.each do |pkg|
       package pkg
     end
-  when 'ubuntu'
+  when 'debian'
     apt_repository 'node.js' do
       uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
       distribution node['lsb']['codename']
