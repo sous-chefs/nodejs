@@ -11,6 +11,7 @@ recipe "nodejs::install_from_package", "Installs Node.JS from packages"
 recipe "nodejs::npm", "Installs npm from source - a package manager for node"
 
 depends "build-essential"
+depends "apt"
 
 %w{ debian ubuntu centos redhat }.each do |os|
     supports os
