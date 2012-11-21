@@ -18,8 +18,8 @@
 # limitations under the License.
 #
 case node['platform']
-when "ubuntu", "debian"
-  include_recipe "apt"
+  when "ubuntu", "debian"
+   include_recipe "apt"
 end
-end
+
 include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"
