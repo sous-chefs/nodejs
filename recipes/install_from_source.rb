@@ -52,6 +52,7 @@ end
 bash "compile node.js" do
   cwd "/usr/local/src/node-v#{node['nodejs']['version']}"
   code <<-EOH
+    PATH="/usr/local/bin:$PATH"
     ./configure --prefix=#{node['nodejs']['dir']} && \
     make
   EOH
@@ -59,6 +60,7 @@ bash "compile node.js" do
 end
 
 execute "nodejs make install" do
+  environment({"PATH" => "/usr/local/bin:/usr/bin:/bin:$PATH"})
   command "make install"
   cwd "/usr/local/src/node-v#{node['nodejs']['version']}"
   not_if {File.exists?("#{node['nodejs']['dir']}/bin/node") && `#{node['nodejs']['dir']}/bin/node --version`.chomp == "v#{node['nodejs']['version']}" }
