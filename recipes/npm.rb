@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe "nodejs::install_from_source"
+include_recipe "nodejs"
 
 package "curl"
 
