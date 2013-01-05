@@ -29,6 +29,9 @@ suites:
 - name: package
   run_list:
   - recipe[nodejs]
+  attributes:
+    nodejs:
+      install_method: package
 - name: source
   run_list:
   - recipe[nodejs]
