@@ -50,11 +50,13 @@ execute "tar --no-same-owner -zxf #{nodejs_tar}" do
 end
 
 bash "compile node.js" do
+  # OSX doesn't have the attribute so arbitrarily default 2
+  make_threads = node['cpu'] ? node['cpu']['total'].to_i : 2
   cwd "/usr/local/src/node-v#{node['nodejs']['version']}"
   code <<-EOH
     PATH="/usr/local/bin:$PATH"
     ./configure --prefix=#{node['nodejs']['dir']} && \
-    make
+    make -j #{make_threads}
   EOH
   creates "/usr/local/src/node-v#{node['nodejs']['version']}/node"
 end
