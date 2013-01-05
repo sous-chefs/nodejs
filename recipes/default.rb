@@ -17,8 +17,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-case node['platform']
-  when "ubuntu", "debian"
+case node['platform_family']
+  when "debian"
    include_recipe "apt"
 end
 
