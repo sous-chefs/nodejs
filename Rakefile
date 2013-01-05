@@ -27,3 +27,10 @@ recipes resources templates}
   cp_r Dir.glob("{#{files.join(',')}}"), sandbox
   puts "\n\n"
 end
+
+begin
+  require 'jamie/rake_tasks'
+  Jamie::RakeTasks.new
+rescue LoadError
+  puts ">>>>> Jamie gem not loaded, omitting tasks" unless ENV['CI']
+end

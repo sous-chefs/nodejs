@@ -1,2 +1,4 @@
 Gemfile.lock
 tmp/
+.jamie/
+.jamie.local.yml
