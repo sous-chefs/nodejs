@@ -1,3 +1,5 @@
+source :rubygems
+
 gem 'foodcritic'
 gem 'berkshelf'
 gem 'jamie'

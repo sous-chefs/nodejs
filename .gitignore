@@ -1,4 +1,5 @@
 Gemfile.lock
+Berksfile.lock
 tmp/
 .jamie/
 .jamie.local.yml
