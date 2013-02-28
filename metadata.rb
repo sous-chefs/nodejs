@@ -9,7 +9,7 @@ provides         "nodejs"
 
 recipe "nodejs", "Installs Node.JS based on the default installation method"
 recipe "nodejs::install_from_source", "Installs Node.JS from source"
-recipe "nodejs::install_from_officialbin", "Installs Node.JS from official binaries"
+recipe "nodejs::install_from_binaries", "Installs Node.JS from official binaries"
 recipe "nodejs::install_from_package", "Installs Node.JS from packages"
 recipe "nodejs::npm", "Installs npm from source - a package manager for node"
 

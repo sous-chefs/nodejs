@@ -43,14 +43,14 @@ Include the install_from_source recipe to install node from sources:
 
 Include the install_from_package recipe to install node from packages:
 Note that only apt (Ubuntu, Debian) appears to have up to date packages available.
-Centos, RHEL, etc are non-functional. (Try install_from_officialbin for those)
+Centos, RHEL, etc are non-functional. (Try install_from_binary for those)
 
 *  include_recipe "nodejs::install_from_package"
 
-Include the install_from_officialbin recipe to install node from official prebuilt binaries:
+Include the install_from_binary recipe to install node from official prebuilt binaries:
 (Currently Linux x86, x86_64 only)
 
-*  include_recipe "nodejs::install_from_officialbin"
+*  include_recipe "nodejs::install_from_binary"
 
 Include the npm recipe to install npm:
 
