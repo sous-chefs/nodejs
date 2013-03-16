@@ -1,9 +1,11 @@
 #
 # Author:: Nathan L Smith (nlloyds@gmail.com)
+# Author:: Marius Ducea (marius@promethost.com)
 # Cookbook Name:: nodejs
 # Recipe:: package
 #
 # Copyright 2012, Cramer Development, Inc.
+# Copyright 2013, Opscale
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,39 +21,29 @@
 #
 
 case node['platform_family']
-  when 'rhel', 'fedora'
-    file = '/usr/local/src/nodejs-stable-release.noarch.rpm'
-
-    remote_file file do
-      source 'http://nodejs.tchol.org/repocfg/el/nodejs-stable-release.noarch.rpm'
-      action :create_if_missing
-    end
-
-    yum_package 'nodejs-stable-release' do
-      source file
-      options '--nogpgcheck'
-    end
-
-    %w{ nodejs nodejs-compat-symlinks npm }.each do |pkg|
-      package pkg
-    end
   when 'debian'
+    if node['nodejs']['legacy_packages'] == true
+      repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
+      packages = %w{ nodejs npm }
+    else
+      repo = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+      packages = %w{ nodejs }
+    end
     apt_repository 'node.js' do
-      uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+      uri repo
       distribution node['lsb']['codename']
       components ['main']
       keyserver "keyserver.ubuntu.com"
       key "C7917B12"
       action :add
     end
-
-    %w{ nodejs npm }.each do |pkg|
-      package pkg
-    end
   when 'smartos'
-    %w{ nodejs }.each do |pkg|
-      package pkg
-    end
+    packages = %w{ nodejs }
   else
-    include_recipe "nodejs::install_from_source"
+    Chef::Log.error "There are no nodejs packages for this platform; please use the source or binary method to install node"
+    return
+end
+
+packages.each do |node_pkg|
+  package node_pkg
 end

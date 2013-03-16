@@ -1,3 +1,7 @@
+## v1.1.0:
+  * rewrite the package install; remove rpm support since there are no longer any packages available anywhere
+  * add support to install `legacy_packages` from ubuntu repo as well as the latest 0.10.x branch (this is default).
+
 ## v1.0.4:
   * add support for binary installation method ([@JulesAU][])
 
