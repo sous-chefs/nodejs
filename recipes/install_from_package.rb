@@ -30,7 +30,7 @@ case node['platform_family']
       key "C7917B12"
       action :add
     end
-    packages = %w{ nodejs npm }
+    packages = %w{ nodejs }
   when 'smartos'
     packages = %w{ nodejs }
   else
