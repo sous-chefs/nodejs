@@ -22,15 +22,21 @@
 
 case node['platform_family']
   when 'debian'
+    if node['nodejs']['legacy_packages'] == true
+      repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
+      packages = %w{ nodejs npm }
+    else
+      repo = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+      packages = %w{ nodejs }
+    end
     apt_repository 'node.js' do
-      uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+      uri repo
       distribution node['lsb']['codename']
       components ['main']
       keyserver "keyserver.ubuntu.com"
       key "C7917B12"
       action :add
     end
-    packages = %w{ nodejs }
   when 'smartos'
     packages = %w{ nodejs }
   else
