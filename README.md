@@ -17,6 +17,7 @@ REQUIREMENTS
 ## Cookbooks:
 
 * build-essential
+* apt
 
 Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
 
