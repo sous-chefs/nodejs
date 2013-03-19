@@ -1,3 +1,8 @@
+## v1.1.1:
+  * update default versions to the latest: node - v0.10.0 and npm - v1.2.14
+  * `make_thread` is now a real attribute - ([@ChrisLundquist][])
+
+
 ## v1.1.0:
   * rewrite the package install; remove rpm support since there are no longer any packages available anywhere
   * add support to install `legacy_packages` from ubuntu repo as well as the latest 0.10.x branch (this is default).
