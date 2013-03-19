@@ -25,6 +25,7 @@ default['nodejs']['checksum_linux_x86'] = 'ea4508e4df3c74d964a02d5740374b54f8192
 default['nodejs']['dir'] = '/usr/local'
 default['nodejs']['npm'] = '1.2.0'
 default['nodejs']['src_url'] = "http://nodejs.org/dist"
+default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 
 # Set this to true to install the legacy packages (0.8.x) from ubuntu/debian repositories; default is false (using the latest stable 0.10.x)
 default['nodejs']['legacy_packages'] = false
