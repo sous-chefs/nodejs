@@ -67,7 +67,6 @@ execute "install package to system" do
             --strip-components=1  --no-same-owner \
             -C #{destination_dir} \
             #{package_stub}/bin \
-            #{package_stub}/include \
             #{package_stub}/lib \
             #{package_stub}/share
         EOF
