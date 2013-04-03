@@ -9,6 +9,7 @@ platforms:
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-12.04.box
+    require_chef_omnibus: 11.4.0
   run_list:
   - recipe[apt]
 - name: ubuntu-10.04
@@ -32,6 +33,12 @@ suites:
   attributes:
     nodejs:
       install_method: package
+- name: binary
+  run_list:
+  - recipe[nodejs]
+  attributes:
+    nodejs:
+      install_method: binary
 - name: source
   run_list:
   - recipe[nodejs]
