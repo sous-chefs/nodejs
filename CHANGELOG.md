@@ -1,3 +1,7 @@
+## v1.1.2:
+  * update default version of node to 0.10.2 - ([@bakins][])
+  * fully migrated to test-kitchen 1.alpha and vagrant 1.1.x/berkshelf 1.3.1
+
 ## v1.1.1:
   * update default versions to the latest: node - v0.10.0 and npm - v1.2.14
   * `make_thread` is now a real attribute - ([@ChrisLundquist][])
@@ -35,3 +39,4 @@
 [@markbirbeck]: https://github.com/markbirbeck
 [@johannesbecker]: https://github.com/johannesbecker
 [@smith]: https://github.com/smith
+[@bakins]: https://github.com/bakins
