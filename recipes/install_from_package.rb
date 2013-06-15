@@ -37,6 +37,9 @@ case node['platform_family']
       key "C7917B12"
       action :add
     end
+  when 'rhel'
+    include_recipe 'yum::epel'
+    packages = %w{ nodejs nodejs-devel npm }
   when 'smartos'
     packages = %w{ nodejs }
   else

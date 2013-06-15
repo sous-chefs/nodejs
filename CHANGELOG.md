@@ -1,3 +1,6 @@
+## v1.2.0
+  * implement installation from package on RedHat - ([@vaskas][])
+
 ## v1.1.2:
   * update default version of node to 0.10.2 - ([@bakins][])
   * fully migrated to test-kitchen 1.alpha and vagrant 1.1.x/berkshelf 1.3.1
@@ -40,3 +43,4 @@
 [@johannesbecker]: https://github.com/johannesbecker
 [@smith]: https://github.com/smith
 [@bakins]: https://github.com/bakins
+[@vaskas]: https://github.com/vaskas
