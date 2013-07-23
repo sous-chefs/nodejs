@@ -1,3 +1,6 @@
+## v1.1.3:
+  * update default version of node to 0.10.13 - and npm - v1.3.4 ([@jodosha][])
+
 ## v1.1.2:
   * update default version of node to 0.10.2 - ([@bakins][])
   * fully migrated to test-kitchen 1.alpha and vagrant 1.1.x/berkshelf 1.3.1
