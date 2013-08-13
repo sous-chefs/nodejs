@@ -30,6 +30,7 @@ ATTRIBUTES
 * nodejs['dir'] - location where node will be installed, default /usr/local
 * nodejs['npm'] - version of npm to install
 * nodejs['npm_src_url'] - download location for npm source tarball
+* nodejs['check_sha'] - test for valid sha_sum, default: true
 
 USAGE
 =====
@@ -49,7 +50,7 @@ Centos, RHEL, etc are non-functional. (Try install_from_binary for those)
 *  include_recipe "nodejs::install_from_package"
 
 Include the install_from_binary recipe to install node from official prebuilt binaries:
-(Currently Linux x86, x86_64 only)
+(Currently Linux x86, x86_64, armv6l only)
 
 *  include_recipe "nodejs::install_from_binary"
 
