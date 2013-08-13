@@ -29,8 +29,8 @@ recipes resources templates}
 end
 
 begin
-  require 'jamie/rake_tasks'
-  Jamie::RakeTasks.new
+  require 'kitchen/rake_tasks'
+  Kitchen::RakeTasks.new
 rescue LoadError
-  puts ">>>>> Jamie gem not loaded, omitting tasks" unless ENV['CI']
+  puts ">>>>> Kitchen gem not loaded, omitting tasks" unless ENV['CI']
 end
