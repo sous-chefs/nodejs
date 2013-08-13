@@ -19,7 +19,12 @@
 
 # Shamelessly borrowed from http://docs.opscode.com/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
-arch = node['kernel']['machine'] =~ /x86_64/ ? "x64" : "x86"
+if node['kernel']['machine'] =~ /armv6l/
+  arch = "arm-pi" # assume a raspberry pi
+else
+  arch = node['kernel']['machine'] =~ /x86_64/ ? "x64" : "x86"
+end
+
 distro_suffix = "-linux-#{arch}"
 
 # package_stub is for example: "node-v0.8.20-linux-x64"
@@ -57,7 +62,7 @@ ruby_block "verify_sha_sum" do
             raise "SHA256 Hash of #{nodejs_tar} did not match!  Expected #{expected_checksum} found #{calculated_sha256_hash}"
         end
     end
-    not_if { install_not_needed }
+    not_if { !node['nodejs']['check_sha'] or install_not_needed }
 end
 
 # One hopes that we can trust the contents of the node tarball not to overwrite anything it shouldn't!
