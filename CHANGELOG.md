@@ -1,7 +1,7 @@
 ## v1.3.0
   * update default versions to the latest: node - v0.10.15 and npm - v1.3.5
-  * default to package installation of nodejs on smartos (@wanelo-pair)
-  * Add Raspberry pi support (@robertkowalski)
+  * default to package installation of nodejs on smartos ([@wanelo-pair][])
+  * Add Raspberry pi support ([@robertkowalski][])
 
 ## v1.2.0
   * implement installation from package on RedHat - ([@vaskas][])
@@ -52,3 +52,5 @@
 [@smith]: https://github.com/smith
 [@bakins]: https://github.com/bakins
 [@vaskas]: https://github.com/vaskas
+[@robertkowalski]: https://github.com/robertkowalski
+[@wanelo-pair]: https://github.com/wanelo-pair
