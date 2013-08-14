@@ -17,7 +17,13 @@
 # limitations under the License.
 #
 
-default['nodejs']['install_method'] = 'source'
+case node['platform_family']
+  when "smartos"
+    default['nodejs']['install_method'] = 'package'
+  else
+    default['nodejs']['install_method'] = 'source'
+end
+
 default['nodejs']['version'] = '0.10.13'
 default['nodejs']['checksum'] = '7e2079394efe82f62798178f617888c9d6a39150c76122c432ae9ea73ce28e79'
 default['nodejs']['checksum_linux_x64'] = '83b8f07aa7981694e557a9aae7e5bc4c312d800c'
