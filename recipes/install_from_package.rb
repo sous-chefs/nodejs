@@ -22,6 +22,7 @@
 
 case node['platform_family']
   when 'debian'
+    include_recipe "apt"
     if node['nodejs']['legacy_packages'] == true
       repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
       packages = %w{ nodejs npm }

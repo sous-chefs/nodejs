@@ -16,8 +16,8 @@ REQUIREMENTS
 
 ## Cookbooks:
 
-* build-essential
-* apt
+* build-essential (when installing from source)
+* apt or yum (when installing from package)
 
 Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
 
