@@ -38,7 +38,7 @@ case node['platform_family']
       action :add
     end
   when 'rhel'
-    include_recipe 'yum::epel'
+    include_recipe 'yum-epel'
     packages = %w{ nodejs nodejs-devel npm }
   when 'smartos'
     packages = %w{ nodejs }
