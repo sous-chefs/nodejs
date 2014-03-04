@@ -24,13 +24,13 @@ case node['platform_family']
     default['nodejs']['install_method'] = 'source'
 end
 
-default['nodejs']['version'] = '0.10.15'
-default['nodejs']['checksum'] = '87345ab3b96aa02c5250d7b5ae1d80e620e8ae2a7f509f7fa18c4aaa340953e8'
-default['nodejs']['checksum_linux_x64'] = '0b5191748a91b1c49947fef6b143f3e5e5633c9381a31aaa467e7c80efafb6e9'
-default['nodejs']['checksum_linux_x86'] = '7ff9fb6aa19a5269a5a2f7a770040b8cd3c3b528a9c7c07da5da31c0d6dfde4d'
-default['nodejs']['checksum_linux_arm-pi'] = '4a62f901e134cec7b2287629c2545b6131dd41713b73cfad20b4fec624ab7413'
+default['nodejs']['version'] = '0.10.26'
+default['nodejs']['checksum'] = 'ef5e4ea6f2689ed7f781355012b942a2347e0299da0804a58de8e6281c4b1daa'
+default['nodejs']['checksum_linux_x64'] = '305bf2983c65edea6dd2c9f3669b956251af03523d31cf0a0471504fd5920aac'
+default['nodejs']['checksum_linux_x86'] = '8fa2d952556c8b5aa37c077e2735c972c522510facaa4df76d4244be88f4dc0f'
+default['nodejs']['checksum_linux_arm-pi'] = '561ec2ebfe963be8d6129f82a7d1bc112fb8fbfc0a1323ebe38ef55850f25517'
 default['nodejs']['dir'] = '/usr/local'
-default['nodejs']['npm'] = '1.3.5'
+default['nodejs']['npm'] = '1.4.4'
 default['nodejs']['src_url'] = "http://nodejs.org/dist"
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 default['nodejs']['check_sha'] = true
