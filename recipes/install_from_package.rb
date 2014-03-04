@@ -41,6 +41,8 @@ case node['platform_family']
   when 'rhel'
     include_recipe 'yum-epel'
     packages = %w{ nodejs nodejs-devel npm }
+  when 'fedora'
+    packages = %w{ nodejs nodejs-devel npm }
   when 'smartos'
     packages = %w{ nodejs }
   else
