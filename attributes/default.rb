@@ -18,7 +18,7 @@
 #
 
 case node['platform_family']
-  when "smartos"
+  when "smartos", "rhel", "debian", "fedora"
     default['nodejs']['install_method'] = 'package'
   else
     default['nodejs']['install_method'] = 'source'
