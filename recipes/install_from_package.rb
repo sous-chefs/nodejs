@@ -33,7 +33,7 @@ case node['platform_family']
       uri repo
       distribution node['lsb']['codename']
       components ['main']
-      keyserver "keyserver.ubuntu.com"
+      keyserver "hkp://keyserver.ubuntu.com:80"
       key "C7917B12"
       action :add
     end
