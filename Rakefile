@@ -1,36 +1,56 @@
 #!/usr/bin/env rake
 
-@cookbook = "nodejs"
+require 'rubocop/rake_task'
+require 'foodcritic'
+require 'kitchen'
 
-desc "Runs foodcritic linter"
-task :foodcritic do
-  if Gem::Version.new("1.9.2") <= Gem::Version.new(RUBY_VERSION.dup)
-    sandbox = File.join(File.dirname(__FILE__), %w{tmp foodcritic}, @cookbook)
-    prepare_foodcritic_sandbox(sandbox)
+# Style tests. Rubocop and Foodcritic
+namespace :style do
+  desc 'Run Ruby style checks'
+  Rubocop::RakeTask.new(:ruby)
 
-    sh "foodcritic --tags ~FC048 --epic-fail any #{File.dirname(sandbox)}"
-  else
-    puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
+  desc 'Run Chef style checks'
+  FoodCritic::Rake::LintTask.new(:chef) do |t|
+    t.options = {
+      fail_tags: ['any'],
+      tags: ['~FC048']
+    }
   end
 end
 
-task :default => 'foodcritic'
+desc 'Run all style checks'
+task style: ['style:chef', 'style:ruby']
 
-private
+# Integration tests. Kitchen.ci
+namespace :integration do
+  desc 'Run Test Kitchen with Vagrant'
+  task :vagrant do
+    Kitchen.logger = Kitchen.default_file_logger
+    Kitchen::Config.new.instances.each do |instance|
+      instance.test(:always)
+    end
+  end
 
-def prepare_foodcritic_sandbox(sandbox)
-  files = %w{*.md *.rb attributes definitions files providers
-recipes resources templates}
+  desc 'Run Test Kitchen with cloud plugins'
+  task :cloud do
+    run_kitchen = true
+    if ENV['TRAVIS'] == 'true' && ENV['TRAVIS_PULL_REQUEST'] != 'false'
+      run_kitchen = false
+    end
 
-  rm_rf sandbox
-  mkdir_p sandbox
-  cp_r Dir.glob("{#{files.join(',')}}"), sandbox
-  puts "\n\n"
+    if run_kitchen
+      Kitchen.logger = Kitchen.default_file_logger
+      @loader = Kitchen::Loader::YAML.new(project_config: './.kitchen.cloud.yml')
+      config = Kitchen::Config.new(loader: @loader)
+      config.instances.each do |instance|
+        instance.test(:always)
+      end
+    end
+  end
 end
 
-begin
-  require 'kitchen/rake_tasks'
-  Kitchen::RakeTasks.new
-rescue LoadError
-  puts ">>>>> Kitchen gem not loaded, omitting tasks" unless ENV['CI']
-end
+desc 'Run all tests on Travis'
+task travis: ['style']
+
+# Default
+task default: ['style', 'integration:vagrant']
