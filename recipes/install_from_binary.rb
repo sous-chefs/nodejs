@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+Chef::Resource::User.send(:include, NodeJs::Helper)
+
 # Shamelessly borrowed from http://docs.opscode.com/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 if node['kernel']['machine'] =~ /armv6l/
@@ -50,8 +52,6 @@ end
 # Where we will install the binaries and libs to (normally /usr/local):
 destination_dir = node['nodejs']['dir']
 
-install_not_needed = File.exists?("#{node['nodejs']['dir']}/bin/node") && `#{node['nodejs']['dir']}/bin/node --version`.chomp == "v#{node['nodejs']['version']}"
-
 # Verify the SHA sum of the downloaded file:
 ruby_block 'verify_sha_sum' do
   block do
@@ -61,7 +61,7 @@ ruby_block 'verify_sha_sum' do
       raise "SHA256 Hash of #{nodejs_tar} did not match!  Expected #{expected_checksum} found #{calculated_sha256_hash}"
     end
   end
-  not_if { !node['nodejs']['check_sha'] || install_not_needed }
+  not_if { !node['nodejs']['check_sha'] || install_not_needed? }
 end
 
 # One hopes that we can trust the contents of the node tarball not to overwrite anything it shouldn't!
@@ -74,5 +74,5 @@ execute 'install package to system' do
       #{package_stub}/lib \
       #{package_stub}/share
     EOF
-  not_if { install_not_needed }
+  not_if { install_not_needed? }
 end

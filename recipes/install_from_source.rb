@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+Chef::Resource::User.send(:include, NodeJs::Helper)
+
 include_recipe 'build-essential'
 
 case node['platform_family']
@@ -64,5 +66,5 @@ execute 'nodejs make install' do
   environment('PATH' => '/usr/local/bin:/usr/bin:/bin:$PATH ')
   command 'make install'
   cwd "/usr/local/src/node-v#{node['nodejs']['version']}"
-  not_if { ::File.exists?("#{node['nodejs']['dir']}/bin/node") && `#{node['nodejs']['dir']}/bin/node --version`.chomp == "v#{node['nodejs']['version']}" }
+  not_if { install_not_needed? }
 end
