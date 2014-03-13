@@ -21,33 +21,33 @@
 #
 
 case node['platform_family']
-  when 'debian'
-    include_recipe "apt"
-    if node['nodejs']['legacy_packages'] == true
-      repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
-      packages = %w{ nodejs npm }
-    else
-      repo = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
-      packages = %w{ nodejs }
-    end
-    apt_repository 'node.js' do
-      uri repo
-      distribution node['lsb']['codename']
-      components ['main']
-      keyserver "hkp://keyserver.ubuntu.com:80"
-      key "C7917B12"
-      action :add
-    end
-  when 'rhel'
-    include_recipe 'yum-epel'
-    packages = %w{ nodejs nodejs-devel npm }
-  when 'fedora'
-    packages = %w{ nodejs nodejs-devel npm }
-  when 'smartos'
-    packages = %w{ nodejs }
+when 'debian'
+  include_recipe 'apt'
+  if node['nodejs']['legacy_packages'] == true
+    repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
+    packages = %w{ nodejs npm }
   else
-    Chef::Log.error "There are no nodejs packages for this platform; please use the source or binary method to install node"
-    return
+    repo = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
+    packages = %w{ nodejs }
+  end
+  apt_repository 'node.js' do
+    uri repo
+    distribution node['lsb']['codename']
+    components ['main']
+    keyserver 'hkp://keyserver.ubuntu.com:80'
+    key 'C7917B12'
+    action :add
+  end
+when 'rhel'
+  include_recipe 'yum-epel'
+  packages = %w{ nodejs nodejs-devel npm }
+when 'fedora'
+  packages = %w{ nodejs nodejs-devel npm }
+when 'smartos'
+  packages = %w{ nodejs }
+else
+  Chef::Log.error 'There are no nodejs packages for this platform; please use the source or binary method to install node'
+  return
 end
 
 packages.each do |node_pkg|

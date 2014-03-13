@@ -18,10 +18,10 @@
 #
 
 case node['platform_family']
-  when "smartos", "rhel", "debian", "fedora"
-    default['nodejs']['install_method'] = 'package'
-  else
-    default['nodejs']['install_method'] = 'source'
+when 'smartos', 'rhel', 'debian', 'fedora'
+  default['nodejs']['install_method'] = 'package'
+else
+  default['nodejs']['install_method'] = 'source'
 end
 
 default['nodejs']['version'] = '0.10.26'
@@ -31,7 +31,7 @@ default['nodejs']['checksum_linux_x86'] = '8fa2d952556c8b5aa37c077e2735c972c5225
 default['nodejs']['checksum_linux_arm-pi'] = '561ec2ebfe963be8d6129f82a7d1bc112fb8fbfc0a1323ebe38ef55850f25517'
 default['nodejs']['dir'] = '/usr/local'
 default['nodejs']['npm'] = '1.4.4'
-default['nodejs']['src_url'] = "http://nodejs.org/dist"
+default['nodejs']['src_url'] = 'http://nodejs.org/dist'
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 default['nodejs']['check_sha'] = true
 
