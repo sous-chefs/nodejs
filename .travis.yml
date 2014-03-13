@@ -1,6 +1,6 @@
 language: ruby
-gemfile:
-- test/support/Gemfile
+bundler_args: --without integration
 rvm:
-- 1.9.3
-script: bundle exec rake foodcritic
+  - 1.9.3
+  - 2.0.0
+script: bundle exec rake travis
