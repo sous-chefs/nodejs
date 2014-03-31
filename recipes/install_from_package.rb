@@ -25,10 +25,10 @@ when 'debian'
   include_recipe 'apt'
   if node['nodejs']['legacy_packages'] == true
     repo = 'http://ppa.launchpad.net/chris-lea/node.js-legacy/ubuntu'
-    packages = %w{ nodejs npm }
+    packages = %w(nodejs npm)
   else
     repo = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
-    packages = %w{ nodejs }
+    packages = %w(nodejs)
   end
   apt_repository 'node.js' do
     uri repo
@@ -40,11 +40,11 @@ when 'debian'
   end
 when 'rhel'
   include_recipe 'yum-epel'
-  packages = %w{ nodejs nodejs-devel npm }
+  packages = %w(nodejs nodejs-devel npm)
 when 'fedora'
-  packages = %w{ nodejs nodejs-devel npm }
+  packages = %w(nodejs nodejs-devel npm)
 when 'smartos'
-  packages = %w{ nodejs }
+  packages = %w(nodejs)
 else
   Chef::Log.error 'There are no nodejs packages for this platform; please use the source or binary method to install node'
   return
