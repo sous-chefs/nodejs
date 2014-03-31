@@ -41,38 +41,9 @@ end
 # Let the user override the source url in the attributes
 nodejs_bin_url = "#{node['nodejs']['src_url']}/#{nodejs_tar_path}"
 
-# Download it:
-remote_file "/usr/local/src/#{nodejs_tar}" do
-  source nodejs_bin_url
+ark 'nodejs' do
+  url nodejs_bin_url
+  version node['nodejs']['version']
   checksum expected_checksum
-  mode 0644
-  action :create_if_missing
-end
-
-# Where we will install the binaries and libs to (normally /usr/local):
-destination_dir = node['nodejs']['dir']
-
-# Verify the SHA sum of the downloaded file:
-ruby_block 'verify_sha_sum' do
-  block do
-    require 'digest/sha1'
-    calculated_sha256_hash = Digest::SHA256.file("/usr/local/src/#{nodejs_tar}")
-    if calculated_sha256_hash != expected_checksum
-      raise "SHA256 Hash of #{nodejs_tar} did not match!  Expected #{expected_checksum} found #{calculated_sha256_hash}"
-    end
-  end
-  not_if { !node['nodejs']['check_sha'] || install_not_needed? }
-end
-
-# One hopes that we can trust the contents of the node tarball not to overwrite anything it shouldn't!
-execute 'install package to system' do
-  command <<-EOF
-      tar xf /usr/local/src/#{nodejs_tar} \
-      --strip-components=1  --no-same-owner \
-      -C #{destination_dir} \
-      #{package_stub}/bin \
-      #{package_stub}/lib \
-      #{package_stub}/share
-    EOF
-  not_if { install_not_needed? }
+  action :install
 end
