@@ -1,0 +1,1 @@
+default['nodejs']['npm'] = 'latest'
