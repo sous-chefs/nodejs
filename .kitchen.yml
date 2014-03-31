@@ -40,4 +40,4 @@ suites:
       install_method: source
 - name: npm
   run_list:
-      - recipe[nodejs::npm]
+  - recipe[nodejs::npm]
