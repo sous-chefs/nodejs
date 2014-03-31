@@ -16,6 +16,7 @@ recipe 'nodejs::npm', 'Installs npm from source - a package manager for node'
 depends 'yum-epel'
 depends 'build-essential'
 depends 'ark'
+depends 'apt'
 
 %w(debian ubuntu centos redhat smartos).each do |os|
   supports os
