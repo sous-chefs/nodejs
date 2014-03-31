@@ -41,7 +41,7 @@ end
 # Let the user override the source url in the attributes
 nodejs_bin_url = "#{node['nodejs']['src_url']}/#{nodejs_tar_path}"
 
-ark 'nodejs' do
+ark 'nodejs-binary' do
   url nodejs_bin_url
   version node['nodejs']['version']
   checksum expected_checksum
