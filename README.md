@@ -1,20 +1,18 @@
-# <a name="title"></a> nodejs-cookbook [![Build Status](https://secure.travis-ci.org/mdxp/nodejs-cookbook.png)](http://travis-ci.org/mdxp/nodejs-cookbook)
+# nodejs-cookbook [![Build Status](https://travis-ci.org/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
 
-DESCRIPTION
-===========
+## DESCRIPTION
 
 Installs Node.JS
 
-REQUIREMENTS
-============
+## REQUIREMENTS
 
 
-## Platform
+### Platform
 
 * Tested on Debian 6 and Ubuntu 10.04
 * Should work fine on Centos, RHEL, etc.
 
-## Cookbooks:
+### Cookbooks:
 
 * [build-essential](https://github.com/opscode-cookbooks/build-essential)
 * [apt](https://github.com/cookbooks/apt)
@@ -22,8 +20,7 @@ REQUIREMENTS
 
 Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
 
-ATTRIBUTES
-==========
+## ATTRIBUTES
 
 * nodejs['install_method'] = source or package
 * nodejs['version'] - release version of node to install
@@ -33,8 +30,7 @@ ATTRIBUTES
 * nodejs['npm_src_url'] - download location for npm source tarball
 * nodejs['check_sha'] - test for valid sha_sum, default: true
 
-USAGE
-=====
+## USAGE
 
 Include the nodejs recipe to install node on your system based on the default installation method:
 
@@ -59,8 +55,7 @@ Include the npm recipe to install npm:
 
 *  include_recipe "nodejs::npm"
 
-LICENSE and AUTHOR
-==================
+## LICENSE and AUTHOR
 
 Author:: Marius Ducea (marius@promethost.com)
 Author:: Nathan L Smith (nlloyds@gmail.com)
