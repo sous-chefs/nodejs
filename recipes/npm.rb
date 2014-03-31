@@ -22,8 +22,10 @@ Chef::Recipe.send(:include, NodeJs::Helper)
 
 include_recipe 'nodejs'
 
+dist = npm_dist
+
 ark 'npm' do
-  url npm_dist['url']
-  version npm_dist['version']
+  url dist['url']
+  version dist['version']
   action :install_with_make
 end

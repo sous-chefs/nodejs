@@ -1,1 +1,1 @@
-default['nodejs']['npm'] = 'latest'
+default['nodejs']['npm']['version'] = 'latest'
