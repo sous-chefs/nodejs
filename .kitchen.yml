@@ -17,6 +17,9 @@ platforms:
 - name: centos-5.8
 
 suites:
+- name: default
+  run_list:
+  - recipe[nodejs]
 - name: package
   run_list:
   - recipe[nodejs]

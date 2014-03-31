@@ -13,9 +13,9 @@ recipe 'nodejs::install_from_binary', 'Installs Node.JS from official binaries'
 recipe 'nodejs::install_from_package', 'Installs Node.JS from packages'
 recipe 'nodejs::npm', 'Installs npm from source - a package manager for node'
 
-%w(apt yum-epel build-essential).each do |c|
-  depends c
-end
+depends 'yum-epel'
+depends 'build-essential'
+depends 'ark'
 
 %w(debian ubuntu centos redhat smartos).each do |os|
   supports os
