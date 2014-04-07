@@ -19,6 +19,6 @@ depends 'build-essential'
 depends 'ark'
 depends 'apt'
 
-%w(debian ubuntu centos redhat smartos).each do |os|
+%w(debian ubuntu centos redhat smartos mac_os_x).each do |os|
   supports os
 end
