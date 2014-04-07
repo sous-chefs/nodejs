@@ -11,6 +11,7 @@ recipe 'nodejs', 'Installs Node.JS based on the default installation method'
 recipe 'nodejs::install_from_source', 'Installs Node.JS from source'
 recipe 'nodejs::install_from_binary', 'Installs Node.JS from official binaries'
 recipe 'nodejs::install_from_package', 'Installs Node.JS from packages'
+recipe 'nodejs::install_from_mac_pkg', 'Installs Node.JS from MacOs X .pkg file'
 recipe 'nodejs::npm', 'Installs npm from source - a package manager for node'
 
 depends 'yum-epel'
