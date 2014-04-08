@@ -41,3 +41,17 @@ suites:
 - name: npm
   run_list:
   - recipe[nodejs::npm]
+- name: npm_embedded
+  run_list:
+  - recipe[nodejs::npm]
+  attributes:
+    nodejs:
+      npm:
+        install_method: embedded
+- name: npm_source
+  run_list:
+  - recipe[nodejs::npm]
+  attributes:
+    nodejs:
+      npm:
+        install_method: source

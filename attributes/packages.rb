@@ -1,7 +1,7 @@
 case node['platform_family']
 when 'debian'
   default['nodejs']['repo'] = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
-  default['nodejs']['packages'] = %w(nodejs)
+  default['nodejs']['packages'] = node['nodejs']['install_repo'] ? %w(nodejs) : %w(nodejs npm nodejs-dev)
 when 'rhel', 'fedora'
   default['nodejs']['packages'] = %w(nodejs nodejs-devel npm)
 when 'smartos'
