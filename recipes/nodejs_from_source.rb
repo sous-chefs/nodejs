@@ -29,17 +29,11 @@ when 'debian'
   package 'libssl-dev'
 end
 
-nodejs_tar = "node-v#{node['nodejs']['version']}.tar.gz"
-nodejs_tar_path = nodejs_tar
-if node['nodejs']['version'].split('.')[1].to_i >= 5
-  nodejs_tar_path = "v#{node['nodejs']['version']}/#{nodejs_tar_path}"
-end
-# Let the user override the source url in the attributes
-nodejs_src_url = "#{node['nodejs']['src_url']}/#{nodejs_tar_path}"
+nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(node['nodejs']['prefix_url'], "node-v#{node['nodejs']['version']}.tar.gz").to_s
 
 ark 'nodejs-source' do
   url nodejs_src_url
   version node['nodejs']['version']
-  checksum node['nodejs']['checksum']
+  checksum node['nodejs']['source']['checksum']
   action :install_with_make
 end

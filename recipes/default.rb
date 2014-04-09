@@ -18,4 +18,5 @@
 # limitations under the License.
 #
 
-include_recipe "nodejs::install_from_#{node['nodejs']['install_method']}"
+include_recipe 'nodejs::nodejs'
+include_recipe 'nodejs::npm'
