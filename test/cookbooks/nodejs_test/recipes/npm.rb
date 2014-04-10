@@ -13,7 +13,7 @@ nodejs_npm 'async' do
 end
 
 nodejs_npm 'request' do
-  url 'https://github.com/mikeal/request'
+  url 'github mikeal/request'
 end
 
 git '/home/random/grunt' do
@@ -23,5 +23,6 @@ end
 
 nodejs_npm 'grunt' do
   path '/home/random/grunt'
+  json true
   user 'random'
 end

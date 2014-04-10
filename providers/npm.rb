@@ -4,20 +4,22 @@ use_inline_resources if defined?(use_inline_resources)
 
 action :install do
   execute "install NPM package #{new_resource.name}" do
-    cwd path
+    cwd new_resource.path
     command "npm install #{npm_options}"
     user new_resource.user
     group new_resource.group
+    environment 'HOME' => ::Dir.home(new_resource.user), 'USER' => new_resource.user if new_resource.user
     not_if { installed? }
   end
 end
 
 action :uninstall do
   execute "uninstall NPM package #{new_resource.package}" do
-    cwd path
+    cwd new_resource.path
     command "npm uninstall #{npm_options}"
     user new_resource.user
     group new_resource.group
+    environment 'HOME' => ::Dir.home(new_resource.user), 'USER' => new_resource.user if new_resource.user
     only_if { installed? }
   end
 end
