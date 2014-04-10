@@ -18,10 +18,8 @@
 #
 
 case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora'
+when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x'
   default['nodejs']['install_method'] = 'package'
-when 'mac_os_x'
-  default['nodejs']['install_method'] = 'mac_pkg'
 else
   default['nodejs']['install_method'] = 'source'
 end
@@ -30,7 +28,7 @@ default['nodejs']['version'] = '0.10.26'
 
 default['nodejs']['prefix_url'] = ::URI.join('http://nodejs.org/dist', "v#{node['nodejs']['version']}").to_s
 
-default['nodejs']['install_repo'] = true
+default['nodejs']['install_repo'] = true # Only if available, ie rhel / debian
 
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = 'ef5e4ea6f2689ed7f781355012b942a2347e0299da0804a58de8e6281c4b1daa'
