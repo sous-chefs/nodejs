@@ -19,5 +19,24 @@ module NodeJs
       version = cmd.run_command.stdout.chomp
       ::File.exist?("#{node['nodejs']['dir']}/bin/node") && version == "v#{node['nodejs']['version']}"
     end
+
+    def npm_list(path = nil)
+      require 'json'
+      if path
+        cmd = Mixlib::ShellOut.new('npm list -json', :cwd => path)
+      else
+        cmd = Mixlib::ShellOut.new('npm list -global -json')
+      end
+      return JSON.parse(cmd.run_command.stdout)
+    end
+
+    def npm_package_installed?(package, version = nil, path = nil)
+      list = npm_list(path)['dependencies']
+      ret = list.has_key?(package)
+      if ret && version
+        list[package]['version'] == version
+      end
+      ret
+    end
   end
 end
