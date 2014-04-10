@@ -8,7 +8,7 @@ action :install do
     command "npm install #{npm_options}"
     user new_resource.user
     group new_resource.group
-    not_if { new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path) }
+    not_if { installed? }
   end
 end
 
@@ -18,8 +18,12 @@ action :uninstall do
     command "npm uninstall #{npm_options}"
     user new_resource.user
     group new_resource.group
-    only_if { new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path) }
+    only_if { installed? }
   end
+end
+
+def installed?
+  new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path)
 end
 
 def npm_options
