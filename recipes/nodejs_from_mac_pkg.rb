@@ -16,14 +16,18 @@
 # limitations under the License.
 #
 
+filename = "node-v#{node['nodejs']['version']}.pkg"
+url = node['nodejs']['mac_os_x']['url']
+nodejs_mac_os_x_url = url ? url : ::URI.join(node['nodejs']['prefix_url'], filename).to_s
 
-remote_file "#{Chef::Config[:file_cache_path]}/node.pkg" do
-	source "#{node['nodejs']['src_url']}/v#{node['nodejs']['version']}/node-v#{node['nodejs']['version']}.pkg"
-	checksum node['nodejs']['checksum_mac_os_x']
-	action :create
+remote_file ::File.join(Chef::Config[:file_cache_path], 'node.pkg') do
+  source nodejs_mac_os_x_url
+  checksum node['nodejs']['mac_pkg']['checksum']
+  notifies :run, 'execute[install nodejs on mac]', :immediately
 end
 
-execute "installer -pkg #{Chef::Config[:file_cache_path]}/node.pkg -target /" do
-	action :run
-	not_if "node --version | grep v#{node['nodejs']['version']}"
+execute 'install nodejs with mac_pkg' do
+  command "installer -pkg #{Chef::Config[:file_cache_path]}/node.pkg -target /"
+  action :nothing
+  not_if "node --version | grep v#{node['nodejs']['version']}"
 end
