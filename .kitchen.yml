@@ -41,9 +41,11 @@ suites:
 - name: npm
   run_list:
   - recipe[nodejs::npm]
+  - recipe[nodejs_test::npm]
 - name: npm_embedded
   run_list:
   - recipe[nodejs::npm]
+  - recipe[nodejs_test::npm]
   attributes:
     nodejs:
       npm:
@@ -51,6 +53,7 @@ suites:
 - name: npm_source
   run_list:
   - recipe[nodejs::npm]
+  - recipe[nodejs_test::npm]
   attributes:
     nodejs:
       npm:
