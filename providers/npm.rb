@@ -6,6 +6,8 @@ action :install do
   execute "install NPM package #{new_resource.name}" do
     cwd path
     command "npm install #{npm_options}"
+    user new_resource.user
+    group new_resource.group
     not_if { new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path) }
   end
 end
@@ -14,6 +16,8 @@ action :uninstall do
   execute "uninstall NPM package #{new_resource.package}" do
     cwd path
     command "npm uninstall #{npm_options}"
+    user new_resource.user
+    group new_resource.group
     only_if { new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path) }
   end
 end

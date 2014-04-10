@@ -27,3 +27,6 @@ attribute :version, :kind_of => String
 attribute :path, :kind_of => String
 attribute :url, :kind_of => String
 attribute :json, :kind_of => [String, TrueClass]
+
+attribute :user, :kind_of => String
+attribute :group, :kind_of => String
