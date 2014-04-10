@@ -19,13 +19,11 @@
 # limitations under the License.
 #
 
-actions :install, :install_local, :install_from_json, :uninstall, :uninstall_local
+actions :install, :uninstall
+default_action :install
 
-attribute :name, :name_attribute => true
-attribute :version, :default => nil
-attribute :path, :default => nil
-
-def initialize(*args)
-  super
-  @action = :install
-end
+attribute :package, :name_attribute => true
+attribute :version, :kind_of => String
+attribute :path, :kind_of => String
+attribute :url, :kind_of => String
+attribute :json, :kind_of => [String, TrueClass]
