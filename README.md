@@ -2,75 +2,79 @@
 
 ## DESCRIPTION
 
-Installs Node.JS
-
-## REQUIREMENTS
-
-
-### Platform
-
-* Tested on Debian 6 and Ubuntu 10.04
-* Should work fine on Centos, RHEL, etc.
-
-### Cookbooks:
-
-* [build-essential](https://github.com/opscode-cookbooks/build-essential)
-* [apt](https://github.com/cookbooks/apt)
-* [yum](https://github.com/cookbooks/yum)
-
-Opscode cookbooks (http://github.com/opscode/cookbooks/tree/master)
-
-## ATTRIBUTES
-
-* nodejs['install_method'] = source or package
-* nodejs['version'] - release version of node to install
-* nodejs['src_url'] - download location for node source tarball
-* nodejs['dir'] - location where node will be installed, default /usr/local
-* nodejs['npm'] - version of npm to install
-* nodejs['npm_src_url'] - download location for npm source tarball
-* nodejs['check_sha'] - test for valid sha_sum, default: true
+Installs Node.js and manage npm
 
 ## USAGE
 
 Include the nodejs recipe to install node on your system based on the default installation method:
+```chef
+include_recipe "nodejs"
+```
+Installation method can be customize with attribute `node['install_method']`
 
-*  include_recipe "nodejs"
+### Install methods
 
-Include the install_from_source recipe to install node from sources:
+#### Package
 
-*  include_recipe "nodejs::install_from_source"
-
-Include the install_from_package recipe to install node from packages:
+install node from packages:
 Note that only apt (Ubuntu, Debian) appears to have up to date packages available.
 Centos, RHEL, etc are non-functional. (Try install_from_binary for those)
+```chef
+node.default!['install_method'] = 'package'
+# Or
+include_recipe "nodejs::nodejs_from_package"
+```
 
-*  include_recipe "nodejs::install_from_package"
+#### Binary
 
-Include the install_from_binary recipe to install node from official prebuilt binaries:
-(Currently Linux x86, x86_64, armv6l only)
+Install node from official prebuilt binaries:
+```chef
+node.default!['install_method'] = 'binary'
+# Or
+include_recipe "nodejs::install_from_binary"
+```
 
-*  include_recipe "nodejs::install_from_binary"
+#### Source
 
-Include the npm recipe to install npm:
+Install node from sources:
+```chef
+node.default!['install_method'] = 'source'
+# Or
+include_recipe "nodejs::nodejs_from_source"
+```
 
-*  include_recipe "nodejs::npm"
+## NPM
 
-## LICENSE and AUTHOR
+Npm is included in nodejs installs by default.
+By default, we are using it and call it `embedded`.
+Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['npm']['install_method']`
+```chef
+include_recipe "nodejs::npm"
+```
 
-Author:: Marius Ducea (marius@promethost.com)
-Author:: Nathan L Smith (nlloyds@gmail.com)
+## LWRP
 
-Copyright:: 2010-2012, Promet Solutions
-Copyright:: 2012, Cramer Development, Inc.
+### nodejs_npm
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+`nodejs_npm` let you install npm packages from various sources:
+* npm registry:
+ * name: `attribute :package`
+ * version: `attribute :version` (optionnal)
+* url: `attribute :url`
+ * for git use `git://{your_repo}`
+* from a json (packages.json by default): `attribute :json`
+ * use `true` for default
+ * use a `String` to specify json file
+ 
+Packages can be installed globally (by default) or in a directory (by using `attribute :path`)
+ 
+This LWRP try to use npm bare as much as possible (no custom wrapper).
 
-    http://www.apache.org/licenses/LICENSE-2.0
+#### [Examples](test/cookbooks/nodejs_test/recipes/npm.rb)
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+## AUTHORS
+
+* Marius Ducea (marius@promethost.com)
+* Nathan L Smith (nlloyds@gmail.com)
+* Guilhem Lettron (guilhem@lettron.fr)
+* Barthelemy Vessemont (bvessemont@gmail.com)
