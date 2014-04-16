@@ -1,3 +1,5 @@
+include_attribute 'nodejs::default'
+
 case node['platform_family']
 when 'debian'
   default['nodejs']['repo'] = 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
