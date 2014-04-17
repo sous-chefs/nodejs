@@ -45,3 +45,8 @@ def npm_package
     Chef::Log.error("No good options found to install #{new_resource.name}")
   end
 end
+
+def initialize(*args)
+  super
+  @run_context.include_recipe 'nodejs::npm'
+end
