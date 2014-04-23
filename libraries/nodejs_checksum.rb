@@ -15,7 +15,7 @@ module NodeJs
 
     def get_checksum_file(shasumsurl)
       res = Net::HTTP.get_response(URI(shasumsurl))
-      raise "Could not download #{shasumsurl}" unless res.code == "200"
+      raise "Could not download #{shasumsurl}" unless res.code == '200'
       res.body
     end
   end

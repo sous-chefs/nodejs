@@ -30,7 +30,6 @@ end
 # package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
 filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
 
-
 if node['nodejs']['binary']['url']
   # Assume you have a network security team that hasn't heard of UTM and imposes
   # silly restrictions like only installing software from internal package repositories;
@@ -48,6 +47,6 @@ ark 'nodejs-binary' do
   url nodejs_bin_url
   version node['nodejs']['version']
   checksum checksum
-  has_binaries ['bin/node','bin/npm']
+  has_binaries ['bin/node', 'bin/npm']
   action :install
 end
