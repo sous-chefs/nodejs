@@ -17,6 +17,7 @@
 #
 
 Chef::Resource::User.send(:include, NodeJs::Helper)
+Chef::Recipe.send(:include, NodeJs::Checksum)
 
 # Shamelessly borrowed from http://docs.opscode.com/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
@@ -28,17 +29,25 @@ end
 
 # package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
 filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+
+
 if node['nodejs']['binary']['url']
+  # Assume you have a network security team that hasn't heard of UTM and imposes
+  # silly restrictions like only installing software from internal package repositories;
+  # you probably aren't using Node.JS anyway. Put a path and checksum here and go surf Dice.
   nodejs_bin_url = node['nodejs']['binary']['url']
   checksum = node['nodejs']['binary']['checksum']
 else
-  nodejs_bin_url = ::URI.join(node['nodejs']['prefix_url'], filename).to_s
-  checksum = node['nodejs']['binary']['checksums']["linux_#{arch}"]
+  # or if you run your kit IN THE CLOUD! you can just find this stuff on the fly
+  nodejs_version_url = ::URI.join(node['nodejs']['prefix_url'], "v#{node['nodejs']['version']}/").to_s
+  nodejs_bin_url = ::URI.join(nodejs_version_url, filename).to_s
+  checksum = get_checksum(::URI.join(nodejs_version_url, 'SHASUMS256.txt').to_s, filename)
 end
 
 ark 'nodejs-binary' do
   url nodejs_bin_url
   version node['nodejs']['version']
   checksum checksum
+  has_binaries [ 'bin/node', 'bin/npm' ]
   action :install
 end

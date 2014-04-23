@@ -19,6 +19,7 @@
 #
 
 Chef::Resource::User.send(:include, NodeJs::Helper)
+Chef::Recipe.send(:include, NodeJs::Checksum)
 
 include_recipe 'build-essential'
 
@@ -29,11 +30,22 @@ when 'debian'
   package 'libssl-dev'
 end
 
-nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(node['nodejs']['prefix_url'], "node-v#{node['nodejs']['version']}.tar.gz").to_s
+filename = "node-v#{node['nodejs']['version']}.tar.gz"
+
+if node['nodejs']['source']['url']
+  # See disparaging comments in nodejs_from_binary.rb
+  nodejs_src_url = node['nodejs']['source']['url']
+  checksum = node['nodejs']['source']['checksum']
+else
+  nodejs_version_url = ::URI.join(node['nodejs']['prefix_url'], "v#{node['nodejs']['version']}/").to_s
+  nodejs_src_url = ::URI.join(nodejs_version_url, filename).to_s
+  checksum = get_checksum(::URI.join(nodejs_version_url, 'SHASUMS256.txt').to_s, filename)
+end
 
 ark 'nodejs-source' do
   url nodejs_src_url
   version node['nodejs']['version']
-  checksum node['nodejs']['source']['checksum']
+  checksum checksum
+  has_binaries [ 'bin/node', 'bin/npm' ]
   action :install_with_make
 end

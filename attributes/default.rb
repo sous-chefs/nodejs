@@ -26,7 +26,7 @@ end
 
 default['nodejs']['version'] = '0.10.26'
 
-default['nodejs']['prefix_url'] = ::URI.join('http://nodejs.org/dist', "v#{node['nodejs']['version']}").to_s
+default['nodejs']['prefix_url'] = ::URI.join('http://nodejs.org/dist/', "v#{node['nodejs']['version']}").to_s
 
 default['nodejs']['install_repo'] = true
 
