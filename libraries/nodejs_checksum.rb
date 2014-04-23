@@ -4,14 +4,10 @@ module NodeJs
   module Checksum
 
     def get_checksum(shasumsurl, filename)
-      shasum = nil
-      begin
-        get_checksum_file(shasumsurl).each_line do |l|
-          shasum = l.split(/\s+/).first if l.match(filename)
-        end
-      rescue Exception => e
-        ::Chef::Log.fatal e
+      get_checksum_file(shasumsurl).each_line do |l|
+        shasum = l.split(/\s+/).first if l.match(filename)
       end
+      raise "Could not find #{filename} in #{shasumsurl}" unless defined? shasum
       shasum
     end
 
