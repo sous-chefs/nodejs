@@ -35,6 +35,5 @@ module NodeJs
       # Return true if package installed and installed to good version
       list.key?(package) && (version ? list[package]['version'] == version : true)
     end
-
   end
 end

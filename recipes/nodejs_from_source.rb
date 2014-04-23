@@ -46,6 +46,6 @@ ark 'nodejs-source' do
   url nodejs_src_url
   version node['nodejs']['version']
   checksum checksum
-  has_binaries [ 'bin/node', 'bin/npm' ]
+  has_binaries ['bin/node','bin/npm']
   action :install_with_make
 end
