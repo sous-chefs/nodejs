@@ -40,6 +40,6 @@ ark 'nodejs-binary' do
   url nodejs_bin_url
   version node['nodejs']['version']
   checksum checksum
-  has_binaries [ 'bin/node', 'bin/npm' ]
+  has_binaries ['bin/node', 'bin/npm']
   action :install
 end
