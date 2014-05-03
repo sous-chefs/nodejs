@@ -33,12 +33,13 @@ if node['nodejs']['binary']['url']
   checksum = node['nodejs']['binary']['checksum']
 else
   nodejs_bin_url = ::URI.join(node['nodejs']['prefix_url'], filename).to_s
-  checksum = node['nodejs']['binary']['checksums']["linux_#{arch}"]
+  checksum = node['nodejs']['binary']['checksum']["linux_#{arch}"]
 end
 
 ark 'nodejs-binary' do
   url nodejs_bin_url
   version node['nodejs']['version']
   checksum checksum
+  has_binaries [ 'bin/node', 'bin/npm' ]
   action :install
 end
