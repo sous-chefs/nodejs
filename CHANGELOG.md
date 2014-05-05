@@ -1,3 +1,13 @@
+## v2.0.0 (unreleased)
+  * Travis integration
+  * Gems updated
+  * Rewrite cookbook dependencies
+  * Added complete test-kitchen integration : Rake, rubocop, foodcritic, vagrant, bats testing ...
+  * Added NodeJS ```install_method``` option (sources, bins or packages)
+  * Added NPM ```install_method``` option (sources or packages)
+  * NPM version can now be chosen independently from nodejs' embedded version
+  * Added a ```nodejs_npm``` LWRP to manage, install and resolve NPM packages
+
 ## v1.3.0
   * update default versions to the latest: node - v0.10.15 and npm - v1.3.5
   * default to package installation of nodejs on smartos ([@wanelo-pair][])
