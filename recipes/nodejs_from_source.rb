@@ -35,5 +35,6 @@ ark 'nodejs-source' do
   url nodejs_src_url
   version node['nodejs']['version']
   checksum node['nodejs']['source']['checksum']
+  make_opts ["-j #{node['nodejs']['make_threads']}"]
   action :install_with_make
 end
