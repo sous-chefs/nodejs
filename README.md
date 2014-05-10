@@ -67,6 +67,10 @@ include_recipe "nodejs::npm"
  * use a `String` to specify json file
  
 Packages can be installed globally (by default) or in a directory (by using `attribute :path`)
+
+You can append more specific options to npm command with `attribute :options` array :  
+ * use an array of options (w/ dash), they will be added to npm call.
+ * ex: `['--production','--force']` or `['--force-latest']`
  
 This LWRP try to use npm bare as much as possible (no custom wrapper).
 

@@ -31,6 +31,9 @@ end
 def npm_options
   options = ''
   options << ' -global' unless new_resource.path
+  new_ressource.options.each do |option|
+    options << " #{option}"
+  end
   options << " #{npm_package}"
 end
 
