@@ -26,3 +26,7 @@ nodejs_npm 'grunt' do
   json true
   user 'random'
 end
+
+nodejs_npm 'mocha' do
+  options ['--force', '--production']
+end
