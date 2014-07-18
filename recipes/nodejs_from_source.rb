@@ -23,9 +23,9 @@ Chef::Resource::User.send(:include, NodeJs::Helper)
 include_recipe 'build-essential'
 
 case node['platform']
-when '"centos", "redhat", "amazon", "scientific"
+when "centos", "redhat", "amazon", "scientific"
   package 'openssl-devel'
-when '"debian", "ubuntu"
+when "debian", "ubuntu"
   package 'libssl-dev'
 end
 
