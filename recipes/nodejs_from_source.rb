@@ -22,10 +22,10 @@ Chef::Resource::User.send(:include, NodeJs::Helper)
 
 include_recipe 'build-essential'
 
-case node['platform_family']
-when 'rhel', 'fedora'
+case node['platform']
+when 'centos', 'redhat', 'amazon', 'scientific'
   package 'openssl-devel'
-when 'debian'
+when 'debian', 'ubuntu'
   package 'libssl-dev'
 end
 
