@@ -7,7 +7,7 @@ module NodeJs
 
         require 'open-uri'
         require 'json'
-        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}").read)
+        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}", :max_nesting => false).read)
         ret = { 'url' => result['dist']['tarball'], 'version' => result['_npmVersion'], 'shasum' => result['dist']['shasum'] }
         Chef::Log.debug("Npm dist #{ret}")
         return ret
@@ -27,7 +27,7 @@ module NodeJs
       else
         cmd = Mixlib::ShellOut.new('npm list -global -json')
       end
-      JSON.parse(cmd.run_command.stdout)
+      JSON.parse(cmd.run_command.stdout, :max_nesting => false)
     end
 
     def npm_package_installed?(package, version = nil, path = nil)
