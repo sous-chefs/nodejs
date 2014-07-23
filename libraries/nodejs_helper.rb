@@ -27,7 +27,7 @@ module NodeJs
       else
         cmd = Mixlib::ShellOut.new('npm list -global -json')
       end
-      JSON.parse(cmd.run_command.stdout)
+      JSON.parse(cmd.run_command.stdout, :max_nesting => 100)
     end
 
     def npm_package_installed?(package, version = nil, path = nil)
