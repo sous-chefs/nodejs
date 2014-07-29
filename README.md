@@ -10,35 +10,39 @@ Include the nodejs recipe to install node on your system based on the default in
 ```chef
 include_recipe "nodejs"
 ```
-Installation method can be customize with attribute `node['install_method']`
+Installation method can be customized with attribute `node['nodejs']['install_method']`
 
 ### Install methods
 
 #### Package
 
-install node from packages:
-Note that only apt (Ubuntu, Debian) appears to have up to date packages available.
-Centos, RHEL, etc are non-functional. (Try install_from_binary for those)
+Install node from packages:
+
 ```chef
-node.default!['install_method'] = 'package'
+node['nodejs']['install_method'] = 'package' # Not necessary because it's the default
+include_recipe "nodejs"
 # Or
 include_recipe "nodejs::nodejs_from_package"
 ```
+Note that only apt (Ubuntu, Debian) appears to have up to date packages available. 
+Centos, RHEL, etc are non-functional (try `nodejs_from_binary` for those).
 
 #### Binary
 
 Install node from official prebuilt binaries:
 ```chef
-node.default!['install_method'] = 'binary'
+node['nodejs']['install_method'] = 'binary'
+include_recipe "nodejs"
 # Or
-include_recipe "nodejs::install_from_binary"
+include_recipe "nodejs::nodejs_from_binary"
 ```
 
 #### Source
 
 Install node from sources:
 ```chef
-node.default!['install_method'] = 'source'
+node['nodejs']['install_method'] = 'source'
+include_recipe "nodejs"
 # Or
 include_recipe "nodejs::nodejs_from_source"
 ```
@@ -51,6 +55,7 @@ Adding recipe `nodejs::npm` assure you to have npm installed and let you choose 
 ```chef
 include_recipe "nodejs::npm"
 ```
+_Warning:_ This recipe will include the `nodejs` recipe, which by default includes `nodejs::nodejs_from_package` if you did not set `node['nodejs']['install_method']`.
 
 ## LWRP
 
