@@ -29,7 +29,9 @@ when 'debian'
   package 'libssl-dev'
 end
 
-nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(node['nodejs']['prefix_url'], "node-v#{node['nodejs']['version']}.tar.gz").to_s
+version = "v#{node['nodejs']['version']}/"
+filename = "node-v#{node['nodejs']['version']}.tar.gz"
+nodejs_src_url = ::URI.join(node['nodejs']['prefix_url'], version, filename).to_s
 
 ark 'nodejs-source' do
   url nodejs_src_url

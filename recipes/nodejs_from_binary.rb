@@ -27,12 +27,13 @@ else
 end
 
 # package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
+version = "v#{node['nodejs']['version']}/"
 filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
 if node['nodejs']['binary']['url']
   nodejs_bin_url = node['nodejs']['binary']['url']
   checksum = node['nodejs']['binary']['checksum']
 else
-  nodejs_bin_url = ::URI.join(node['nodejs']['prefix_url'], filename).to_s
+  nodejs_bin_url = ::URI.join(node['nodejs']['prefix_url'], version, filename).to_s
   checksum = node['nodejs']['binary']['checksum']["linux_#{arch}"]
 end
 
