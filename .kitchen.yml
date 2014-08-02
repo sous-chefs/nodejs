@@ -7,14 +7,27 @@ driver_config:
     cpus: 4
 
 platforms:
+- name: ubuntu-14.04
+  driver_config:
+    box: chef/ubuntu-14.04
+  run_list:
+  - recipe[apt]
 - name: ubuntu-12.04
+  driver_config:
+    box: chef/ubuntu-12.04
   run_list:
   - recipe[apt]
 - name: ubuntu-10.04
+  driver_config:
+    box: chef/ubuntu-10.04
   run_list:
   - recipe[apt]
-- name: centos-6.3
-- name: centos-5.8
+- name: centos-6.5
+  driver_config:
+    box: chef/centos-6.5
+- name: centos-5.10
+  driver_config:
+    box: chef/centos-5.10
 
 suites:
 - name: default
