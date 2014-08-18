@@ -51,7 +51,7 @@ include_recipe "nodejs::nodejs_from_source"
 
 Npm is included in nodejs installs by default.
 By default, we are using it and call it `embedded`.
-Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['npm']['install_method']`
+Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['nodejs']['npm']['install_method']`
 ```chef
 include_recipe "nodejs::npm"
 ```
