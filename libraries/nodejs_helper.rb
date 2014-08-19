@@ -7,7 +7,7 @@ module NodeJs
 
         require 'open-uri'
         require 'json'
-        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}", :max_nesting => false).read)
+        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}").read, :max_nesting => false)
         ret = { 'url' => result['dist']['tarball'], 'version' => result['_npmVersion'], 'shasum' => result['dist']['shasum'] }
         Chef::Log.debug("Npm dist #{ret}")
         return ret
