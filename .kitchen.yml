@@ -71,3 +71,14 @@ suites:
     nodejs:
       npm:
         install_method: source
+- name: npm_packages
+  run_list: recipe[nodejs]
+  attributes:
+    nodejs:
+      npm_packages:
+        - name: express
+        - name: socket.io
+          version: 1.0.4
+        - name: express
+          action: uninstall
+

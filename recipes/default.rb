@@ -20,3 +20,14 @@
 
 include_recipe 'nodejs::nodejs'
 include_recipe 'nodejs::npm'
+
+node['nodejs']['npm_packages'].each do |pkg|
+  f = nodejs_npm pkg['name'] do
+    action :nothing
+  end
+  pkg.reject { |k, _v| k == 'name' || k == 'action' }.each do |key, value|
+    f.send(key, value)
+  end
+  action = pkg.key?('action') ? pkg['action'] : :install
+  f.action(action)
+end if node['nodejs'].key?('npm_packages')
