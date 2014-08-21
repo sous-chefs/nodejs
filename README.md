@@ -1,4 +1,5 @@
-# [nodejs-cookbook](https://github.com/redguide/nodejs) [![Build Status](https://travis-ci.org/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
+# [nodejs-cookbook](https://github.com/redguide/nodejs)
+[![CK Version](http://img.shields.io/cookbook/v/nodejs.svg)](https://supermarket.getchef.com/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
 
 ## DESCRIPTION
 
