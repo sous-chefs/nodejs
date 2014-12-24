@@ -25,7 +25,7 @@ action :uninstall do
 end
 
 def package_installed?
-  new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path)
+  new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path, new_resource.user)
 end
 
 def npm_options
