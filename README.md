@@ -81,7 +81,52 @@ You can append more specific options to npm command with `attribute :options` ar
  
 This LWRP try to use npm bare as much as possible (no custom wrapper).
 
-#### [Examples](test/cookbooks/nodejs_test/recipes/npm.rb)
+### Packages
+
+```ruby
+nodejs_npm "express"
+
+nodejs_npm "async" do
+  version "0.6.2"
+end
+
+nodejs_npm "request" do
+  url "github mikeal/request"
+end
+
+nodejs_npm "grunt" do
+  path "/home/random/grunt"
+  json true
+  user "random"
+end
+```
+[Working Examples](test/cookbooks/nodejs_test/recipes/npm.rb)
+
+Or add packages via attributes (which accept the same attributes as the LWRP above):
+
+```json
+"nodejs": {
+  "npm_packages": [
+    {
+      "name": "express"
+    },
+    {
+      "name": "async",
+      "version": "0.6.2"
+    },
+    {
+      "name": "request",
+      "url": "github mikeal/request"
+    }
+    {
+      "name": "grunt",
+      "path": "/home/random/grunt",
+      "json": true,
+      "user": "random"
+    }
+  ]
+}
+```
 
 ## AUTHORS
 
