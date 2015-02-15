@@ -4,7 +4,7 @@
 
 ## DESCRIPTION
 
-Installs Node.js and manage npm
+Installs node.js/io.js and manage npm
 
 ## USAGE
 
@@ -12,7 +12,16 @@ Include the nodejs recipe to install node on your system based on the default in
 ```chef
 include_recipe "nodejs"
 ```
-Installation method can be customized with attribute `node['nodejs']['install_method']`
+
+### Engine
+
+You can select different engine by setting `node['nodejs']['engine']`
+```
+node['nodejs']['engine'] => 'node' # default
+node['nodejs']['engine'] => 'iojs'
+```
+
+You can also use recipes `nodejs::nodejs` or `nodejs::iojs`.
 
 ### Install methods
 

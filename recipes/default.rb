@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe 'nodejs::nodejs'
+include_recipe 'nodejs::install'
 include_recipe 'nodejs::npm'
 
 node['nodejs']['npm_packages'].each do |pkg|

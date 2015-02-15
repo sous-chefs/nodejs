@@ -22,6 +22,12 @@
 
 include_recipe 'nodejs::repo' if node['nodejs']['install_repo']
 
+unless node['nodejs']['packages']
+  Chef::Log.error 'No package for nodejs'
+  Chef::Log.warn 'Please use the source or binary method to install node'
+  return
+end
+
 node['nodejs']['packages'].each do |node_pkg|
   package node_pkg
 end
