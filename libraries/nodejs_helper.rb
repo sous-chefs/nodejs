@@ -1,5 +1,17 @@
 module NodeJs
   module Helper
+    def prefix_url
+      if node['nodejs']['prefix_url']
+        return node['nodejs']['prefix_url']
+      else
+        if node['nodejs']['engine'] == 'iojs'
+          return 'http://iojs.org/dist/'
+        else
+          return 'http://nodejs.org/dist/'
+        end
+      end
+    end
+
     def npm_dist
       if node['nodejs']['npm']['url']
         return { 'url' => node['nodejs']['npm']['url'] }
