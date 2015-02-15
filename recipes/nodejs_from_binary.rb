@@ -28,12 +28,25 @@ end
 
 # package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
 version = "v#{node['nodejs']['version']}/"
-filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+
+breakpoint "name" do
+  action :break
+end
+
+# binding.pry
+dist = npm_dist
+
+if node['nodejs']['engine'] == 'iojs'
+  filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+else
+  filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+end
+
 if node['nodejs']['binary']['url']
   nodejs_bin_url = node['nodejs']['binary']['url']
   checksum = node['nodejs']['binary']['checksum']
 else
-  nodejs_bin_url = ::URI.join(node['nodejs']['prefix_url'], version, filename).to_s
+  nodejs_bin_url = ::URI.join(prefix_url, version, filename).to_s
   checksum = node['nodejs']['binary']['checksum']["linux_#{arch}"]
 end
 
@@ -41,6 +54,10 @@ ark 'nodejs-binary' do
   url nodejs_bin_url
   version node['nodejs']['version']
   checksum checksum
-  has_binaries ['bin/node', 'bin/npm']
+  if node['nodejs']['engine'] == 'iojs'
+    has_binaries ['bin/iojs', 'bin/node', 'bin/npm']
+  else
+    has_binaries ['bin/node', 'bin/npm']
+  end
   action :install
 end
