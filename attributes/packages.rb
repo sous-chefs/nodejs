@@ -10,6 +10,8 @@ when 'rhel', 'fedora'
   default['nodejs']['packages'] = %w(nodejs nodejs-devel npm)
 when 'smartos'
   default['nodejs']['packages'] = %w(nodejs)
+when 'mac_os_x'
+  default['nodejs']['packages'] = %w(node)
 else
   Chef::Log.error 'There are no nodejs packages for this platform; please use the source or binary method to install node'
   return
