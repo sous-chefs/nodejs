@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'berkshelf', '~> 3.1.4'
+gem 'berkshelf'
 gem 'stove'
 
 group :test do
-  gem 'foodcritic', '~> 4.0.0'
-  gem 'rubocop', '~> 0.24.1'
+  gem 'foodcritic'
+  gem 'rubocop'
 end
 
 group :integration do
