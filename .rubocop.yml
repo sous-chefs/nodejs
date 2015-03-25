@@ -1,9 +1,5 @@
 # Rubocop,  we're buddies and all,  but we're going to have to disagree on the following -
 
-# Disable ABC, it's not needed in chef
-AbcSize:
-  Enabled: false
-
 # Disable requirement of "encoding" headers on files
 Encoding:
   Enabled: false
