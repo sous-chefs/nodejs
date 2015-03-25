@@ -4,6 +4,7 @@ machine:
 
 dependencies:
   pre:
+    - ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N ""
     - sudo apt-get install libboost1.54-dev
     - sudo apt-get install libgecode-dev
     - USE_SYSTEM_GECODE=1 gem install dep-selector-libgecode
