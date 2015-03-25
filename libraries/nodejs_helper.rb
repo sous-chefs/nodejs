@@ -1,33 +1,15 @@
+# Provide some helpers for the NPM wrapper
 module NodeJs
+  # Provide some helpers for the NPM wrapper
   module Helper
-    def npm_dist
-      if node['nodejs']['npm']['url']
-        return { 'url' => node['nodejs']['npm']['url'] }
-      else
-
-        require 'open-uri'
-        require 'json'
-        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}").read, :max_nesting => false)
-        ret = { 'url' => result['dist']['tarball'], 'version' => result['_npmVersion'], 'shasum' => result['dist']['shasum'] }
-        Chef::Log.debug("Npm dist #{ret}")
-        return ret
-      end
-    end
-
-    def install_not_needed?
-      cmd = Mixlib::ShellOut.new("#{node['nodejs']['node_bin']} --version")
-      version = cmd.run_command.stdout.chomp
-      ::File.exist?("#{node['nodejs']['dir']}/bin/node") && version == "v#{node['nodejs']['version']}"
-    end
-
     def npm_list(path = nil)
       require 'json'
       if path
-        cmd = Mixlib::ShellOut.new('npm list -json', :cwd => path)
+        cmd = Mixlib::ShellOut.new('npm list -json', cwd: path)
       else
         cmd = Mixlib::ShellOut.new('npm list -global -json')
       end
-      JSON.parse(cmd.run_command.stdout, :max_nesting => false)
+      JSON.parse(cmd.run_command.stdout, max_nesting: false)
     end
 
     def npm_package_installed?(package, version = nil, path = nil)
