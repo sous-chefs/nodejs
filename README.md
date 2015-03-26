@@ -26,8 +26,8 @@ node.default['nodejs']['fork'] = 'iojs'
 node.default['nodejs']['iojs']['version'] = '1.5.1'
 # Find checksums with 'curl -L -s URL-TO-tar.gz | shasum -a 256'
 node.default['nodejs']['node']['checksums']['1.5.1'] = {
-  'x64': '1598b95cb6e1a4b664ea0a8fc69d0cf53e597bbd1164a94966fc3e34f63a7447',
-  'x86': 'fc82c32221c48d1021b1bee5867bf8c54ae2d5914c7d1f8281be587ad4307576'
+  'x64' => '1598b95cb6e1a4b664ea0a8fc69d0cf53e597bbd1164a94966fc3e34f63a7447',
+  'x86' => 'fc82c32221c48d1021b1bee5867bf8c54ae2d5914c7d1f8281be587ad4307576'
 }
 include_recipe 'nodejs'
 ```
