@@ -18,7 +18,9 @@
 # limitations under the License.
 #
 
+# One of 'x64', 'x86'
 arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
+# One of 'nodejs', 'iojs'
 fork = node['nodejs']['fork']
 version = node['nodejs'][fork]['version']
 prefix_url = node['nodejs'][fork]['prefix_url']
@@ -32,11 +34,14 @@ else
   nodejs_bin_url = ::URI.join(prefix_url, "v#{version}/", filename).to_s
 end
 
+target_binaries = ['bin/node', 'bin/npm']
+target_binaries << 'bin/iojs' if fork == 'iojs'
+
 ark 'nodejs-binary' do
   url nodejs_bin_url
   version version
   checksum checksums[version][arch]
-  has_binaries ['bin/node', 'bin/npm']
+  has_binaries target_binaries
   action :install
 end
 
