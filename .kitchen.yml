@@ -16,9 +16,6 @@ suites:
   - name: default
     run_list:
       - recipe[nodejs]
-    attributes:
-      nodejs:
-        fork: 'node'
   - name: iojs
     run_list:
       - recipe[nodejs]
