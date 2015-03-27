@@ -18,16 +18,34 @@
 # limitations under the License.
 #
 
-include_recipe 'nodejs::nodejs'
-include_recipe 'nodejs::npm'
+# One of 'x64', 'x86'
+arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
+# One of 'nodejs', 'iojs'
+fork = node['nodejs']['fork']
+version = node['nodejs'][fork]['version']
+prefix_url = node['nodejs'][fork]['prefix_url']
+checksums = node['nodejs'][fork]['checksums']
 
-node['nodejs']['npm_packages'].each do |pkg|
-  f = nodejs_npm pkg['name'] do
-    action :nothing
-  end
-  pkg.each do |key, value|
-    f.send(key, value) unless key == 'name' || key == 'action'
-  end
-  action = pkg.key?('action') ? pkg['action'] : :install
-  f.action(action)
-end if node['nodejs'].key?('npm_packages')
+# package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
+filename = "#{fork}-v#{version}-linux-#{arch}.tar.gz"
+if node['nodejs']['binary']['url']
+  nodejs_bin_url = node['nodejs']['binary']['url']
+else
+  nodejs_bin_url = ::URI.join(prefix_url, "v#{version}/", filename).to_s
+end
+
+target_binaries = ['bin/node', 'bin/npm']
+target_binaries << 'bin/iojs' if fork == 'iojs'
+
+ark 'nodejs-binary' do
+  url nodejs_bin_url
+  version version
+  checksum checksums[version][arch]
+  has_binaries target_binaries
+  action :install
+end
+
+nodejs_npm 'npm' do
+  version node['nodejs']['npm']['version']
+  options ['--force']
+end

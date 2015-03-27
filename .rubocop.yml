@@ -1,28 +1,49 @@
-AllCops:
-  Include:
-    - '**/Berksfile'
-    - '**/Gemfile'
-    - '**/Rakefile'
-    - '**/Thorfile'
-    - '**/Guardfile'
-  Exclude:
-    - 'vendor/**/*'
+# Rubocop,  we're buddies and all,  but we're going to have to disagree on the following -
 
-ClassLength:
+# Disable ABC, it's not needed in chef
+AbcSize:
   Enabled: false
-Documentation:
-  Enabled: false
+
+# Disable requirement of "encoding" headers on files
 Encoding:
   Enabled: false
-HashSyntax:
-  Enabled: false
+
+# Increase line length, we're not on VT220s anymore
 LineLength:
-  Enabled: false
+  Max: 120
+
+# Increase allowed lines in a method.  Short methods are good, but 10 lines
+#   is a bit too low.
 MethodLength:
+  Max: 40
+
+# Favor explicit over implicit code: don't complain of "redundant returns"
+RedundantReturn:
   Enabled: false
-SignalException:
+
+# Don't complain about if/unless modifiers.  The merit of this is debatable
+#   and it will likely require building of over-length lines.
+IfUnlessModifier:
   Enabled: false
-TrailingComma:
+
+# Raise allowed CyclomaticComplexity to 10.
+CyclomaticComplexity:
+  Max: 10
+
+# Disable Single Space before first arg
+SingleSpaceBeforeFirstArg:
   Enabled: false
+
+# Don't force a word array unless 5 elements
 WordArray:
+  MinSize: 5
+
+# Don't complain about unused block args
+UnusedBlockArgument:
   Enabled: false
+
+AllCops:
+  Include:
+    - '**/metadata.rb'
+    - '**/*.rb'
+

@@ -51,5 +51,5 @@ end
 
 def initialize(*args)
   super
-  @run_context.include_recipe 'nodejs::npm'
+  # @run_context.include_recipe 'nodejs::npm'
 end
