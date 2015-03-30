@@ -14,12 +14,6 @@ module NodeJs
       end
     end
 
-    def install_not_needed?
-      cmd = Mixlib::ShellOut.new("#{node['nodejs']['node_bin']} --version")
-      version = cmd.run_command.stdout.chomp
-      ::File.exist?("#{node['nodejs']['dir']}/bin/node") && version == "v#{node['nodejs']['version']}"
-    end
-
     def npm_list(path = nil)
       require 'json'
       if path
