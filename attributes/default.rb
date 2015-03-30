@@ -24,11 +24,15 @@ else
   default['nodejs']['install_method'] = 'source'
 end
 
+default['nodejs']['engine'] = 'node' # or iojs
+
 default['nodejs']['version'] = '0.10.26'
 
-default['nodejs']['prefix_url'] = 'http://nodejs.org/dist/'
-
-default['nodejs']['install_repo'] = true
+if node['nodejs']['engine'] == 'iojs'
+  default['nodejs']['prefix_url'] = 'http://iojs.org/dist/'
+else
+  default['nodejs']['prefix_url'] = 'http://nodejs.org/dist/'
+end
 
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = 'ef5e4ea6f2689ed7f781355012b942a2347e0299da0804a58de8e6281c4b1daa'

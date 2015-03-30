@@ -1,7 +1,7 @@
 #
 # Author:: Marius Ducea (marius@promethost.com)
 # Cookbook Name:: nodejs
-# Recipe:: nodejs
+# Recipe:: iojs
 #
 # Copyright 2010-2012, Promet Solutions
 #
@@ -18,4 +18,4 @@
 # limitations under the License.
 #
 
-node.default['nodejs']['engine'] = 'node'
+node.default['nodejs']['engine'] = 'iojs'
