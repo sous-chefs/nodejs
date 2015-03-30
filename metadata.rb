@@ -2,7 +2,7 @@ name 'nodejs'
 maintainer 'redguide'
 maintainer_email 'guilhem@lettron.fr'
 license 'Apache 2.0'
-description 'Installs/Configures nodejs'
+description 'Installs/Configures node.js & io.js'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '2.3.1'
 
