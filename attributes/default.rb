@@ -34,8 +34,6 @@ else
   default['nodejs']['prefix_url'] = 'http://nodejs.org/dist/'
 end
 
-default['nodejs']['install_repo'] = true
-
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = 'ef5e4ea6f2689ed7f781355012b942a2347e0299da0804a58de8e6281c4b1daa'
 
