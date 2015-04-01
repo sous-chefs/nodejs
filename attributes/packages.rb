@@ -1,4 +1,5 @@
 include_attribute 'nodejs::default'
+include_attribute 'nodejs::repo'
 
 case node['nodejs']['engine']
 when 'node'
