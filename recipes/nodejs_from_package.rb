@@ -20,6 +20,8 @@
 # limitations under the License.
 #
 
+node.default['nodejs']['install_method'] = 'package'
+
 include_recipe 'nodejs::repo' if node['nodejs']['install_repo']
 
 unless node['nodejs']['packages']

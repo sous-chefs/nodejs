@@ -18,6 +18,8 @@
 
 Chef::Recipe.send(:include, NodeJs::Helper)
 
+node.default['nodejs']['install_method'] = 'binary'
+
 # Shamelessly borrowed from http://docs.opscode.com/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 if node['kernel']['machine'] =~ /armv6l/
