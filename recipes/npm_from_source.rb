@@ -20,6 +20,8 @@
 
 Chef::Recipe.send(:include, NodeJs::Helper)
 
+node.force_override['nodejs']['npm']['install_method'] = 'source' # ~FC019
+
 include_recipe 'nodejs::install'
 
 dist = npm_dist
