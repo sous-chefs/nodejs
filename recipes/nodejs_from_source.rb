@@ -20,7 +20,7 @@
 
 Chef::Recipe.send(:include, NodeJs::Helper)
 
-node.default['nodejs']['install_method'] = 'source'
+node.force_override['nodejs']['install_method'] = 'source' # ~FC019
 
 include_recipe 'build-essential'
 
