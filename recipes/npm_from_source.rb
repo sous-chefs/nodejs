@@ -20,7 +20,7 @@
 
 Chef::Recipe.send(:include, NodeJs::Helper)
 
-include_recipe 'nodejs::nodejs'
+include_recipe 'nodejs::install'
 
 dist = npm_dist
 
