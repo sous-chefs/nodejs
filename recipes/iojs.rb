@@ -19,3 +19,5 @@
 #
 
 node.default['nodejs']['engine'] = 'iojs'
+
+include_recipe 'nodejs::install'
