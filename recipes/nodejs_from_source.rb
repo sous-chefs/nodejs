@@ -20,6 +20,8 @@
 
 Chef::Recipe.send(:include, NodeJs::Helper)
 
+node.default['nodejs']['install_method'] = 'source'
+
 include_recipe 'build-essential'
 
 case node['platform_family']
