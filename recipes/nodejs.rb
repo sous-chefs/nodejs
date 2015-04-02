@@ -19,3 +19,5 @@
 #
 
 node.default['nodejs']['engine'] = 'node'
+
+include_recipe 'nodejs::install'
