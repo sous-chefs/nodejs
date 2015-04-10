@@ -24,10 +24,18 @@ module NodeJs
       JSON.parse(cmd.run_command.stdout, :max_nesting => false)
     end
 
+    def url_valid?(list, package)
+      list.fetch(package, {}).fetch("resolved", "").include?('url')
+    end
+
+    def version_valid?(list, package, version)
+      (version ? list[package]['version'] == version : true)
+    end
+
     def npm_package_installed?(package, version = nil, path = nil)
       list = npm_list(path)['dependencies']
       # Return true if package installed and installed to good version
-      (!list.nil?) && list.key?(package) && (version ? list[package]['version'] == version : true)
+      (!list.nil?) && list.key?(package) && version_valid?(package, list, version) && url_valid?(list, package)
     end
   end
 end
