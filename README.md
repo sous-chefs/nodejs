@@ -13,7 +13,7 @@ Include the nodejs recipe to install node on your system based on the default in
 include_recipe "nodejs"
 ```
 
-### Engine
+### Engine
 
 You can select different engine by setting `node['nodejs']['engine']`
 ```
