@@ -32,6 +32,7 @@ when 'debian'
 end
 
 version = "v#{node['nodejs']['version']}/"
+prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 
 if node['nodejs']['engine'] == 'iojs'
   filename = "iojs-v#{node['nodejs']['version']}.tar.gz"
@@ -41,7 +42,7 @@ else
   archive_name = 'nodejs-source'
 end
 
-nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(node['nodejs']['prefix_url'], version, filename).to_s
+nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(prefix, version, filename).to_s
 
 ark archive_name do
   url nodejs_src_url
