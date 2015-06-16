@@ -14,7 +14,8 @@ depends 'yum-epel'
 depends 'build-essential'
 depends 'ark'
 depends 'apt'
-depends 'homebrew'
+
+suggests 'homebrew'
 
 %w(debian ubuntu centos redhat smartos mac_os_x).each do |os|
   supports os
