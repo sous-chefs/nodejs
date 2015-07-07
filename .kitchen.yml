@@ -41,6 +41,16 @@ suites:
   attributes:
     nodejs:
       install_method: source
+- name: source-iojs
+  run_list:
+  - recipe[nodejs]
+  attributes:
+    nodejs:
+      engine: iojs
+      install_method: source
+      source:
+        checksum: 55e79cc4f4cde41f03c1e204d2af5ee4b6e4edcf14defc82e518436e939195fa
+      version: 2.2.1
 - name: npm
   run_list:
   - recipe[nodejs::npm]
