@@ -36,17 +36,22 @@ prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 
 if node['nodejs']['engine'] == 'iojs'
   filename = "iojs-v#{node['nodejs']['version']}.tar.gz"
-  archive_name = 'iojs-source'
 else
   filename = "node-v#{node['nodejs']['version']}.tar.gz"
-  archive_name = 'nodejs-source'
 end
 
 nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(prefix, version, filename).to_s
 
-ark archive_name do
+output = node['nodejs']['install_directory_name']
+
+ark output do
   url nodejs_src_url
   version node['nodejs']['version']
+  unless node['nodejs']['install_path'].nil?
+    prefix_root node['nodejs']['install_path']
+    prefix_home node['nodejs']['install_path']
+    autoconf_opts ["--prefix=#{node['nodejs']['install_path']}/#{output}"]
+  end
   checksum node['nodejs']['source']['checksum']
   make_opts ["-j #{node['nodejs']['make_threads']}"]
   action :install_with_make

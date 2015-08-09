@@ -52,6 +52,20 @@ node.default['nodejs']['version'] = '5.9.0'
 node.default['nodejs']['binary']['checksum'] = '99c4136cf61761fac5ac57f80544140a3793b63e00a65d4a0e528c9db328bf40' 
 ```
 
+To customize the installation directory path, change the value of the `install_path` attribute (by default it is: `nil`):
+```chef
+node['nodejs']['install_path'] = '/opt'
+```
+As a result you get a directory `/opt/node-binary/bin` with the binaries.
+_Warning:_ If the above attribute is not `nil` then the symlinks are not created.
+
+To customize the installation directory name change the value of the `install_directory_name` attribute:
+```chef
+node['nodejs']['install_path'] = '/opt'
+node['nodejs']['install_directory_name'] = 'my_nodejs'
+```
+As a result you get a directory `/opt/my_nodejs/bin` with the binaries.
+
 #### Source
 
 Install node from sources:
@@ -61,6 +75,19 @@ include_recipe "nodejs"
 # Or
 include_recipe "nodejs::nodejs_from_source"
 ```
+
+To customize the installation directory path, change the value of the `install_path` attribute (by default it is: `nil`):
+```chef
+node['nodejs']['install_path'] = '/opt'
+```
+As a result you get a directory `/opt/node-binary/bin` with the binaries.
+
+To customize the installation directory name change the value of the `install_directory_name` attribute:
+```chef
+node['nodejs']['install_path'] = '/opt'
+node['nodejs']['install_directory_name'] = 'my_nodejs'
+```
+As a result you get a directory `/opt/my_nodejs/bin` with the binaries.
 
 ## NPM
 
@@ -94,6 +121,14 @@ You can append more specific options to npm command with `attribute :options` ar
  * use an array of options (w/ dash), they will be added to npm call.
  * ex: `['--production','--force']` or `['--force-latest']`
  
+If you have installed nodejs in custom directory, you should pass additional `nodejs_home` attribute to `nodejs_npm` resource.
+```chef
+nodejs_npm 'appium' do
+ nodejs_home '/opt/nodejs-binary'
+end
+```
+Or if you used `install_path` attribute to customize the installation directory then the `nodejs_home` is not necessary.
+
 This LWRP attempts to use vanilla npm as much as possible (no custom wrapper).
 
 ### Packages

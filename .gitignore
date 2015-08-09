@@ -1,5 +1,11 @@
+# Chef stuff
 Gemfile.lock
 Berksfile.lock
-tmp/
 .kitchen
 .kitchen.local.yml
+
+# Temp files
+tmp/
+
+# Editors
+.idea

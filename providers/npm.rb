@@ -8,7 +8,7 @@ action :install do
     command "npm install #{npm_options}"
     user new_resource.user
     group new_resource.group
-    environment npm_env_vars
+    environment npm_env_vars(new_resource)
     not_if { package_installed? }
   end
 end
@@ -19,22 +19,13 @@ action :uninstall do
     command "npm uninstall #{npm_options}"
     user new_resource.user
     group new_resource.group
-    environment npm_env_vars
+    environment npm_env_vars(new_resource)
     only_if { package_installed? }
   end
 end
 
-def npm_env_vars
-  env_vars = {}
-  env_vars['HOME'] = ::Dir.home(new_resource.user) if new_resource.user
-  env_vars['USER'] = new_resource.user if new_resource.user
-  env_vars['NPM_TOKEN'] = new_resource.npm_token if new_resource.npm_token
-
-  env_vars
-end
-
 def package_installed?
-  new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path, new_resource.npm_token)
+  new_resource.package && npm_package_installed?(new_resource)
 end
 
 def npm_options

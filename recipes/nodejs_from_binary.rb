@@ -34,11 +34,9 @@ prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 
 if node['nodejs']['engine'] == 'iojs'
   filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
-  archive_name = 'iojs-binary'
   binaries = ['bin/iojs', 'bin/node']
 else
   filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
-  archive_name = 'nodejs-binary'
   binaries = ['bin/node']
 end
 
@@ -52,10 +50,13 @@ else
   checksum = node['nodejs']['binary']['checksum']["linux_#{arch}"]
 end
 
-ark archive_name do
+output = node['nodejs']['install_directory_name']
+
+ark output do
   url nodejs_bin_url
   version node['nodejs']['version']
+  path node['nodejs']['install_path']
   checksum checksum
   has_binaries binaries
-  action :install
+  action node['nodejs']['install_path'].nil? ? :install : :put
 end

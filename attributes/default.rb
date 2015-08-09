@@ -26,6 +26,9 @@ end
 
 default['nodejs']['engine'] = 'node' # or iojs
 
+default['nodejs']['install_path'] = nil
+default['nodejs']['install_directory_name'] = "#{default['nodejs']['engine']}-binary"
+
 default['nodejs']['version'] = '0.10.26'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'

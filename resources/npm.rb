@@ -25,6 +25,7 @@ default_action :install
 attribute :package, :name_attribute => true
 attribute :version, :kind_of => String
 attribute :path, :kind_of => String
+attribute :nodejs_home, :kind_of => String, :default => nil
 attribute :url, :kind_of => String
 attribute :json, :kind_of => [String, TrueClass]
 attribute :npm_token, :kind_of => String

@@ -3,7 +3,7 @@ driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
   customize:
-    memory: 512
+    memory: 2048
     cpus: 4
 
 platforms:
@@ -51,6 +51,25 @@ suites:
       source:
         checksum: 55e79cc4f4cde41f03c1e204d2af5ee4b6e4edcf14defc82e518436e939195fa
       version: 2.2.1
+- name: binary-install-path
+  run_list:
+  - recipe[nodejs]
+  - recipe[nodejs_test::npm_with_nodejs_home]
+  attributes:
+    nodejs:
+      install_method: binary
+      nodejs_home: /tmp/node-binary
+      install_path: /tmp
+- name: source-install-path
+  run_list:
+  - recipe[nodejs]
+  - recipe[nodejs_test::npm_with_nodejs_home]
+  attributes:
+    nodejs:
+      install_directory_name: node-source
+      install_method: source
+      nodejs_home: /tmp/node-source
+      install_path: /tmp
 - name: npm
   run_list:
   - recipe[nodejs::npm]
@@ -81,4 +100,3 @@ suites:
           version: 1.0.4
         - name: express
           action: uninstall
-
