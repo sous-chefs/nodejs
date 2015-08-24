@@ -35,7 +35,7 @@ module NodeJs
     def npm_package_installed?(package, version = nil, path = nil)
       list = npm_list(path)['dependencies']
       # Return true if package installed and installed to good version
-      (!list.nil?) && list.key?(package) && version_valid?(package, list, version) && url_valid?(list, package)
+      (!list.nil?) && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
     end
   end
 end
