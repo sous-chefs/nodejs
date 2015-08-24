@@ -10,5 +10,5 @@ when 'node'
     'default' => ['nodejs']
   )
 when 'iojs'
-  default['nodejs']['packages'] = nil
+  default['nodejs']['packages'] = ['iojs']
 end
