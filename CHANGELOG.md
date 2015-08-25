@@ -1,3 +1,7 @@
+## v2.4.2
+  * Fix check version
+  * Support iojs package install
+
 ## v2.4.0
   * Move `npm_packages` to his own recipe
   * Fix different race conditions when using direct recipe call
