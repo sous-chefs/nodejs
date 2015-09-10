@@ -28,8 +28,8 @@ default['nodejs']['engine'] = 'node' # or iojs
 
 default['nodejs']['version'] = '0.10.26'
 
-default['nodejs']['prefix_url']['node'] = 'http://nodejs.org/dist/'
-default['nodejs']['prefix_url']['iojs'] = 'http://iojs.org/dist/'
+default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
+default['nodejs']['prefix_url']['iojs'] = 'https://iojs.org/dist/'
 
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = 'ef5e4ea6f2689ed7f781355012b942a2347e0299da0804a58de8e6281c4b1daa'
