@@ -12,3 +12,6 @@ when 'node'
 when 'iojs'
   default['nodejs']['packages'] = ['iojs']
 end
+
+default['nodejs']['package_options'] = nil
+default['nodejs']['package_action'] = 'install'
