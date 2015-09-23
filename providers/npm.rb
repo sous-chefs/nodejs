@@ -9,7 +9,7 @@ action :install do
     user new_resource.user
     group new_resource.group
     environment 'HOME' => ::Dir.home(new_resource.user), 'USER' => new_resource.user if new_resource.user
-    not_if { package_installed? }
+    not_if { npm_package_installed?(new_resource.package, new_resource.version, new_resource.path) }
   end
 end
 
@@ -20,12 +20,8 @@ action :uninstall do
     user new_resource.user
     group new_resource.group
     environment 'HOME' => ::Dir.home(new_resource.user), 'USER' => new_resource.user if new_resource.user
-    only_if { package_installed? }
+    only_if { npm_package_installed?(new_resource.package, new_resource.version, new_resource.path) }
   end
-end
-
-def package_installed?
-  new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path)
 end
 
 def npm_options
