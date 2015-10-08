@@ -4,7 +4,7 @@
 # Recipe:: windows
 #
 
-arch           = node['kernel']['machine'] =~ /x86_64/ ? "x64" : "x86"
+arch           = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
 version        = "v#{node['nodejs']['version']}/"
 prefix         = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 filename       = "node-v#{node['nodejs']['version']}-windows-#{arch}.msi"
