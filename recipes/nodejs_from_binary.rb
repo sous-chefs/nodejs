@@ -35,12 +35,14 @@ prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 if node['nodejs']['engine'] == 'iojs'
   filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
   archive_name = 'iojs-binary'
-  binaries = ['bin/iojs', 'bin/node', 'bin/npm']
+  binaries = ['bin/iojs', 'bin/node']
 else
   filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
   archive_name = 'nodejs-binary'
-  binaries = ['bin/node', 'bin/npm']
+  binaries = ['bin/node']
 end
+
+binaries.push('bin/npm') if node['nodejs']['npm']['install_method'] == 'embedded'
 
 if node['nodejs']['binary']['url']
   nodejs_bin_url = node['nodejs']['binary']['url']
