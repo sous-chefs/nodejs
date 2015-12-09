@@ -30,3 +30,25 @@ end
 nodejs_npm 'mocha' do
   options ['--force', '--production']
 end
+
+# Create a package.json file for the test user
+template '/home/random/package.json' do
+  source 'package.json'
+  owner 'random'
+  user 'random'
+end
+
+# Create an .npmrc file for the test user
+file '/home/random/.npmrc' do
+  content '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'
+  owner 'random'
+  user 'random'
+end
+
+# Test npm_token usage (for NPM private repositories)
+nodejs_npm 'from_package_json' do
+  path '/home/random'
+  json true
+  npm_token '123-abcde'
+  options ['--production']
+end

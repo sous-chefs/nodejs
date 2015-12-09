@@ -84,11 +84,13 @@ _Warning:_ This recipe will include the `nodejs` recipe, which by default includ
  
 Packages can be installed globally (by default) or in a directory (by using `attribute :path`)
 
+You can specify an `NPM_TOKEN` environment variable for accessing [NPM private modules](https://docs.npmjs.com/private-modules/intro) by using `attribute :npm_token`
+
 You can append more specific options to npm command with `attribute :options` array :  
  * use an array of options (w/ dash), they will be added to npm call.
  * ex: `['--production','--force']` or `['--force-latest']`
  
-This LWRP try to use npm bare as much as possible (no custom wrapper).
+This LWRP attempts to use vanilla npm as much as possible (no custom wrapper).
 
 ### Packages
 
@@ -107,6 +109,14 @@ nodejs_npm "grunt" do
   path "/home/random/grunt"
   json true
   user "random"
+end
+
+nodejs_npm "my_private_module" do
+  path "/home/random/myproject" # The root path to your project, containing a package.json file
+  json true
+  npm_token "12345-abcde-e5d4c3b2a1"
+  user "random"
+  options ['--production'] # Only install dependencies. Skip devDependencies
 end
 ```
 [Working Examples](test/cookbooks/nodejs_test/recipes/npm.rb)
