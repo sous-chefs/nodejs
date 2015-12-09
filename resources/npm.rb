@@ -27,6 +27,7 @@ attribute :version, :kind_of => String
 attribute :path, :kind_of => String
 attribute :url, :kind_of => String
 attribute :json, :kind_of => [String, TrueClass]
+attribute :npm_token, :kind_of => String
 attribute :options, :kind_of => Array, :default => []
 
 attribute :user, :kind_of => String
