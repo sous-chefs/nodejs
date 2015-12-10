@@ -1,7 +1,7 @@
-## 2.4.3
-  * Use HTTPS prefix URLs for node download ([@predominant][])
-  * Update NPM symlink when installing from source ([@sjlu][])
-  * Add support for NPM private modules ([@gmccue][])
+## 2.4.4
+  * Use HTTPS prefix URLs for node download #98
+  * Update NPM symlink when installing from source #105
+  * Add support for NPM private modules #107
 
 ## v2.4.2
   * Fix check version
