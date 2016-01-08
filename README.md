@@ -75,7 +75,7 @@ _Warning:_ This recipe will include the `nodejs` recipe, which by default includ
 `nodejs_npm` let you install npm packages from various sources:
 * npm registry:
  * name: `attribute :package`
- * version: `attribute :version` (optionnal)
+ * version: `attribute :version` (optional)
 * url: `attribute :url`
  * for git use `git://{your_repo}`
 * from a json (packages.json by default): `attribute :json`
