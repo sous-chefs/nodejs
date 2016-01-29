@@ -78,7 +78,7 @@ _Warning:_ This recipe will include the `nodejs` recipe, which by default includ
  * version: `attribute :version` (optional)
 * url: `attribute :url`
  * for git use `git://{your_repo}`
-* from a json (packages.json by default): `attribute :json`
+* from a json (package.json by default): `attribute :json`
  * use `true` for default
  * use a `String` to specify json file
  
