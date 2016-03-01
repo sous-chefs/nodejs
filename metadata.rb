@@ -17,7 +17,7 @@ depends 'apt'
 depends 'homebrew'
 depends 'windows'
 
-%w(debian ubuntu centos redhat smartos mac_os_x).each do |os|
+%w(debian ubuntu centos redhat smartos mac_os_x windows).each do |os|
   supports os
 end
 
