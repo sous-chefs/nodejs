@@ -21,7 +21,7 @@ case node['platform_family']
 when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x'
   default['nodejs']['install_method'] = 'package'
 when 'windows'
-  default['nodejs']['install_method'] = 'windows'
+  force_override['nodejs']['install_method'] = 'windows'
 else
   default['nodejs']['install_method'] = 'source'
 end
