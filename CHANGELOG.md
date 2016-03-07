@@ -1,3 +1,8 @@
+## 2.4.4
+  * Use HTTPS prefix URLs for node download #98
+  * Update NPM symlink when installing from source #105
+  * Add support for NPM private modules #107
+
 ## v2.4.2
   * Fix check version
   * Support iojs package install
@@ -89,3 +94,6 @@
 [@vaskas]: https://github.com/vaskas
 [@robertkowalski]: https://github.com/robertkowalski
 [@wanelo-pair]: https://github.com/wanelo-pair
+[@predominant]: https://github.com/predominant
+[@sjlu]: https://github.com/sjlu
+[@gmccue]: https://github.com/gmccue
