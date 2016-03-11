@@ -22,7 +22,9 @@ MethodLength:
   Enabled: false
 SignalException:
   Enabled: false
-TrailingComma:
+Style/TrailingCommaInLiteral:
   Enabled: false
 WordArray:
+  Enabled: false
+Metrics/AbcSize:
   Enabled: false

@@ -22,11 +22,11 @@ node.force_override['nodejs']['install_method'] = 'binary' # ~FC019
 
 # Shamelessly borrowed from http://docs.opscode.com/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
-if node['kernel']['machine'] =~ /armv6l/
-  arch = 'arm-pi' # assume a raspberry pi
-else
-  arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
-end
+arch = if node['kernel']['machine'] =~ /armv6l/
+         'arm-pi' # assume a raspberry pi
+       else
+         node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
+       end
 
 # package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
 version = "v#{node['nodejs']['version']}/"
