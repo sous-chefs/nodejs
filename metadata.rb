@@ -8,8 +8,6 @@ source_url 'https://github.com/redguide/nodejs' if respond_to?(:source_url)
 issues_url 'https://github.com/redguide/nodejs/issues' if respond_to?(:issues_url)
 version '2.4.5'
 
-conflicts 'node'
-
 depends 'yum-epel'
 depends 'build-essential'
 depends 'ark'
@@ -20,4 +18,3 @@ depends 'homebrew'
   supports os
 end
 
-suggests 'application_nodejs'
