@@ -16,11 +16,11 @@ module NodeJs
 
     def npm_list(path = nil, environment = {})
       require 'json'
-      if path
-        cmd = Mixlib::ShellOut.new('npm list -json', :cwd => path, :environment => environment)
-      else
-        cmd = Mixlib::ShellOut.new('npm list -global -json', :environment => environment)
-      end
+      cmd = if path
+              Mixlib::ShellOut.new('npm list -json', :cwd => path, :environment => environment)
+            else
+              Mixlib::ShellOut.new('npm list -global -json', :environment => environment)
+            end
 
       JSON.parse(cmd.run_command.stdout, :max_nesting => false)
     end
@@ -38,7 +38,7 @@ module NodeJs
 
       list = npm_list(path, environment)['dependencies']
       # Return true if package installed and installed to good version
-      (!list.nil?) && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
+      !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
     end
   end
 end
