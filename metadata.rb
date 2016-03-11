@@ -16,7 +16,7 @@ depends 'ark'
 depends 'apt'
 depends 'homebrew'
 
-%w(debian ubuntu centos redhat smartos mac_os_x).each do |os|
+%w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x).each do |os|
   supports os
 end
 
