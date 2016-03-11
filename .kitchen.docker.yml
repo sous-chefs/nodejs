@@ -1,0 +1,105 @@
+settings:
+  parallel: true
+
+driver:
+  name: docker
+  # privileged is required otherwise the container doesn't boot right
+  privileged: true
+
+platforms:
+- name: centos-6
+  driver:
+    image: centos:6
+    platform: rhel
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/yum install -y initscripts net-tools wget
+- name: centos-7
+  driver:
+    image: centos:7
+    platform: rhel
+    run_command: /usr/lib/systemd/systemd
+    provision_command:
+      - /bin/yum install -y initscripts net-tools wget
+- name: ubuntu-12.04
+  driver:
+    image: ubuntu-upstart:12.04
+    platform: ubuntu
+    disable_upstart: false
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/apt-get update
+      - /usr/bin/apt-get install apt-transport-https net-tools -y
+- name: ubuntu-14.04
+  driver:
+    image: ubuntu-upstart:14.04
+    platform: ubuntu
+    disable_upstart: false
+    run_command: /sbin/init
+    provision_command:
+      - /usr/bin/apt-get update
+      - /usr/bin/apt-get install apt-transport-https net-tools -y
+
+suites:
+- name: default
+  run_list:
+  - recipe[nodejs]
+- name: package
+  run_list:
+  - recipe[nodejs]
+  attributes:
+    nodejs:
+      install_method: package
+- name: binary
+  run_list:
+  - recipe[nodejs]
+  attributes:
+    nodejs:
+      install_method: binary
+- name: source
+  run_list:
+  - recipe[nodejs]
+  attributes:
+    nodejs:
+      install_method: source
+- name: source-iojs
+  run_list:
+  - recipe[nodejs]
+  attributes:
+    nodejs:
+      engine: iojs
+      install_method: source
+      source:
+        checksum: 55e79cc4f4cde41f03c1e204d2af5ee4b6e4edcf14defc82e518436e939195fa
+      version: 2.2.1
+- name: npm
+  run_list:
+  - recipe[nodejs::npm]
+  - recipe[nodejs_test::npm]
+- name: npm_embedded
+  run_list:
+  - recipe[nodejs::npm]
+  - recipe[nodejs_test::npm]
+  attributes:
+    nodejs:
+      npm:
+        install_method: embedded
+- name: npm_source
+  run_list:
+  - recipe[nodejs::npm]
+  - recipe[nodejs_test::npm]
+  attributes:
+    nodejs:
+      npm:
+        install_method: source
+- name: npm_packages
+  run_list: recipe[nodejs]
+  attributes:
+    nodejs:
+      npm_packages:
+        - name: express
+        - name: socket.io
+          version: 1.0.4
+        - name: express
+          action: uninstall
+
