@@ -4,7 +4,22 @@
 
 Installs node.js/io.js and manage npm
 
-## USAGE
+## Requirements
+### Platforms
+- Debian/Ubuntu
+- RHEL/CentOS/Scientific/Amazon/Oracle
+
+### Chef
+- Chef 11+
+
+### Cookbooks
+- yum-epel
+- build-essential
+- ark
+- apt
+- homebrew
+
+## Usage
 
 Include the nodejs recipe to install node on your system based on the default installation method:
 ```chef
