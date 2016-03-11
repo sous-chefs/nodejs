@@ -2,8 +2,6 @@
 [![CK Version](http://img.shields.io/cookbook/v/nodejs.svg?branch=master)](https://supermarket.getchef.com/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
 [![Gitter chat](https://badges.gitter.im/redguide/nodejs.png)](https://gitter.im/redguide/nodejs)
 
-## DESCRIPTION
-
 Installs node.js/io.js and manage npm
 
 ## USAGE
@@ -68,7 +66,7 @@ include_recipe "nodejs::npm"
 ```
 _Warning:_ This recipe will include the `nodejs` recipe, which by default includes `nodejs::nodejs_from_package` if you did not set `node['nodejs']['install_method']`.
 
-## LWRP
+## Custom Resources (Providers)
 
 ### nodejs_npm
 
@@ -147,9 +145,26 @@ Or add packages via attributes (which accept the same attributes as the LWRP abo
 }
 ```
 
-## AUTHORS
+## License & Authors
+**Author:** Marius Ducea (marius@promethost.com)
+**Author:** Nathan L Smith (nlloyds@gmail.com)
+**Author:** Guilhem Lettron (guilhem@lettron.fr)
+**Author:** Barthelemy Vessemont (bvessemont@gmail.com)
 
-* Marius Ducea (marius@promethost.com)
-* Nathan L Smith (nlloyds@gmail.com)
-* Guilhem Lettron (guilhem@lettron.fr)
-* Barthelemy Vessemont (bvessemont@gmail.com)
+
+**Copyright:** 2008-2016, Chef Software, Inc.
+
+```
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
