@@ -24,6 +24,10 @@ env:
   - INSTANCE=source-ubuntu-1404
   - INSTANCE=source-centos-6
   - INSTANCE=source-centos-7
+  - INSTANCE=npm-ubuntu-1204
+  - INSTANCE=npm-ubuntu-1404
+  - INSTANCE=npm-centos-6
+  - INSTANCE=npm-centos-7
 
 # Don't `bundle install`
 install: echo "skip bundle install"
