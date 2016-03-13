@@ -6,6 +6,9 @@ driver:
   # privileged is required otherwise the container doesn't boot right
   privileged: true
 
+verifier:
+  name: inspec
+
 platforms:
 - name: centos-6
   driver:
