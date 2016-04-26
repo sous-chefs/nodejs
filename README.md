@@ -1,18 +1,22 @@
 # [nodejs-cookbook](https://github.com/redguide/nodejs)
-[![CK Version](http://img.shields.io/cookbook/v/nodejs.svg?branch=master)](https://supermarket.getchef.com/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
-[![Gitter chat](https://badges.gitter.im/redguide/nodejs.png)](https://gitter.im/redguide/nodejs)
+
+[![CK Version](http://img.shields.io/cookbook/v/nodejs.svg?branch=master)](https://supermarket.getchef.com/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs) [![Gitter chat](https://badges.gitter.im/redguide/nodejs.svg)](https://gitter.im/redguide/nodejs)
 
 Installs node.js/io.js and manage npm
 
 ## Requirements
+
 ### Platforms
+
 - Debian/Ubuntu
 - RHEL/CentOS/Scientific/Amazon/Oracle
 
 ### Chef
+
 - Chef 11+
 
 ### Cookbooks
+
 - yum-epel
 - build-essential
 - ark
@@ -22,6 +26,7 @@ Installs node.js/io.js and manage npm
 ## Usage
 
 Include the nodejs recipe to install node on your system based on the default installation method:
+
 ```chef
 include_recipe "nodejs"
 ```
@@ -29,6 +34,7 @@ include_recipe "nodejs"
 ### Engine
 
 You can select different engine by setting `node['nodejs']['engine']`
+
 ```
 node['nodejs']['engine'] => 'node' # default
 node['nodejs']['engine'] => 'iojs'
@@ -54,6 +60,7 @@ Centos, RHEL, etc are non-functional (try `nodejs_from_binary` for those).
 #### Binary
 
 Install node from official prebuilt binaries:
+
 ```chef
 node['nodejs']['install_method'] = 'binary'
 include_recipe "nodejs"
@@ -68,6 +75,7 @@ node.default['nodejs']['binary']['checksum'] = '99c4136cf61761fac5ac57f80544140a
 #### Source
 
 Install node from sources:
+
 ```chef
 node['nodejs']['install_method'] = 'source'
 include_recipe "nodejs"
@@ -186,4 +194,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
