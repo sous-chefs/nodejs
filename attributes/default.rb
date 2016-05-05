@@ -18,7 +18,7 @@
 #
 
 case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x'
+when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'windows'
   default['nodejs']['install_method'] = 'package'
 else
   default['nodejs']['install_method'] = 'source'
@@ -27,6 +27,7 @@ end
 default['nodejs']['engine'] = 'node' # or iojs
 
 default['nodejs']['version'] = '6.9.1'
+default['nodejs']['use_latest_package'] = true
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 default['nodejs']['prefix_url']['iojs'] = 'https://iojs.org/dist/'

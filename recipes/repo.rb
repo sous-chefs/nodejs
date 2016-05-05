@@ -11,4 +11,6 @@ when 'debian'
   end
 when 'rhel'
   include_recipe 'yum-epel'
+when 'windows'
+  include_recipe 'chocolatey'
 end

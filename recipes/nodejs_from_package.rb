@@ -31,5 +31,16 @@ unless node['nodejs']['packages']
 end
 
 node['nodejs']['packages'].each do |node_pkg|
-  package node_pkg
+  case node['platform_family']
+  when 'windows'
+    # This separate case for windows is needed because Chocolatey
+    # doesn't provide the built-in 'package' resource of Chef.
+    chocolatey node_pkg do
+      version node[node_pkg]['version'] unless node['nodejs']['use_latest_package']
+    end
+  else
+    package node_pkg do
+      version node[node_pkg]['version'] unless node['nodejs']['use_latest_package']
+    end
+  end
 end
