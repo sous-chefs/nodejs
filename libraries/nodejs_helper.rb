@@ -16,13 +16,24 @@ module NodeJs
 
     def npm_list(package, path = nil, environment = {})
       require 'json'
-      cmd = if path
-              Mixlib::ShellOut.new("npm list #{package} -json", cwd: path, environment: environment)
-            else
-              Mixlib::ShellOut.new("npm list #{package} -global -json", environment: environment)
-            end
+      if path
+        cmd = Mixlib::ShellOut.new('npm list -json', :cwd => path, :environment => environment)
+      else
+        cmd = Mixlib::ShellOut.new('npm list -global -json', :environment => environment)
+      end
 
-      JSON.parse(cmd.run_command.stdout, max_nesting: false)
+      begin
+        JSON.parse(cmd.run_command.stdout, :max_nesting => false)
+      rescue JSON::ParserError => e
+        Chef::Log.error("nodejs::library::nodejs_helper::npm_list exception #{e}")
+        return false
+      end
+    end
+
+    def url_valid?(list, package)
+      require 'open-uri'
+
+      URI.parse(list.fetch(package, {}).fetch('resolved'))
     end
 
     def version_valid?(list, package, version)
