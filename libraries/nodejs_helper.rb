@@ -22,11 +22,18 @@ module NodeJs
         cmd = Mixlib::ShellOut.new('npm list -global -json', :environment => environment)
       end
 
-      JSON.parse(cmd.run_command.stdout, :max_nesting => false)
+      begin
+        JSON.parse(cmd.run_command.stdout, :max_nesting => false)
+      rescue JSON::ParserError => e
+        Chef::Log.error("nodejs::library::nodejs_helper::npm_list exception #{e}")
+        return false
+      end
     end
 
     def url_valid?(list, package)
-      list.fetch(package, {}).fetch('resolved', '').include?('url')
+      require 'open-uri'
+
+      URI.parse(list.fetch(package, {}).fetch('resolved'))
     end
 
     def version_valid?(list, package, version)
