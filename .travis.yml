@@ -1,5 +1,5 @@
 language: ruby
-bundler_args: --without integration
+bundler_args: --without kitchen_common kitchen_vagrant
 cache: bundler
 sudo: false
 rvm:
