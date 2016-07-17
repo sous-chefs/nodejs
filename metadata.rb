@@ -11,7 +11,7 @@ version '2.4.5'
 depends 'yum-epel'
 depends 'build-essential'
 depends 'ark'
-depends 'apt'
+depends 'apt', '>= 2.9.1'
 depends 'homebrew'
 
 %w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x).each do |os|
