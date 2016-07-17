@@ -7,6 +7,7 @@ when 'node'
     'debian' => node['nodejs']['install_repo'] ? ['nodejs'] : ['nodejs', 'npm', 'nodejs-dev'],
     ['rhel', 'fedora'] => ['nodejs', 'nodejs-devel', 'npm'],
     'mac_os_x' => ['node'],
+    'freebsd' => ['node', 'npm'],
     'default' => ['nodejs']
   )
 when 'iojs'
