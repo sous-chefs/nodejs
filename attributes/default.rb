@@ -26,17 +26,17 @@ end
 
 default['nodejs']['engine'] = 'node' # or iojs
 
-default['nodejs']['version'] = '0.10.26'
+default['nodejs']['version'] = '6.3.0'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 default['nodejs']['prefix_url']['iojs'] = 'https://iojs.org/dist/'
 
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = 'ef5e4ea6f2689ed7f781355012b942a2347e0299da0804a58de8e6281c4b1daa'
+default['nodejs']['source']['checksum'] = '4ed7a99985f8afee337cc22d5fef61b495ab4238dfff3750ac9019e87fc6aae6'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
-default['nodejs']['binary']['checksum']['linux_x64'] = '305bf2983c65edea6dd2c9f3669b956251af03523d31cf0a0471504fd5920aac'
-default['nodejs']['binary']['checksum']['linux_x86'] = '8fa2d952556c8b5aa37c077e2735c972c522510facaa4df76d4244be88f4dc0f'
-default['nodejs']['binary']['checksum']['linux_arm-pi'] = '52a0f6ed9c0be1ea5f79de6527c481c1b803edbea6413a4fdc65a45ad401565d'
+default['nodejs']['binary']['checksum']['linux_x64'] = 'd26c09fc95ebb457b79fcb0a2890fe8417b2c04f4016dadf2d165c07af762764'
+default['nodejs']['binary']['checksum']['linux_x86'] = '9302affb9844ec9a51e774169072bff3421c0232f746b3d504ba6c13c749ff9f'
+default['nodejs']['binary']['checksum']['linux_arm64'] = '58995c3f91962fc4383696f9c64763b3cd27d9b5903b4cf2a5ccfe86c8258e9f'
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
