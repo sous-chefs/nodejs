@@ -1,7 +1,7 @@
 language: ruby
-bundler_args: --without integration
+bundler_args: --without kitchen_common kitchen_vagrant
 cache: bundler
 sudo: false
 rvm:
-  - 2.1.0
+  - 2.1.9
 script: bundle exec rake travis
