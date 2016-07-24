@@ -1,6 +1,6 @@
 # [nodejs-cookbook](https://github.com/redguide/nodejs)
 [![CK Version](http://img.shields.io/cookbook/v/nodejs.svg?branch=master)](https://supermarket.getchef.com/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
-[![Gitter chat](https://badges.gitter.im/redguide/nodejs.png)](https://gitter.im/redguide/nodejs)
+[![Gitter chat](https://badges.gitter.im/redguide/nodejs.svg)](https://gitter.im/redguide/nodejs)
 
 Installs node.js/io.js and manage npm
 
