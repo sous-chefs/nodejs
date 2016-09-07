@@ -38,5 +38,6 @@ default['nodejs']['binary']['url'] = nil # Auto generated
 default['nodejs']['binary']['checksum']['linux_x64'] = 'd26c09fc95ebb457b79fcb0a2890fe8417b2c04f4016dadf2d165c07af762764'
 default['nodejs']['binary']['checksum']['linux_x86'] = '9302affb9844ec9a51e774169072bff3421c0232f746b3d504ba6c13c749ff9f'
 default['nodejs']['binary']['checksum']['linux_arm64'] = '58995c3f91962fc4383696f9c64763b3cd27d9b5903b4cf2a5ccfe86c8258e9f'
+default['nodejs']['binary']['append_env_path'] = true
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
