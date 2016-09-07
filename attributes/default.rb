@@ -33,6 +33,7 @@ default['nodejs']['source']['checksum'] = 'db5a5e03a815b84a1266a4b48bb6a6d887175
 default['nodejs']['binary']['url'] = nil # Auto generated
 default['nodejs']['binary']['checksum']['linux_x64'] = '2f0397bb81c1d0c9901b9aff82a933257bf60f3992227b86107111a75b9030d9'
 default['nodejs']['binary']['checksum']['linux_arm64'] = '3bab16e7107092e43426e082ee9fd88ef0a43a35816f662f14563bcc5152600d'
+default['nodejs']['binary']['append_env_path'] = true
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 
