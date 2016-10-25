@@ -51,6 +51,10 @@ suites:
   attributes:
     nodejs:
       install_method: source
+  excludes:
+    - ubuntu-12.04
+    - centos-5.11
+    - centos-6.8
 - name: source-iojs
   run_list:
   - recipe[nodejs]
@@ -61,6 +65,10 @@ suites:
       source:
         checksum: 55e79cc4f4cde41f03c1e204d2af5ee4b6e4edcf14defc82e518436e939195fa
       version: 2.2.1
+  excludes:
+    - ubuntu-12.04
+    - centos-5.11
+    - centos-6.8
 - name: npm
   run_list:
   - recipe[nodejs::npm]
@@ -81,6 +89,10 @@ suites:
     nodejs:
       npm:
         install_method: source
+  excludes:
+    - ubuntu-12.04
+    - centos-5.11
+    - centos-6.8
 - name: npm_packages
   run_list: recipe[nodejs]
   attributes:
@@ -91,4 +103,3 @@ suites:
           version: 1.0.4
         - name: express
           action: uninstall
-

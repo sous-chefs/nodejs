@@ -27,18 +27,20 @@ include_recipe 'build-essential'
 case node['platform_family']
 when 'rhel', 'fedora'
   package 'openssl-devel'
+  package 'xz'
 when 'debian'
   package 'libssl-dev'
+  package 'xz-utils'
 end
 
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 
 if node['nodejs']['engine'] == 'iojs'
-  filename = "iojs-v#{node['nodejs']['version']}.tar.gz"
+  filename = "iojs-v#{node['nodejs']['version']}.tar.xz"
   archive_name = 'iojs-source'
 else
-  filename = "node-v#{node['nodejs']['version']}.tar.gz"
+  filename = "node-v#{node['nodejs']['version']}.tar.xz"
   archive_name = 'nodejs-source'
 end
 
