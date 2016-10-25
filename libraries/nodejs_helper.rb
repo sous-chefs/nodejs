@@ -7,7 +7,7 @@ module NodeJs
 
         require 'open-uri'
         require 'json'
-        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}").read, :max_nesting => false)
+        result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}").read, max_nesting: false)
         ret = { 'url' => result['dist']['tarball'], 'version' => result['_npmVersion'], 'shasum' => result['dist']['shasum'] }
         Chef::Log.debug("Npm dist #{ret}")
         return ret
@@ -17,12 +17,12 @@ module NodeJs
     def npm_list(path = nil, environment = {})
       require 'json'
       cmd = if path
-              Mixlib::ShellOut.new('npm list -json', :cwd => path, :environment => environment)
+              Mixlib::ShellOut.new('npm list -json', cwd: path, environment: environment)
             else
-              Mixlib::ShellOut.new('npm list -global -json', :environment => environment)
+              Mixlib::ShellOut.new('npm list -global -json', environment: environment)
             end
 
-      JSON.parse(cmd.run_command.stdout, :max_nesting => false)
+      JSON.parse(cmd.run_command.stdout, max_nesting: false)
     end
 
     def url_valid?(list, package)
