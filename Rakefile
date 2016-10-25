@@ -36,7 +36,7 @@ begin
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec)
 rescue LoadError
-    puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
+  puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
 end
 
 # Integration tests. Kitchen.ci
