@@ -4,13 +4,13 @@ gem 'rake'
 gem 'stove'
 
 group :lint do
-  gem 'foodcritic', '~> 7.0'
+  gem 'foodcritic', '~> 8.1'
   gem 'cookstyle'
 end
 
 group :unit do
-  gem 'berkshelf', '~> 4.3'
-  gem 'chefspec', '~> 4.7'
+  gem 'berkshelf', '~> 5.1'
+  gem 'chefspec', '~> 5.2'
 end
 
 group :kitchen do
