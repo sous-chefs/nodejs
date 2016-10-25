@@ -17,13 +17,13 @@ module NodeJs
     def npm_list(package, path = nil, environment = {})
       require 'json'
       cmd = if path
-              Mixlib::ShellOut.new('npm list -json', :cwd => path, :environment => environment)
+              Mixlib::ShellOut.new('npm list -json', cwd: path, environment: environment)
             else
-              Mixlib::ShellOut.new('npm list -global -json', :environment => environment)
+              Mixlib::ShellOut.new('npm list -global -json', environment: environment)
             end
 
       begin
-        JSON.parse(cmd.run_command.stdout, :max_nesting => false)
+        JSON.parse(cmd.run_command.stdout, max_nesting: false)
       rescue JSON::ParserError => e
         Chef::Log.error("nodejs::library::nodejs_helper::npm_list exception #{e}")
         return false
