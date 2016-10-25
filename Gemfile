@@ -13,10 +13,8 @@ group :unit do
   gem 'chefspec', '~> 4.7'
 end
 
-group :kitchen_common do
-  gem 'test-kitchen', '~> 1.10'
-end
-
-group :kitchen_vagrant do
+group :kitchen do
+  gem 'test-kitchen', '~> 1.13'
   gem 'kitchen-vagrant', '~> 0.20'
+  gem 'kitchen-inspec', '~> 0.15'
 end
