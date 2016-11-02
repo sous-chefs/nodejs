@@ -20,7 +20,7 @@ Chef::Recipe.send(:include, NodeJs::Helper)
 
 node.force_override['nodejs']['install_method'] = 'binary' # ~FC019
 
-# Shamelessly borrowed from http://docs.opscode.com/dsl_recipe_method_platform.html
+# Shamelessly borrowed from http://docs.chef.io/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 arch = if node['kernel']['machine'] =~ /armv6l/
          'arm-pi' # assume a raspberry pi
@@ -28,16 +28,16 @@ arch = if node['kernel']['machine'] =~ /armv6l/
          node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
        end
 
-# package_stub is for example: "node-v0.8.20-linux-x64.tar.gz"
+# package_stub is for example: "node-v6.9.1-linux-x64.tar.xz"
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 
 if node['nodejs']['engine'] == 'iojs'
-  filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+  filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
   archive_name = 'iojs-binary'
   binaries = ['bin/iojs', 'bin/node']
 else
-  filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+  filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
   archive_name = 'nodejs-binary'
   binaries = ['bin/node']
 end

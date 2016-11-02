@@ -1,6 +1,6 @@
 include NodeJs::Helper
 
-use_inline_resources if defined?(use_inline_resources)
+use_inline_resources
 
 action :install do
   execute "install NPM package #{new_resource.name}" do
