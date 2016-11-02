@@ -1,7 +1,7 @@
 include_recipe 'git'
 
 user 'random' do
-  supports :manage_home => true
+  supports manage_home: true
   home '/home/random'
 end
 

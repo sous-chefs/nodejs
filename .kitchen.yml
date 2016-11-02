@@ -4,6 +4,9 @@ driver:
 provisioner:
   name: chef_zero
 
+verifier:
+  name: inspec
+
 driver_config:
   customize:
     memory: 512
@@ -11,13 +14,13 @@ driver_config:
 
 platforms:
   - name: centos-5.11
-  - name: centos-6.7
+  - name: centos-6.8
   - name: centos-7.2
-  - name: debian-7.10
+  - name: debian-7.11
     run_list: apt::default
-  - name: debian-8.4
+  - name: debian-8.5
     run_list: apt::default
-  - name: fedora-23
+  - name: fedora-24
     run_list: yum::dnf_yum_compat
   - name: ubuntu-12.04
     run_list: apt::default
@@ -48,6 +51,10 @@ suites:
   attributes:
     nodejs:
       install_method: source
+  excludes:
+    - ubuntu-12.04
+    - centos-5.11
+    - centos-6.8
 - name: source-iojs
   run_list:
   - recipe[nodejs]
@@ -58,6 +65,10 @@ suites:
       source:
         checksum: 55e79cc4f4cde41f03c1e204d2af5ee4b6e4edcf14defc82e518436e939195fa
       version: 2.2.1
+  excludes:
+    - ubuntu-12.04
+    - centos-5.11
+    - centos-6.8
 - name: npm
   run_list:
   - recipe[nodejs::npm]
@@ -78,6 +89,10 @@ suites:
     nodejs:
       npm:
         install_method: source
+  excludes:
+    - ubuntu-12.04
+    - centos-5.11
+    - centos-6.8
 - name: npm_packages
   run_list: recipe[nodejs]
   attributes:
@@ -88,4 +103,3 @@ suites:
           version: 1.0.4
         - name: express
           action: uninstall
-

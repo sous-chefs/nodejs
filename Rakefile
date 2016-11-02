@@ -1,13 +1,15 @@
 #!/usr/bin/env rake
 
-# Style tests. Rubocop and Foodcritic
+# Style tests. cookstyle (rubocop) and Foodcritic
 namespace :style do
   begin
+    require 'cookstyle'
     require 'rubocop/rake_task'
+
     desc 'Run Ruby style checks'
     RuboCop::RakeTask.new(:ruby)
-  rescue LoadError
-    puts '>>>>> Rubocop gem not loaded, omitting tasks' unless ENV['CI']
+  rescue LoadError => e
+    puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
   end
 
   begin
@@ -16,16 +18,27 @@ namespace :style do
     desc 'Run Chef style checks'
     FoodCritic::Rake::LintTask.new(:chef) do |t|
       t.options = {
-        fail_tags: ['any']
+        fail_tags: ['any'],
+        progress: true
       }
     end
-  rescue LoadError
-    puts '>>>>> foodcritic gem not loaded, omitting tasks' unless ENV['CI']
+  rescue LoadError => e
+    puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
   end
 end
 
 desc 'Run all style checks'
 task style: ['style:chef', 'style:ruby']
+
+# ChefSpec
+begin
+  require 'rspec/core/rake_task'
+
+  desc 'Run ChefSpec examples'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+  puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
+end
 
 # Integration tests. Kitchen.ci
 namespace :integration do
@@ -34,18 +47,21 @@ namespace :integration do
 
     desc 'Run kitchen integration tests'
     Kitchen::RakeTasks.new
-  rescue LoadError
-    puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
+  rescue StandardError => e
+    puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
   end
 end
 
-namespace :maintain do
-  require 'stove/rake_task'
-  Stove::RakeTask.new
+namespace :supermarket do
+  begin
+    require 'stove/rake_task'
+
+    desc 'Publish cookbook to Supermarket with Stove'
+    Stove::RakeTask.new
+  rescue LoadError => e
+    puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
+  end
 end
 
-desc 'Run all tests on Travis'
-task travis: ['style']
-
 # Default
-task default: ['style', 'integration:kitchen:all']
+task default: %w(style spec)
