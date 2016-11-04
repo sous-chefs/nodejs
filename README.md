@@ -15,15 +15,14 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 ### Chef
 
-- Chef 11+
+- Chef 12.1+
 
 ### Cookbooks
 
 - yum-epel
 - build-essential
 - ark
-- apt
-- homebrew
+- compat_resource
 
 ## Usage
 
