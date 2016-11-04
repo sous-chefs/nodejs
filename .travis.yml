@@ -34,7 +34,6 @@ env:
   - INSTANCE=source-debian-8
   - INSTANCE=source-opensuse-132
   - INSTANCE=source-opensuse-421
-  - INSTANCE=source-ubuntu-1204
   - INSTANCE=source-ubuntu-1404
   - INSTANCE=source-ubuntu-1604
 
