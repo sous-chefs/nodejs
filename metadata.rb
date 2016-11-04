@@ -14,6 +14,6 @@ depends 'build-essential'
 depends 'ark'
 depends 'compat_resource', '>= 12.14.7'
 
-%w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x).each do |os|
+%w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x opensuse opensuseleap suse).each do |os|
   supports os
 end
