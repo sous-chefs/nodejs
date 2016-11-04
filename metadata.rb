@@ -11,7 +11,7 @@ version '3.0.0'
 
 depends 'yum-epel'
 depends 'build-essential'
-depends 'ark'
+depends 'ark', '>= 2.0.2'
 depends 'compat_resource', '>= 12.14.7'
 
 %w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x opensuse opensuseleap suse).each do |os|
