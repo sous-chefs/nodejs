@@ -36,7 +36,7 @@ begin
 
   desc 'Run ChefSpec examples'
   RSpec::Core::RakeTask.new(:spec)
-rescue LoadError
+rescue LoadError => e
   puts ">>> Gem load error: #{e}, omitting #{task.name}" unless ENV['CI']
 end
 
