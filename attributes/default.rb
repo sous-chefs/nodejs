@@ -18,11 +18,18 @@
 #
 
 case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x'
+when 'smartos', 'debian', 'fedora', 'mac_os_x'
   default['nodejs']['install_method'] = 'package'
-else
-  default['nodejs']['install_method'] = 'source'
+when 'rhel'
+        if node['platform'] == 'amazon'
+            default['nodejs']['install_method'] = 'package'
+        elsif node['platform'] == 'centos'
+            default['nodejs']['install_method'] = 'package'
+        else 
+			default['nodejs']['install_method'] = 'source'				
+        end
 end
+
 
 default['nodejs']['engine'] = 'node' # or iojs
 

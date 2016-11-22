@@ -18,6 +18,6 @@
 # limitations under the License.
 #
 
-include_recipe 'nodejs::install'
+#include_recipe 'nodejs::install'
 include_recipe 'nodejs::npm'
 include_recipe 'nodejs::npm_packages'
