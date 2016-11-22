@@ -16,8 +16,8 @@ apt_package 'curl'
 when 'rhel'
   #include_recipe 'yum-epel'
 	yum_package 'curl'
-	execute 'nodejs_ppa_install' do
-	command 'curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -'
+	execute 'nodejs_repo_install' do
+	command 'curl -sL https://rpm.nodesource.com/setup_6.x | bash - '
 end
 
 
