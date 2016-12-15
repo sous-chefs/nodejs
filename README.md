@@ -10,6 +10,8 @@ Installs node.js/io.js and manages npm
 
 - Debian/Ubuntu
 - RHEL/CentOS/Scientific/Amazon/Oracle
+- Mac OSX
+- Windows
 
 Note: Source installs require GCC 4.8+, which is not included on older distro releases
 
