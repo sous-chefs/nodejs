@@ -26,7 +26,7 @@ module NodeJs
     end
 
     def url_valid?(list, package)
-      list.fetch(package, {}).fetch('resolved', '').include?('url')
+      list.fetch(package, {}).include?('resolved')
     end
 
     def version_valid?(list, package, version)
