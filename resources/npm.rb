@@ -29,6 +29,7 @@ attribute :url, kind_of: String
 attribute :json, kind_of: [String, TrueClass]
 attribute :npm_token, kind_of: String
 attribute :options, kind_of: Array, default: []
+attribute :auto_update, kind_of: [ TrueClass, FalseClass ], default: false, required: false
 
 attribute :user, kind_of: String
 attribute :group, kind_of: String

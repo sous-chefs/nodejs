@@ -9,7 +9,7 @@ action :install do
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
-    not_if { package_installed? }
+    not_if { package_installed? && no_auto_update? }
   end
 end
 
@@ -35,6 +35,10 @@ end
 
 def package_installed?
   new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path, new_resource.npm_token)
+end
+
+def no_auto_update?
+  new_resource.package && !new_resource.auto_update
 end
 
 def npm_options
