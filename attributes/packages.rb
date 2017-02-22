@@ -5,7 +5,8 @@ case node['nodejs']['engine']
 when 'node'
   default['nodejs']['packages'] = value_for_platform_family(
     'debian' => node['nodejs']['install_repo'] ? ['nodejs'] : ['nodejs', 'npm', 'nodejs-dev'],
-    %w(rhel fedora) => ['nodejs', 'nodejs-devel', 'npm'],
+    #%w(rhel fedora) => ['nodejs', 'nodejs-devel', 'npm'],
+    %w(rhel fedora) => ['nodejs', 'nodejs-devel'],  ## seems npm gets installed when we install nodejs nodejs-devel
     'mac_os_x' => ['node'],
     'freebsd' => %w(node npm),
     'default' => ['nodejs']
