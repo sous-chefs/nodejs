@@ -41,6 +41,16 @@ arch = if node['kernel']['machine'] =~ /armv6l/
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
 
+# install libs, xz needed for extracting packages
+case node['platform_family']
+when 'rhel', 'fedora'
+  package 'openssl-devel'
+  package 'xz'
+when 'debian'
+  package 'libssl-dev'
+  package 'xz-utils'
+end
+
 if node['nodejs']['engine'] == 'iojs'
   filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
   archive_name = 'iojs-binary'

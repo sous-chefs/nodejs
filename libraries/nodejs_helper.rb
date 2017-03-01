@@ -2,7 +2,7 @@ module NodeJs
   module Helper
     def npm_dist
       if node['nodejs']['npm']['url']
-        return { 'url' => node['nodejs']['npm']['url'] }
+        { 'url' => node['nodejs']['npm']['url'] }
       else
 
         require 'open-uri'
@@ -10,7 +10,7 @@ module NodeJs
         result = JSON.parse(URI.parse("https://registry.npmjs.org/npm/#{node['nodejs']['npm']['version']}").read, max_nesting: false)
         ret = { 'url' => result['dist']['tarball'], 'version' => result['_npmVersion'], 'shasum' => result['dist']['shasum'] }
         Chef::Log.debug("Npm dist #{ret}")
-        return ret
+        ret
       end
     end
 
