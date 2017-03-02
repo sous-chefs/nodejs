@@ -19,3 +19,17 @@
 #
 
 include_recipe "nodejs::nodejs_from_#{node['nodejs']['install_method']}"
+
+if node['nodejs']['make_symlink']
+  link '/usr/local/bin/node' do
+    to '/usr/bin/node'
+  end
+
+  link '/usr/local/bin/npm' do
+    to '/usr/bin/npm'
+  end
+
+  link '/usr/local/bin/iojs' do
+    to '/usr/bin/iojs'
+  end
+end
