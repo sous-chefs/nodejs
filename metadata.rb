@@ -7,7 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 source_url 'https://github.com/redguide/nodejs' if respond_to?(:source_url)
 issues_url 'https://github.com/redguide/nodejs/issues' if respond_to?(:issues_url)
 chef_version '>= 11.0' if respond_to?(:chef_version)
-version '3.0.0'
+version '3.0.1'
 
 depends 'yum-epel'
 depends 'build-essential'
