@@ -23,13 +23,13 @@ env:
   - INSTANCE=package-centos-7
   - INSTANCE=package-debian-7
   - INSTANCE=package-debian-8
-  - INSTANCE=package-opensuse-421
+  - INSTANCE=package-opensuse-leap
   - INSTANCE=package-ubuntu-1404
   - INSTANCE=package-ubuntu-1604
   - INSTANCE=source-centos-7
   - INSTANCE=source-debian-7
   - INSTANCE=source-debian-8
-  - INSTANCE=source-opensuse-421
+  - INSTANCE=source-opensuse-leap
   - INSTANCE=source-ubuntu-1404
   - INSTANCE=source-ubuntu-1604
 
