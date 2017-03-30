@@ -1,7 +1,7 @@
 driver:
   name: dokken
-  chef_version: latest
   privileged: true # because Docker and SystemD/Upstart
+  chef_version: current
 
 transport:
   name: dokken
@@ -19,7 +19,7 @@ platforms:
     pid_one_command: /sbin/init
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps -y
+      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
 - name: debian-8
   driver:
@@ -27,15 +27,7 @@ platforms:
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps -y
-
-- name: centos-5
-  driver:
-    image: centos:5
-    platform: rhel
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN yum install -y which initscripts
+      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
 - name: centos-6
   driver:
@@ -43,7 +35,7 @@ platforms:
     platform: rhel
     pid_one_command: /sbin/init
     intermediate_instructions:
-      - RUN yum -y install which initscripts
+      - RUN yum -y install lsof which initscripts net-tools wget net-tools
 
 - name: centos-7
   driver:
@@ -51,22 +43,14 @@ platforms:
     platform: rhel
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
-      - RUN yum -y install lsof which systemd-sysv initscripts openssl
+      - RUN yum -y install lsof which systemd-sysv initscripts wget net-tools
 
 - name: fedora-latest
   driver:
     image: fedora:latest
     pid_one_command: /usr/lib/systemd/systemd
     intermediate_instructions:
-      - RUN dnf -y install yum which systemd-sysv initscripts
-
-- name: ubuntu-12.04
-  driver:
-    image: ubuntu-upstart:12.04
-    pid_one_command: /sbin/init
-    intermediate_instructions:
-      - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps -y
+      - RUN dnf -y install which systemd-sysv initscripts wget net-tools
 
 - name: ubuntu-14.04
   driver:
@@ -74,7 +58,7 @@ platforms:
     pid_one_command: /sbin/init
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps -y
+      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
 - name: ubuntu-16.04
   driver:
@@ -82,21 +66,14 @@ platforms:
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN /usr/bin/apt-get update
-      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps -y
+      - RUN /usr/bin/apt-get install apt-transport-https lsb-release procps net-tools -y
 
-- name: opensuse-13.2
+- name: opensuse-leap
   driver:
-    image: opensuse:13.2
+    image: opensuse:leap
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which net-tools
-
-- name: opensuse-42.1
-  driver:
-    image: opensuse:42.1
-    pid_one_command: /bin/systemd
-    intermediate_instructions:
-      - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which hostname
 
 suites:
 - name: default
@@ -112,16 +89,12 @@ suites:
   run_list:
   - recipe[test::source]
   excludes:
-    - ubuntu-12.04
-    - centos-5.11
-    - centos-6.8
+    - centos-6
 - name: source-iojs
   run_list:
   - recipe[source_iojs]
   excludes:
-    - ubuntu-12.04
-    - centos-5.11
-    - centos-6.8
+    - centos-6
 - name: npm
   run_list:
   - recipe[test::npm]
@@ -140,9 +113,7 @@ suites:
       npm:
         install_method: source
   excludes:
-    - ubuntu-12.04
-    - centos-5.11
-    - centos-6.8
+    - centos-6
 - name: npm_packages
   run_list: recipe[nodejs]
   attributes:
