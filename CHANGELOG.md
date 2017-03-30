@@ -55,8 +55,6 @@
 - Switched to Delivery local mode for testing
 - Added Integration testing in Travis CI with kitchen-dokken and ChefDK
 
-=======
->>>>>>> 37d3a97... Release 3.0.0 (#143)
 ## 3.0.0 (2016-11-02)
 
 - Updated the default release to the nodejs 6.9.1\. This requires C++11 extensions to compile, which are only present in GCC 4.8+. Due to this RHEL 5/6 and Ubuntu 12.04 are not supported if using this version.
