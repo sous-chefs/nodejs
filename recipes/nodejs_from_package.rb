@@ -30,6 +30,6 @@ unless node['nodejs']['packages']
   return
 end
 
-node['nodejs']['packages'].each do |node_pkg|
-  package node_pkg
+multipackage 'nodejs' do
+  package_name node['nodejs']['packages']
 end

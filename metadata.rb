@@ -14,6 +14,7 @@ depends 'build-essential'
 depends 'ark'
 depends 'apt', '>= 2.9.1'
 depends 'homebrew'
+depends 'multipackage', '~> 2.0.4'
 
 %w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x).each do |os|
   supports os
