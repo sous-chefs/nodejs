@@ -10,5 +10,16 @@ when 'debian'
     key node['nodejs']['key']
   end
 when 'rhel'
-  include_recipe 'yum-epel'
+  if platform? 'amazon'
+    script_name = "setup_#{node['nodejs']['version'].to_i}.x"
+
+    remote_file "#{Chef::Config['file_cache_path']}/#{script_name}" do
+      source "https://rpm.nodesource.com/#{script_name}"
+      mode '0755'
+    end
+
+    execute "#{Chef::Config['file_cache_path']}/#{script_name}"
+  else
+    include_recipe 'yum-epel'
+  end
 end
