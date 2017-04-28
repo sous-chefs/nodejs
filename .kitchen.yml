@@ -11,15 +11,11 @@ platforms:
   - name: centos-6.8
   - name: centos-7.3
   - name: debian-7.11
-    run_list: apt::default
   - name: debian-8.7
-    run_list: apt::default
   - name: fedora-25
   - name: opensuse-leap-42.2
   - name: ubuntu-14.04
-    run_list: apt::default
   - name: ubuntu-16.04
-    run_list: apt::default
 
 suites:
 - name: default
@@ -27,63 +23,38 @@ suites:
   - recipe[nodejs]
 - name: package
   run_list:
-  - recipe[nodejs]
-  attributes:
-    nodejs:
-      install_method: package
+  - recipe[test::package]
 - name: binary
   run_list:
-  - recipe[nodejs]
-  attributes:
-    nodejs:
-      install_method: binary
+  - recipe[test::binary]
 - name: source
   run_list:
-  - recipe[nodejs]
-  attributes:
-    nodejs:
-      install_method: source
+  - recipe[test::source]
   excludes:
-    - ubuntu-12.04
-    - centos-5.11
     - centos-6.8
 - name: source-iojs
   run_list:
-  - recipe[nodejs]
-  attributes:
-    nodejs:
-      engine: iojs
-      install_method: source
-      source:
-        checksum: 55e79cc4f4cde41f03c1e204d2af5ee4b6e4edcf14defc82e518436e939195fa
-      version: 2.2.1
+  - recipe[source_iojs]
   excludes:
-    - ubuntu-12.04
-    - centos-5.11
     - centos-6.8
 - name: npm
   run_list:
-  - recipe[nodejs::npm]
-  - recipe[nodejs_test::npm]
+  - recipe[test::npm]
 - name: npm_embedded
   run_list:
-  - recipe[nodejs::npm]
-  - recipe[nodejs_test::npm]
+  - recipe[test::npm]
   attributes:
     nodejs:
       npm:
         install_method: embedded
 - name: npm_source
   run_list:
-  - recipe[nodejs::npm]
-  - recipe[nodejs_test::npm]
+  - recipe[test::npm]
   attributes:
     nodejs:
       npm:
         install_method: source
   excludes:
-    - ubuntu-12.04
-    - centos-5.11
     - centos-6.8
 - name: npm_packages
   run_list: recipe[nodejs]

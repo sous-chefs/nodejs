@@ -10,20 +10,20 @@ Installs node.js/io.js and manages npm
 
 - Debian/Ubuntu
 - RHEL/CentOS/Scientific/Amazon/Oracle
+- openSUSE
 
 Note: Source installs require GCC 4.8+, which is not included on older distro releases
 
 ### Chef
 
-- Chef 11+
+- Chef 12.1+
 
 ### Cookbooks
 
 - yum-epel
 - build-essential
 - ark
-- apt
-- homebrew
+- compat_resource
 
 ## Usage
 
