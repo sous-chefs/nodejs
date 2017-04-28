@@ -90,11 +90,6 @@ suites:
   - recipe[test::source]
   excludes:
     - centos-6
-- name: source-iojs
-  run_list:
-  - recipe[source_iojs]
-  excludes:
-    - centos-6
 - name: npm
   run_list:
   - recipe[test::npm]

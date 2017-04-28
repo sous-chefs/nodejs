@@ -16,6 +16,9 @@ platforms:
   - name: opensuse-leap-42.2
   - name: ubuntu-14.04
   - name: ubuntu-16.04
+  - name: amazon-linux
+    driver_config:
+      box: mvbcoding/awslinux
 
 suites:
 - name: default
@@ -30,11 +33,6 @@ suites:
 - name: source
   run_list:
   - recipe[test::source]
-  excludes:
-    - centos-6.8
-- name: source-iojs
-  run_list:
-  - recipe[source_iojs]
   excludes:
     - centos-6.8
 - name: npm

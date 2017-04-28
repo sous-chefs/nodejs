@@ -24,12 +24,9 @@ else
   default['nodejs']['install_method'] = 'source'
 end
 
-default['nodejs']['engine'] = 'node' # or iojs
-
 default['nodejs']['version'] = '6.9.1'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
-default['nodejs']['prefix_url']['iojs'] = 'https://iojs.org/dist/'
 
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = '0bdd8d1305777cc8cd206129ea494d6c6ce56001868dd80147aff531d6df0729'
