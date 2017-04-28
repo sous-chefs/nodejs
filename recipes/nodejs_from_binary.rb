@@ -35,17 +35,12 @@ arch = if node['kernel']['machine'] =~ /armv6l/
          node['kernel']['machine']
        end
 
+# needed to uncompress the binary
+package 'tar' if platform_family?('rhel', 'fedora', 'amazon', 'suse')
+
 # package_stub is for example: "node-v6.9.1-linux-x64.tar.xz"
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url']['node']
-
-# install libs, xz needed for extracting packages
-case node['platform_family']
-when 'rhel', 'fedora', 'amazon'
-  package 'openssl-devel'
-when 'debian'
-  package 'libssl-dev'
-end
 
 filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
 archive_name = 'nodejs-binary'
