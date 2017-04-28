@@ -38,7 +38,7 @@ arch = if node['kernel']['machine'] =~ /armv6l/
 # needed to uncompress the binary
 package 'tar' if platform_family?('rhel', 'fedora', 'amazon', 'suse')
 
-# package_stub is for example: "node-v6.9.1-linux-x64.tar.xz"
+# package_stub is for example: "node-v6.9.1-linux-x64.tar.gz"
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url']['node']
 

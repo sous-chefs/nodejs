@@ -65,7 +65,7 @@ node.default['nodejs']['binary']['checksum'] = '99c4136cf61761fac5ac57f80544140a
 
 # Or fetch the binary from your own location
 node.default['nodejs']['install_method'] = 'binary'
-node.default['nodejs']['binary']['url'] = 'https://s3.amazonaws.com/my-bucket/node-v7.8.0-linux-x64.xz'
+node.default['nodejs']['binary']['url'] = 'https://s3.amazonaws.com/my-bucket/node-v7.8.0-linux-x64.tar.gz'
 node.default['nodejs']['binary']['checksum'] = '0bd86f2a39221b532172c7d1acb57f0b0cba88c7b82ea74ba9d1208b9f6f9697'
 ```
 
