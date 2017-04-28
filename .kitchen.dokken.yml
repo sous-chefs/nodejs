@@ -83,12 +83,9 @@ platforms:
       - RUN yum -y install lsof which initscripts net-tools sudo wget
 
 suites:
-- name: default
-  run_list:
-  - recipe[nodejs]
 - name: package
   run_list:
-  - recipe[test::package]
+  - recipe[test::default]
 - name: binary
   run_list:
   - recipe[test::binary]

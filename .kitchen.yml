@@ -21,12 +21,9 @@ platforms:
       box: mvbcoding/awslinux
 
 suites:
-- name: default
-  run_list:
-  - recipe[test::default]
 - name: package
   run_list:
-  - recipe[test::package]
+  - recipe[test::default]
 - name: binary
   run_list:
   - recipe[test::binary]
