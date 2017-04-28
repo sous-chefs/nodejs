@@ -26,14 +26,14 @@ include_recipe 'build-essential'
 
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'
-  package %w(openssl-devel xz)
+  package 'openssl-devel'
 when 'debian'
-  package %w(libssl-dev xz-utils)
+  package 'libssl-dev'
 end
 
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url']['node']
-filename = "node-v#{node['nodejs']['version']}.tar.xz"
+filename = "node-v#{node['nodejs']['version']}.tar.gz"
 archive_name = 'nodejs-source'
 
 nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(prefix, version, filename).to_s
