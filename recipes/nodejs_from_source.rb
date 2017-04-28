@@ -25,12 +25,10 @@ node.force_override['nodejs']['install_method'] = 'source' # ~FC019
 include_recipe 'build-essential'
 
 case node['platform_family']
-when 'rhel', 'fedora'
-  package 'openssl-devel'
-  package 'xz'
+when 'rhel', 'fedora', 'amazon'
+  package %w(openssl-devel xz)
 when 'debian'
-  package 'libssl-dev'
-  package 'xz-utils'
+  package %w(libssl-dev xz-utils)
 end
 
 version = "v#{node['nodejs']['version']}/"
