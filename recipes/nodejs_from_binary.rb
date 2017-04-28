@@ -43,13 +43,11 @@ prefix = node['nodejs']['prefix_url']['node']
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'
   package 'openssl-devel'
-  package 'xz'
 when 'debian'
   package 'libssl-dev'
-  package 'xz-utils'
 end
 
-filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
+filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
 archive_name = 'nodejs-binary'
 binaries = ['bin/node']
 
