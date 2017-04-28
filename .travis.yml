@@ -26,6 +26,7 @@ env:
   - INSTANCE=package-opensuse-leap
   - INSTANCE=package-ubuntu-1404
   - INSTANCE=package-ubuntu-1604
+  - INSTANCE=package-amazonlinux
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
