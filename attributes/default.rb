@@ -18,7 +18,7 @@
 #
 
 case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse'
+when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon'
   default['nodejs']['install_method'] = 'package'
 else
   default['nodejs']['install_method'] = 'source'
