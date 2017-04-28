@@ -20,7 +20,7 @@ platforms:
 suites:
 - name: default
   run_list:
-  - recipe[nodejs]
+  - recipe[test::default]
 - name: package
   run_list:
   - recipe[test::package]
