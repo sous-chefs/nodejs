@@ -20,7 +20,6 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 ### Cookbooks
 
-- yum-epel
 - build-essential
 - ark
 - compat_resource
@@ -32,17 +31,6 @@ Include the nodejs recipe to install node on your system based on the default in
 ```chef
 include_recipe "nodejs"
 ```
-
-### Engine
-
-You can select different engine by setting `node['nodejs']['engine']`
-
-```
-node['nodejs']['engine'] => 'node' # default
-node['nodejs']['engine'] => 'iojs'
-```
-
-You can also use recipes `nodejs::nodejs` or `nodejs::iojs`.
 
 ### Install methods
 
@@ -57,7 +45,7 @@ include_recipe "nodejs"
 include_recipe "nodejs::nodejs_from_package"
 ```
 
-Note that only apt (Ubuntu, Debian) appears to have up to date packages available. Centos, RHEL, etc are non-functional (try `nodejs_from_binary` for those).
+By default this will setup deb/rpm repositories from nodesource.com, which include up to date NodeJS packages. If you prefer to use distro provided package you can disable this behavior by setting `node['nodejs']['install_repo']` to `false`.
 
 #### Binary
 
@@ -193,7 +181,7 @@ Or add packages via attributes (which accept the same attributes as the LWRP abo
 
 **Author:** Marius Ducea (marius@promethost.com) **Author:** Nathan L Smith (nlloyds@gmail.com) **Author:** Guilhem Lettron (guilhem@lettron.fr) **Author:** Barthelemy Vessemont (bvessemont@gmail.com)
 
-**Copyright:** 2008-2016, Chef Software, Inc.
+**Copyright:** 2008-2017, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");

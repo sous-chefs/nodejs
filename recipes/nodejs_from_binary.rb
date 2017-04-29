@@ -18,8 +18,6 @@
 
 Chef::Recipe.send(:include, NodeJs::Helper)
 
-node.force_override['nodejs']['install_method'] = 'binary' # ~FC019
-
 # Shamelessly borrowed from http://docs.chef.io/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 arch = if node['kernel']['machine'] =~ /armv6l/
@@ -37,29 +35,16 @@ arch = if node['kernel']['machine'] =~ /armv6l/
          node['kernel']['machine']
        end
 
-# package_stub is for example: "node-v6.9.1-linux-x64.tar.xz"
+# needed to uncompress the binary
+package 'tar' if platform_family?('rhel', 'fedora', 'amazon', 'suse')
+
+# package_stub is for example: "node-v6.9.1-linux-x64.tar.gz"
 version = "v#{node['nodejs']['version']}/"
-prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
+prefix = node['nodejs']['prefix_url']['node']
 
-# install libs, xz needed for extracting packages
-case node['platform_family']
-when 'rhel', 'fedora'
-  package 'openssl-devel'
-  package 'xz'
-when 'debian'
-  package 'libssl-dev'
-  package 'xz-utils'
-end
-
-if node['nodejs']['engine'] == 'iojs'
-  filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
-  archive_name = 'iojs-binary'
-  binaries = ['bin/iojs', 'bin/node']
-else
-  filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
-  archive_name = 'nodejs-binary'
-  binaries = ['bin/node']
-end
+filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+archive_name = 'nodejs-binary'
+binaries = ['bin/node']
 
 binaries.push('bin/npm') if node['nodejs']['npm']['install_method'] == 'embedded'
 

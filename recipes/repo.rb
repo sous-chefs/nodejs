@@ -9,6 +9,10 @@ when 'debian'
     keyserver node['nodejs']['keyserver']
     key node['nodejs']['key']
   end
-when 'rhel'
-  include_recipe 'yum-epel'
+when 'rhel', 'amazon'
+  yum_repository 'node.js' do
+    description 'nodesource.com nodejs repository'
+    baseurl node['nodejs']['repo']
+    gpgkey node['nodejs']['key']
+  end
 end

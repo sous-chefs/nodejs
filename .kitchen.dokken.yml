@@ -75,24 +75,23 @@ platforms:
     intermediate_instructions:
       - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which net-tools
 
+- name: amazonlinux
+  driver:
+    image: amazonlinux:latest
+    pid_one_command: /sbin/init
+    intermediate_instructions:
+      - RUN yum -y install lsof which initscripts net-tools sudo wget
+
 suites:
-- name: default
-  run_list:
-  - recipe[nodejs]
 - name: package
   run_list:
-  - recipe[test::package]
+  - recipe[test::default]
 - name: binary
   run_list:
   - recipe[test::binary]
 - name: source
   run_list:
   - recipe[test::source]
-  excludes:
-    - centos-6
-- name: source-iojs
-  run_list:
-  - recipe[source_iojs]
   excludes:
     - centos-6
 - name: npm

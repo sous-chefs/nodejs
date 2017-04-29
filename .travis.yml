@@ -26,6 +26,15 @@ env:
   - INSTANCE=package-opensuse-leap
   - INSTANCE=package-ubuntu-1404
   - INSTANCE=package-ubuntu-1604
+  - INSTANCE=package-amazonlinux
+  - INSTANCE=binary-centos-6
+  - INSTANCE=binary-centos-7
+  - INSTANCE=binary-debian-7
+  - INSTANCE=binary-debian-8
+  - INSTANCE=binary-opensuse-leap
+  - INSTANCE=binary-ubuntu-1404
+  - INSTANCE=binary-ubuntu-1604
+  - INSTANCE=binary-amazonlinux
 
 before_script:
   - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
