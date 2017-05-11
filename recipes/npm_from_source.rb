@@ -30,3 +30,7 @@ ark 'npm' do
   version dist['version']
   action :install_with_make
 end
+
+link "/usr/local/bin/npm" do
+  to "/usr/local/npm-#{dist['version']}/bin/npm-cli.js"
+end
