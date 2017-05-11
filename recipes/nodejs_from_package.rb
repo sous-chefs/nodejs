@@ -29,5 +29,7 @@ unless node['nodejs']['packages']
 end
 
 node['nodejs']['packages'].each do |node_pkg|
-  package node_pkg
+  package node_pkg do
+    version node['nodejs']['version'] if node['nodejs']['version']
+  end
 end
