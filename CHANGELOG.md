@@ -1,8 +1,21 @@
 # NodeJS Cookbook Changelog
 
-## 3.0.1 (2017-03-23)
+## 4.0.0 (2017-07-11)
 
+- Updated the cookbook to require Chef 12.1+ and the compat_resource cookbook
+- Removed support for io.js which has merged back into the node.js project
+- Removed the dependency on homebrew, yum-epel, and apt cookbooks
 - Added node['nodejs']['manage_node'] attribute to use only cookbook's LWRP (required to manage node by nvm)
+- Updated the default repository URLs to be the 6.X repos
+- Added initial support for Suse and Amazon Linux
+- Improved architecture detection to support aarch64
+- Improved readme with examples for fetching your own binaries
+- Added installation of openssl and xz utilities that are needed for the binary install recipe
+- Updated the cookbook license string to be an SPDX compliant string
+- Set the minimum version of the ark cookbook to 2.0.2 in order to support Suse
+- Updated the default version from 6.9.1 to 6.10.2
+- Switched to Delivery local mode for testing
+- Added Integration testing in Travis CI with kitchen-dokken and ChefDK
 
 ## 3.0.0 (2016-11-02)
 
