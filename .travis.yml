@@ -1,7 +1,52 @@
-language: ruby
-bundler_args: --without integration
-cache: bundler
-sudo: false
-rvm:
-  - 2.1.0
-script: bundle exec rake travis
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    sources:
+      - chef-current-trusty
+    packages:
+      - chefdk
+
+# Don't `bundle install` which takes about 1.5 mins
+install: echo "skip bundle install"
+
+branches:
+  only:
+    - master
+
+services: docker
+
+env:
+  matrix:
+  - INSTANCE=package-centos-6
+  - INSTANCE=package-centos-7
+  - INSTANCE=package-debian-7
+  - INSTANCE=package-debian-8
+  - INSTANCE=package-opensuse-leap
+  - INSTANCE=package-ubuntu-1404
+  - INSTANCE=package-ubuntu-1604
+  - INSTANCE=package-amazonlinux
+  - INSTANCE=binary-centos-6
+  - INSTANCE=binary-centos-7
+  - INSTANCE=binary-debian-7
+  - INSTANCE=binary-debian-8
+  - INSTANCE=binary-opensuse-leap
+  - INSTANCE=binary-ubuntu-1404
+  - INSTANCE=binary-ubuntu-1604
+  - INSTANCE=binary-amazonlinux
+
+before_script:
+  - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables -N DOCKER )
+  - eval "$(/opt/chefdk/bin/chef shell-init bash)"
+  - /opt/chefdk/embedded/bin/chef --version
+  - /opt/chefdk/embedded/bin/cookstyle --version
+  - /opt/chefdk/embedded/bin/foodcritic --version
+
+script: KITCHEN_LOCAL_YAML=.kitchen.dokken.yml /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+
+matrix:
+  include:
+    - script:
+      - /opt/chefdk/bin/chef exec delivery local all
+      env: UNIT_AND_LINT=1

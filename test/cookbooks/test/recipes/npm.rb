@@ -1,7 +1,10 @@
+apt_update 'update'
+
+include_recipe 'nodejs::npm'
 include_recipe 'git'
 
 user 'random' do
-  supports :manage_home => true
+  manage_home true
   home '/home/random'
 end
 

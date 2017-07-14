@@ -1,6 +1,6 @@
 include NodeJs::Helper
 
-use_inline_resources if defined?(use_inline_resources)
+use_inline_resources
 
 action :install do
   execute "install NPM package #{new_resource.name}" do
@@ -48,11 +48,11 @@ end
 
 def npm_package
   if new_resource.json
-    return new_resource.json.is_a?(String) ? new_resource.json : nil
+    new_resource.json.is_a?(String) ? new_resource.json : nil
   elsif new_resource.url
-    return new_resource.url
+    new_resource.url
   elsif new_resource.package
-    return new_resource.version ? "#{new_resource.package}@#{new_resource.version}" : new_resource.package
+    new_resource.version ? "#{new_resource.package}@#{new_resource.version}" : new_resource.package
   else
     Chef::Log.error("No good options found to install #{new_resource.name}")
   end
@@ -60,5 +60,5 @@ end
 
 def initialize(*args)
   super
-  @run_context.include_recipe 'nodejs::npm'
+  @run_context.include_recipe 'nodejs::npm' if node['nodejs']['manage_node']
 end
