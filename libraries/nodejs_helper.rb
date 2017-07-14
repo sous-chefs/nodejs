@@ -16,11 +16,11 @@ module NodeJs
 
     def npm_list(package, path = nil, environment = {})
       require 'json'
-      if path
-        cmd = Mixlib::ShellOut.new("npm list #{package} -json", :cwd => path, :environment => environment)
-      else
-        cmd = Mixlib::ShellOut.new("npm list #{package} -global -json", :environment => environment)
-      end
+      cmd = if path
+              Mixlib::ShellOut.new("npm list #{package} -json", cwd: path, environment: environment)
+            else
+              Mixlib::ShellOut.new("npm list #{package} -global -json", environment: environment)
+            end
 
       begin
         JSON.parse(cmd.run_command.stdout, max_nesting: false)
