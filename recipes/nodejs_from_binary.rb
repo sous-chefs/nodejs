@@ -22,10 +22,11 @@ Chef::Recipe.send(:include, NodeJs::Helper)
 # Shamelessly borrowed from http://docs.chef.io/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 arch = if node['kernel']['machine'] =~ /armv6l/
-         # FIXME: This should really check the version of node we're looking for
-         # as it seems that they haven't build an `arm-pi` version in a while...
-         # if it's old, return this, otherwise just return `node['kernel']['machine']`
-         'arm-pi' # assume a raspberry pi
+         if node['nodejs']['binary']['checksum']['linux_armv6l']
+          node['kernel']['machine']
+         else
+          'arm-pi' # assume a raspberry pi as NodeJs don't have a package for it in this version
+         end
        elsif node['kernel']['machine'] =~ /aarch64/
          'arm64'
        elsif node['kernel']['machine'] =~ /x86_64/
@@ -44,7 +45,7 @@ version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url']['node']
 
 # Choose short platform name and file extension based on our platform family
-# Used to buidl the URL
+# Used to build the URL
 case node['platform_family']
 when 'windows'
   platform = 'win'
@@ -86,8 +87,11 @@ end
 if node['nodejs']['binary']['win_install_dir']
   win_install_dir = node['nodejs']['binary']['win_install_dir']
 else
-  # FIXME: Use Program Files(x86) if installing 32-bit version on 64-bit windows!
-  win_install_dir = "C:\\Program Files\\#{archive_name}"
+  if node['kernel']['machine'] =~ /x86_64/ && "#{platform}_#{arch}" == 'win_x86'
+    win_install_dir = "C:\\Program Files(x86)\\#{archive_name}"
+  else
+    win_install_dir = "C:\\Program Files\\#{archive_name}"
+  end
 end
 
 ark archive_name do

@@ -26,6 +26,7 @@ end
 
 default['nodejs']['version'] = '6.11.12'
 
+
 default['nodejs']['checksum']['6.11.2']['tar.gz'] = '20146ed51b638404665737ed8a25cc06e96d7d7259eb90a4bdec4730a78002a6'
 default['nodejs']['checksum']['6.11.2']['tar.xz'] = '04af4992238b19124ea56f1bcfda36827613a24eb3b00fc3b50f261a415a26e4'
 default['nodejs']['checksum']['6.11.2']['aix']['ppc64']['tar.gz'] = '79ead2addfa70ea471406f48917530822e9214acd2351d1f02401b3c4dd7a34a'
@@ -33,6 +34,8 @@ default['nodejs']['checksum']['6.11.2']['darwin']['x64']['tar.gz'] = '810669aa5f
 default['nodejs']['checksum']['6.11.2']['darwin']['x64']['tar.xz'] = 'a2e81b5f60bd8a6de90e37c70d024fe61b1caa54dbe2f076a10abe673f490073'
 default['nodejs']['checksum']['6.11.2']['linux']['arm64']['tar.gz'] = '914465dd907d2d785a6cb2e166ada7ce1e070f212267ce88ba7a326fe549a076'
 default['nodejs']['checksum']['6.11.2']['linux']['arm64']['tar.xz'] = 'c94e2cf7a68c34b2c93af2388b57f71e730a0736cec80b37ad8700210835f7a4'
+default['nodejs']['checksum']['6.11.2']['linux']['armv6l']['tar.gz'] = nil
+default['nodejs']['checksum']['6.11.2']['linux']['armv6l']['tar.xz'] = nil
 default['nodejs']['checksum']['6.11.2']['linux']['armv7l']['tar.gz'] = '0e758f5a87eb64bfb623d431cc31a50d1800158d83ab1a5d2f4c6b0d4140e850'
 default['nodejs']['checksum']['6.11.2']['linux']['armv7l']['tar.xz'] = 'bc5d8f54c68ef1b7596dac4c793a30c44da747a1c41c99edcdbfb3f17be465ff'
 default['nodejs']['checksum']['6.11.2']['linux']['ppc64le']['tar.gz'] = '095d0411667b00518f2ff0ea5eb17e01bfe17fe58b8eb8648e0be87bb89d8fb9'
@@ -53,14 +56,46 @@ default['nodejs']['checksum']['6.11.2']['win']['x64']['7z'] = '9189de5ef26e40bc7
 default['nodejs']['checksum']['6.11.2']['win']['x64']['zip'] = 'b8a7f49baece10b01a51145edc95d5093e385e9e598a38f2e66c247caf6d0286'
 default['nodejs']['checksum']['6.11.2']['win']['x86']['7z'] = 'e38c74a43f72cce05caeaf77afb49f6979345b7a891abdcd5d9e4b72d34cc710'
 default['nodejs']['checksum']['6.11.2']['win']['x86']['zip'] = '111631fa1f27b03bc96e3a400460713c79b7f24c924fc0a090983ed207ed8ef7'
-default['nodejs']['checksum']['6.11.2']['win']['x64']['msi'] = 'ce57b050e11b3b8d46e18c85512384c8e2b1c0bd9f7832ba9786e175152a02a0'
-default['nodejs']['checksum']['6.11.2']['win']['x86']['msi'] = '7799df1770f0574c3fbc60343ed77a7823b3104910c9a5ebcb3e08c1e8c8eb28'
+default['nodejs']['checksum']['6.11.2']['x64']['msi'] = 'ce57b050e11b3b8d46e18c85512384c8e2b1c0bd9f7832ba9786e175152a02a0'
+default['nodejs']['checksum']['6.11.2']['x86']['msi'] = '7799df1770f0574c3fbc60343ed77a7823b3104910c9a5ebcb3e08c1e8c8eb28'
+
+default['nodejs']['checksum']['8.2.1']['tar.gz'] = '66fe1379bc7daf9a16c6b5c45ab695bf1cdcfae9738d2989e940104d6b31973f'
+default['nodejs']['checksum']['8.2.1']['tar.xz'] = '02c46d8914540eea73d0ad33bf9f371a28aa0dc8c5d740948491fef044ad8c8b'
+default['nodejs']['checksum']['8.2.1']['aix']['ppc64']['tar.gz'] = 'b6343e1d396dff5b29a62eff0550a7782a6b82b18625fb29cebd6735b30851f3'
+default['nodejs']['checksum']['8.2.1']['darwin']['x64']['tar.gz'] = '32d0923c147470d57f18f055014f5a9fe8a3919406010a2e80ba85952d3c9923'
+default['nodejs']['checksum']['8.2.1']['darwin']['x64']['tar.xz'] = '9f8eb5e5ee0a4a17a08b186543e945a7e995696af7726dd8c7325235e750917d'
+default['nodejs']['checksum']['8.2.1']['linux']['arm64']['tar.gz'] = '914a031d02cbf759238fa1c051bc21739abfa15572eae77c03cc34c37031b3ef'
+default['nodejs']['checksum']['8.2.1']['linux']['arm64']['tar.xz'] = '9ed01737f37d410067beeb42066e51f6d0385677c7d0daeeaf2e32cb2aca854a'
+default['nodejs']['checksum']['8.2.1']['linux']['armv6l']['tar.gz'] = 'b98a17579636cf6cc46f0fe721fcf3b0b360f27c77678754e1eebe27a70625f1'
+default['nodejs']['checksum']['8.2.1']['linux']['armv6l']['tar.xz'] = '167ccad4c6a848a7b17ead0b2d95770e984a2c8d69ddd42ea78813174daee716'
+default['nodejs']['checksum']['8.2.1']['linux']['armv7l']['tar.gz'] = '97a2752cfe0ee1ae9225de4a3787a79f4b82c5679122019aff20835b09ecb62e'
+default['nodejs']['checksum']['8.2.1']['linux']['armv7l']['tar.xz'] = '52a3abbf9450fbb91b39aaa268977a593daa8fc7dec0925d32ac7afd3a3596e2'
+default['nodejs']['checksum']['8.2.1']['linux']['ppc64le']['tar.gz'] = 'b01cb4d1f04c52d68faf90157bc234e907b4206c0a4057e8911bdda184fd1f50'
+default['nodejs']['checksum']['8.2.1']['linux']['ppc64le']['tar.xz'] = '8f1f6896b9f49159e6a6a8fcf7b8d68245b3f007296dd2898f01dbc3b29e88f3'
+default['nodejs']['checksum']['8.2.1']['linux']['ppc64']['tar.gz'] = '15cac8d58ab6dc53b3a4356bd11401211b1e09f2076c4d7699d58015c7c88a01'
+default['nodejs']['checksum']['8.2.1']['linux']['ppc64']['tar.xz'] = 'e47cd5d9b3cc0946287f8254cb8d35f4c42bda35604e4446fb498af8de1c3a6b'
+default['nodejs']['checksum']['8.2.1']['linux']['s390x']['tar.gz'] = 'd8f391e401ab2124e0c47f5c497d497e9b80819ee30fcd94033825e52a1e1f70'
+default['nodejs']['checksum']['8.2.1']['linux']['s390x']['tar.xz'] = '7af75022ec9a37fd59890add4a8165a7b6d6f9300bc94abab32a97de3fd0e7a8'
+default['nodejs']['checksum']['8.2.1']['linux']['x64']['tar.gz'] = 'c082cf6e7011d4222d476c86421ae6a656d7d34d3d34133260e19a7718de88c9'
+default['nodejs']['checksum']['8.2.1']['linux']['x64']['tar.xz'] = 'abcddeb95cc4465953b1edb0922d20e9b0b3de83688fc8150b863117032a978a'
+default['nodejs']['checksum']['8.2.1']['linux']['x86']['tar.gz'] = '79d1364e09434bdfe0e925b1e7c80691d92cdbc3ad7384ddeacc793eaa54721d'
+default['nodejs']['checksum']['8.2.1']['linux']['x86']['tar.xz'] = '4c2b25ce95eba27adea4f72713286d60b25e73d816a128c35110afaace3f3e2d'
+default['nodejs']['checksum']['8.2.1']['sunos']['x64']['tar.gz'] = '1afa29cbb224711d25f4cd6dcf4581ea9e692720c7eb45928dbcaebe54a01a81'
+default['nodejs']['checksum']['8.2.1']['sunos']['x64']['tar.xz'] = '20872f6e8165b7364dcb961dd0f20ba70b8a2b0fcc875356e7c85180be8a9d65'
+default['nodejs']['checksum']['8.2.1']['sunos']['x86']['tar.gz'] = '0bfde8259c1ce4358fd6893add5ac662b2f70c81396388e0e9f23ae6c201ae06'
+default['nodejs']['checksum']['8.2.1']['sunos']['x86']['tar.xz'] = '5438318c248230d8175f7edaee2dfb3a7590f54589d391a1608f6d59f56f9967'
+default['nodejs']['checksum']['8.2.1']['win']['x64']['7z'] = '1d4709a568ce470f968bef7da4141e071a141474306da55ed00e129d68ef2b39'
+default['nodejs']['checksum']['8.2.1']['win']['x64']['zip'] = '37e84e54c67e3d1e52d657c04835b211c94631a0b358f4e7dc351618fdb6c083'
+default['nodejs']['checksum']['8.2.1']['win']['x86']['7z'] = '91494c1f4c514770113ccae9069077d567579d0ad7d65547ba32a5682d1d7ffb'
+default['nodejs']['checksum']['8.2.1']['win']['x86']['zip'] = 'b4f099c524a12cdf5d1a300c45b3397babf1121a3f56e071d6552c1df7566b0c'
+default['nodejs']['checksum']['8.2.1']['x64']['msi'] = '552aeb03a91a95a1b8e5737ba42feed670f59e284b463c17ad00eafa51e31076'
+default['nodejs']['checksum']['8.2.1']['x86']['msi'] = '38377ab5acd1dff77a36c980878f48e9a51fa00d4ae471631d2bb5b578cb18e1'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 default['nodejs']['package']['url'] = nil # Auto generated
 
-default['nodejs']['package']['checksum']['win_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['win']['x64']['msi']}"
-default['nodejs']['package']['checksum']['win_x86'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['win']['x86']['msi']}"
+default['nodejs']['package']['checksum']['win_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['x64']['msi']}"
+default['nodejs']['package']['checksum']['win_x86'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['x86']['msi']}"
 
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['tar.gz']}"
@@ -71,6 +106,7 @@ default['nodejs']['binary']['win_install_dir'] = nil # Auto generated
 default['nodejs']['binary']['checksum']['aix_ppc64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['aix']['ppc64']['tar.xz']}"
 default['nodejs']['binary']['checksum']['darwin_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['darwin']['x64']['tar.xz']}"
 default['nodejs']['binary']['checksum']['linux_arm64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['arm64']['tar.xz']}"
+default['nodejs']['binary']['checksum']['linux_armv6l'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['armv6l']['tar.xz']}"
 default['nodejs']['binary']['checksum']['linux_armv7l'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['armv7l']['tar.xz']}"
 default['nodejs']['binary']['checksum']['linux_ppc64le'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['ppc64le']['tar.xz']}"
 default['nodejs']['binary']['checksum']['linux_ppc64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['ppc64']['tar.xz']}"
