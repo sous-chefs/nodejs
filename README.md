@@ -11,6 +11,8 @@ Installs node.js/npm and includes a resource for managing npm packages
 - Debian/Ubuntu
 - RHEL/CentOS/Scientific/Amazon/Oracle
 - openSUSE
+- Mac OSX
+- Windows
 
 Note: Source installs require GCC 4.8+, which is not included on older distro releases
 
