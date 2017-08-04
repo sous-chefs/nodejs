@@ -23,15 +23,16 @@
 include_recipe 'nodejs::repo' if node['nodejs']['install_repo']
 
 if platform?('windows')
+  platform = 'win'
+  extension = 'msi'
+  arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
 
   if node['nodejs']['package']['url']
     nodejs_package_url = node['nodejs']['package']['url']
     checksum = node['nodejs']['package']['checksum']
   else
-    # Build the URL based on arch, engine, version
-    arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
     prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
-    nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{node['nodejs']['engine']}-v#{node['nodejs']['version']}-#{arch}.msi"
+    nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{node['nodejs']['engine']}-v#{node['nodejs']['version']}-#{arch}.#{extension}"
   end
 
   if checksum.nil?
@@ -42,11 +43,10 @@ if platform?('windows')
     checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension]
   end
 
-  package node['nodejs']['engine'] do # ~FC009
+  package node['nodejs']['engine'] do
     source nodejs_package_url
     checksum checksum
     action :install
-    # TODO Use a not_if to avoid installing if node -v matches the version we want?
   end
 else
   unless node['nodejs']['packages']
