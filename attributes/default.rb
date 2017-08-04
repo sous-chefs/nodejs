@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-node['nodejs']['engine'] = 'node'
+default['nodejs']['engine'] = 'node'
 case node['platform_family']
 when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon', 'windows'
   default['nodejs']['install_method'] = 'package'
