@@ -94,29 +94,29 @@ default['nodejs']['checksum']['8.2.1']['x86']['msi'] = '38377ab5acd1dff77a36c980
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 default['nodejs']['package']['url'] = nil # Auto generated
 
-default['nodejs']['package']['checksum']['win_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['x64']['msi']}"
-default['nodejs']['package']['checksum']['win_x86'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['x86']['msi']}"
+default['nodejs']['package']['checksum']['win_x64'] = nil # Auto generated
+default['nodejs']['package']['checksum']['win_x86'] = nil # Auto generated
 
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['tar.gz']}"
+default['nodejs']['source']['checksum'] = nil # Auto generated
 
 default['nodejs']['binary']['url'] = nil # Auto generated
 default['nodejs']['binary']['win_install_dir'] = nil # Auto generated
 
-default['nodejs']['binary']['checksum']['aix_ppc64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['aix']['ppc64']['tar.xz']}"
-default['nodejs']['binary']['checksum']['darwin_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['darwin']['x64']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_arm64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['arm64']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_armv6l'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['armv6l']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_armv7l'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['armv7l']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_ppc64le'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['ppc64le']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_ppc64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['ppc64']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_s390x'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['s390x']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['x64']['tar.xz']}"
-default['nodejs']['binary']['checksum']['linux_x86'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['linux']['x86']['tar.xz']}"
-default['nodejs']['binary']['checksum']['sunos_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['sunos']['x64']['tar.xz']}"
-default['nodejs']['binary']['checksum']['sunos_x86'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['sunos']['x86']['tar.xz']}"
-default['nodejs']['binary']['checksum']['win_x64'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['win']['x64']['7z']}"
-default['nodejs']['binary']['checksum']['win_x86'] = "#{default['nodejs']['checksum']["#{default['nodejs']['version']}"]['win']['x86']['7z']}"
+default['nodejs']['binary']['checksum']['aix_ppc64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['darwin_x64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_arm64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_armv6l'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_armv7l'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_ppc64le'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_ppc64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_s390x'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_x64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['linux_x86'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['sunos_x64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['sunos_x86'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['win_x64'] = nil # Auto generated
+default['nodejs']['binary']['checksum']['win_x86'] = nil # Auto generated
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 

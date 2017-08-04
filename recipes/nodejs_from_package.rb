@@ -32,7 +32,14 @@ if platform?('windows')
     arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
     prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
     nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{node['nodejs']['engine']}-v#{node['nodejs']['version']}-#{arch}.msi"
-    checksum = node['nodejs']['package']['checksum']["win_#{arch}"]
+  end
+
+  if checksum.nil?
+    checksum = node['nodejs']['binary']['checksum']["#{platform}_#{arch}"]
+  end
+
+  if checksum.nil?
+    checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension]
   end
 
   package node['nodejs']['engine'] do # ~FC009

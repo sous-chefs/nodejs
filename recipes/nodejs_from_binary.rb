@@ -22,7 +22,7 @@ Chef::Recipe.send(:include, NodeJs::Helper)
 # Shamelessly borrowed from http://docs.chef.io/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 arch = if node['kernel']['machine'] =~ /armv6l/
-         if node['nodejs']['binary']['checksum']['linux_armv6l']
+         if node['nodejs']['binary']['checksum']['linux_armv6l'] || node['nodejs']['checksum'][node['nodejs']['version']]['linux']['armv6l']['tar.xz'] || node['nodejs']['checksum'][node['nodejs']['version']]['linux']['armv6l']['tar.gz']
           node['kernel']['machine']
          else
           'arm-pi' # assume a raspberry pi as NodeJs don't have a package for it in this version
@@ -81,7 +81,14 @@ if node['nodejs']['binary']['url']
   checksum = node['nodejs']['binary']['checksum']
 else
   nodejs_bin_url = ::URI.join(prefix, version, filename).to_s
+end
+
+if checksum.nil?
   checksum = node['nodejs']['binary']['checksum']["#{platform}_#{arch}"]
+end
+
+if checksum.nil?
+  checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension]
 end
 
 if node['nodejs']['binary']['win_install_dir']

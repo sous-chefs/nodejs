@@ -31,15 +31,17 @@ end
 
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url']['node']
-filename = "node-v#{node['nodejs']['version']}.tar.gz"
+extension = 'tar.gz'
+filename = "node-v#{node['nodejs']['version']}.#{extension}"
 archive_name = 'nodejs-source'
 
 nodejs_src_url = node['nodejs']['source']['url'] || ::URI.join(prefix, version, filename).to_s
+checksum = node['nodejs']['source']['checksum'] || node['nodejs']['checksum'][node['nodejs']['version']][extension]
 
 ark archive_name do
   url nodejs_src_url
   version node['nodejs']['version']
-  checksum node['nodejs']['source']['checksum']
+  checksum checksum
   make_opts ["-j #{node['nodejs']['make_threads']}"]
   action :install_with_make
 end
