@@ -31,7 +31,7 @@ if platform?('windows')
     # Build the URL based on arch, engine, version
     arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
     prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
-    nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{['nodejs']['engine']}-v#{node['nodejs']['version']}-#{arch}.msi"
+    nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{node['nodejs']['engine']}-v#{node['nodejs']['version']}-#{arch}.msi"
     checksum = node['nodejs']['package']['checksum']["win_#{arch}"]
   end
 

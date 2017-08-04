@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+node['nodejs']['engine'] = 'node'
 case node['platform_family']
 when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon', 'windows'
   default['nodejs']['install_method'] = 'package'
@@ -25,7 +26,6 @@ else
 end
 
 default['nodejs']['version'] = '6.11.12'
-
 
 default['nodejs']['checksum']['6.11.2']['tar.gz'] = '20146ed51b638404665737ed8a25cc06e96d7d7259eb90a4bdec4730a78002a6'
 default['nodejs']['checksum']['6.11.2']['tar.xz'] = '04af4992238b19124ea56f1bcfda36827613a24eb3b00fc3b50f261a415a26e4'
