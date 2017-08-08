@@ -26,13 +26,14 @@ if platform?('windows')
   platform = 'win'
   extension = 'msi'
   arch = node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
+  engine = node['nodejs']['engine']
 
   if node['nodejs']['package']['url']
     nodejs_package_url = node['nodejs']['package']['url']
     checksum = node['nodejs']['package']['checksum']
   else
-    prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
-    nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{node['nodejs']['engine']}-v#{node['nodejs']['version']}-#{arch}.#{extension}"
+    prefix = node['nodejs']['prefix_url'][engine]
+    nodejs_package_url = "#{prefix}/v#{node['nodejs']['version']}/#{engine}-v#{node['nodejs']['version']}-#{arch}.#{extension}"
   end
 
   if checksum.nil?
@@ -43,7 +44,7 @@ if platform?('windows')
     checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension]
   end
 
-  package node['nodejs']['engine'] do
+  package engine do
     source nodejs_package_url
     checksum checksum
     action :install
