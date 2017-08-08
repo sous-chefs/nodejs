@@ -18,6 +18,8 @@ platforms:
   driver:
     image: dokken/amazonlinux
     pid_one_command: /sbin/init
+    intermediate_instructions:
+      sed -i '1s/^/nameserver 8.8.8.8 \n/' /etc/resolv.conf
 
 - name: debian-7
   driver:
