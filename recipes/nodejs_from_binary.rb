@@ -61,7 +61,7 @@ when 'smartos', 'omnios', 'openindiana', 'opensolaris', 'solaris2', 'nexentacore
   extension = 'tar.xz'
 else
   platform = 'linux'
-  extension = 'tar.xz'
+  extension = 'tar.gz'
 end
 
 if node['nodejs']['engine'] == 'iojs'
