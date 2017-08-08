@@ -23,9 +23,9 @@ Chef::Recipe.send(:include, NodeJs::Helper)
 # Surely there's a more canonical way to get arch?
 arch = if node['kernel']['machine'] =~ /armv6l/
          if node['nodejs']['binary']['checksum']['linux_armv6l'] || node['nodejs']['checksum'][node['nodejs']['version']]['linux']['armv6l']['tar.xz'] || node['nodejs']['checksum'][node['nodejs']['version']]['linux']['armv6l']['tar.gz']
-          node['kernel']['machine']
+           node['kernel']['machine']
          else
-          'arm-pi' # assume a raspberry pi as NodeJs don't have a package for it in this version
+           'arm-pi' # assume a raspberry pi as NodeJs don't have a package for it in this version
          end
        elsif node['kernel']['machine'] =~ /aarch64/
          'arm64'
@@ -83,23 +83,12 @@ else
   nodejs_bin_url = ::URI.join(prefix, version, filename).to_s
 end
 
-if checksum.nil?
-  checksum = node['nodejs']['binary']['checksum']["#{platform}_#{arch}"]
-end
+checksum = node['nodejs']['binary']['checksum']["#{platform}_#{arch}"] if checksum.nil?
+checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension] if checksum.nil?
 
-if checksum.nil?
-  checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension]
-end
-
-if node['nodejs']['binary']['win_install_dir']
-  win_install_dir = node['nodejs']['binary']['win_install_dir']
-else
-  if node['kernel']['machine'] =~ /x86_64/ && "#{platform}_#{arch}" == 'win_x86'
-    win_install_dir = "C:\\Program Files(x86)\\#{archive_name}"
-  else
-    win_install_dir = "C:\\Program Files\\#{archive_name}"
-  end
-end
+win_install_dir = node['nodejs']['binary']['win_install_dir']
+win_install_dir = "C:\\Program Files(x86)\\#{archive_name}" if win_install_dir.nil? && node['kernel']['machine'] =~ /x86_64/ && "#{platform}_#{arch}" == 'win_x86'
+win_install_dir = "C:\\Program Files\\#{archive_name}" if win_install_dir.nil?
 
 ark archive_name do
   url nodejs_bin_url
