@@ -44,7 +44,7 @@ if platform?('windows')
     checksum = node['nodejs']['checksum'][node['nodejs']['version']][platform][arch][extension]
   end
 
-  package engine do
+  windows_package engine do
     source nodejs_package_url
     checksum checksum
     action :install
