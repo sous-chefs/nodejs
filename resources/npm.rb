@@ -1,10 +1,10 @@
 #
-# Cookbook Name:: nodejs
+# Cookbook:: nodejs
 # Resource:: npm
 #
 # Author:: Sergey Balbeko <sergey@balbeko.com>
 #
-# Copyright 2012, Sergey Balbeko
+# Copyright:: 2012-2017, Sergey Balbeko
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
