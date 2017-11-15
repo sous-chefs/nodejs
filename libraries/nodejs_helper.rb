@@ -45,7 +45,7 @@ module NodeJs
 
       list = npm_list(package, path, environment)['dependencies']
       # Return true if package installed and installed to good version
-      !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
+      !list.nil? && list.key?(package) && version_valid?(list, package, version)
     end
   end
 end
