@@ -12,13 +12,13 @@ platforms:
   - name: amazon-linux
     driver_config:
       box: mvbcoding/awslinux
-  - name: centos-6.9
-  - name: centos-7.3
-  - name: debian-7.11
-  - name: debian-8.8
-  - name: debian-9.0
-  - name: fedora-25
-  - name: opensuse-leap-42.2
+  - name: centos-6
+  - name: centos-7
+  - name: debian-7
+  - name: debian-8
+  - name: debian-9
+  - name: fedora-26
+  - name: opensuse-leap-42
   - name: ubuntu-14.04
   - name: ubuntu-16.04
 
@@ -33,7 +33,7 @@ suites:
   run_list:
   - recipe[test::source]
   excludes:
-    - centos-6.8
+    - centos-6
 - name: npm
   run_list:
   - recipe[test::npm]
@@ -52,7 +52,7 @@ suites:
       npm:
         install_method: source
   excludes:
-    - centos-6.8
+    - centos-6
 - name: npm_packages
   run_list: recipe[nodejs]
   attributes:

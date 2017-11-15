@@ -16,13 +16,12 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 ### Chef
 
-- Chef 12.1+
+- Chef 12.14+
 
 ### Cookbooks
 
 - build-essential
 - ark
-- compat_resource
 
 ## Usage
 
