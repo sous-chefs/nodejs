@@ -21,7 +21,8 @@ git '/home/random/grunt' do
   user 'random'
 end
 
-npm_package 'grunt' do
+npm_package 'Install the grunt package' do
+  package 'grunt'
   path '/home/random/grunt'
   json true
   user 'random'

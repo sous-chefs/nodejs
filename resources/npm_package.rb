@@ -40,7 +40,7 @@ def initialize(*args)
 end
 
 action :install do
-  execute "install NPM package #{new_resource.name}" do
+  execute "install NPM package #{new_resource.package}" do
     cwd new_resource.path
     command "npm install #{npm_options}"
     user new_resource.user
@@ -94,7 +94,7 @@ action_class do
     elsif new_resource.package
       new_resource.version ? "#{new_resource.package}@#{new_resource.version}" : new_resource.package
     else
-      Chef::Log.error("No good options found to install #{new_resource.name}")
+      Chef::Log.error("No good options found to install #{new_resource.package}")
     end
   end
 end
