@@ -71,7 +71,7 @@ describe 'default recipe on debian 7' do
 end
 
 describe 'default recipe on debian 8' do
-  let(:runner) { ChefSpec::ServerRunner.new(platform: 'debian', version: '8.6') }
+  let(:runner) { ChefSpec::ServerRunner.new(platform: 'debian', version: '8.9') }
   let(:chef_run) { runner.converge('nodejs::default') }
 
   it 'includes the package install recipes' do
@@ -99,7 +99,7 @@ describe 'default recipe on mac_os_x' do
 end
 
 describe 'default recipe on fedora' do
-  let(:runner) { ChefSpec::ServerRunner.new(platform: 'fedora', version: '25') }
+  let(:runner) { ChefSpec::ServerRunner.new(platform: 'fedora', version: '26') }
   let(:chef_run) { runner.converge('nodejs::default') }
 
   it 'includes the package install recipes' do

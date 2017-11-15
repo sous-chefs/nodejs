@@ -5,14 +5,14 @@ user 'random' do
   home '/home/random'
 end
 
-# global "express"
+# global "express" using the old resource name
 nodejs_npm 'express'
 
-nodejs_npm 'async' do
+npm_package 'async' do
   version '0.6.2'
 end
 
-nodejs_npm 'request' do
+npm_package 'request' do
   url 'github mikeal/request'
 end
 
@@ -21,13 +21,14 @@ git '/home/random/grunt' do
   user 'random'
 end
 
-nodejs_npm 'grunt' do
+npm_package 'Install the grunt package' do
+  package 'grunt'
   path '/home/random/grunt'
   json true
   user 'random'
 end
 
-nodejs_npm 'mocha' do
+npm_package 'mocha' do
   options ['--force', '--production']
 end
 
@@ -46,7 +47,7 @@ file '/home/random/.npmrc' do
 end
 
 # Test npm_token usage (for NPM private repositories)
-nodejs_npm 'from_package_json' do
+npm_package 'from_package_json' do
   path '/home/random'
   json true
   npm_token '123-abcde'

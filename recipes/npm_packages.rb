@@ -1,6 +1,6 @@
 node['nodejs']['npm_packages'].each do |pkg|
   pkg_action = pkg.key?('action') ? pkg['action'] : :install
-  f = nodejs_npm "nodejs_npm-#{pkg['name']}-#{pkg_action}" do
+  f = npm_package "nodejs_npm-#{pkg['name']}-#{pkg_action}" do
     action :nothing
     package pkg['name']
   end
