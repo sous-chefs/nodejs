@@ -12,6 +12,6 @@ version '4.0.0'
 depends 'build-essential'
 depends 'ark', '>= 2.0.2'
 
-%w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x opensuse opensuseleap suse).each do |os|
+%w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x opensuseleap suse).each do |os|
   supports os
 end
