@@ -6,4 +6,8 @@ control 'commands should exist' do
   describe command('npm -v') do
     its('exit_status') { should eq 0 }
   end
+
+  describe file '/home/random/staging' do
+    it { should exist }
+  end
 end

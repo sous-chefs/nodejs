@@ -115,6 +115,8 @@ Packages can be installed globally (by default) or in a directory (by using `att
 
 You can specify an `NPM_TOKEN` environment variable for accessing [NPM private modules](https://docs.npmjs.com/private-modules/intro) by using `attribute :npm_token`
 
+You can specify a `NODE_ENV` environment variable, in the case that some element of your installation depends on this by using `attribute :node_env`. E.g., using [`node-config`](https://www.npmjs.com/package/config) as part of your postinstall script. Please note that adding the `--production` option will override this to `NODE_ENV=production`.
+
 You can append more specific options to npm command with `attribute :options` array :
 
 - use an array of options (w/ dash), they will be added to npm call.
@@ -139,6 +141,7 @@ npm_package 'grunt' do
   path '/home/random/grunt'
   json true
   user 'random'
+  node_env 'staging'
 end
 
 npm_package 'my_private_module' do
