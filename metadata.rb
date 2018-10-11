@@ -1,3 +1,4 @@
+# ~FC121
 name 'nodejs'
 maintainer 'redguide'
 maintainer_email 'guilhem@lettron.fr'
@@ -9,7 +10,7 @@ issues_url 'https://github.com/redguide/nodejs/issues'
 chef_version '>= 12.14' if respond_to?(:chef_version)
 version '5.0.0'
 
-depends 'build-essential'
+depends 'build-essential', '>= 5.0'
 depends 'ark', '>= 2.0.2'
 
 %w(debian ubuntu centos redhat scientific oracle amazon smartos mac_os_x opensuseleap suse).each do |os|
