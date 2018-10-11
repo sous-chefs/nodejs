@@ -47,6 +47,7 @@ archive_name = 'nodejs-binary'
 binaries = ['bin/node']
 
 binaries.push('bin/npm') if node['nodejs']['npm']['install_method'] == 'embedded'
+binaries.push('bin/npx') if node['nodejs']['npm']['install_method'] == 'embedded'
 
 if node['nodejs']['binary']['url']
   nodejs_bin_url = node['nodejs']['binary']['url']
