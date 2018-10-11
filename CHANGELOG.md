@@ -7,6 +7,7 @@
 - resolved cookstyle error: recipes/npm_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - Have ark setup node and npm binaries into PATH
 - Add `node_env` to `npm_package` in order to set `NODE_ENV` (useful for some packages)
+- Include `npx` as a binary in addition to `npm`, it has been [included since `npm` v5.2.0](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
 
 ## 7.0.1 (2020-06-04)
 

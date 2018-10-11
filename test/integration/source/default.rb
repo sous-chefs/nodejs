@@ -10,4 +10,8 @@ control 'commands should exist' do
   describe file '/home/random/staging' do
     it { should exist }
   end
+
+  describe command('npx -v') do
+    its('exit_status') { should eq 0 }
+  end
 end
