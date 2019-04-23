@@ -11,6 +11,7 @@ Installs node.js/npm and includes a resource for managing npm packages
 - Debian/Ubuntu
 - RHEL/CentOS/Scientific/Amazon/Oracle
 - openSUSE
+- Windows
 
 Note: Source installs require GCC 4.8+, which is not included on older distro releases
 
@@ -77,6 +78,17 @@ node['nodejs']['install_method'] = 'source'
 include_recipe "nodejs"
 # Or
 include_recipe "nodejs::nodejs_from_source"
+```
+
+#### Chocolatey
+
+Install node from chocolatey:
+
+```chef
+node['nodejs']['install_method'] = 'chocolatey'
+include_recipe "nodejs"
+# Or
+include_recipe "nodejs::nodejs_from_chocolatey"
 ```
 
 ## NPM

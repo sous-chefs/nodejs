@@ -20,6 +20,7 @@ platforms:
   - name: opensuse-leap-42
   - name: ubuntu-14.04
   - name: ubuntu-16.04
+  - name: windows
 
 suites:
 - name: package
@@ -33,6 +34,11 @@ suites:
   - recipe[test::source]
   excludes:
     - centos-6
+- name: chocolatey
+  run_list:
+  - recipe[test::chocolatey]
+  includes:
+    - windows
 - name: npm
   run_list:
   - recipe[test::npm]
