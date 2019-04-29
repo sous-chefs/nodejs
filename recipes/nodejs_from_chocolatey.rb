@@ -18,11 +18,11 @@
 
 chocolatey_package 'nodejs-lts' do
   version node['nodejs']['version']
-  action :install
+  action :upgrade
   only_if node['nodejs']['version']
 end
 
 chocolatey_package 'nodejs-lts' do
-  action :install
+  action :upgrade
   not_if node['nodejs']['version']
 end
