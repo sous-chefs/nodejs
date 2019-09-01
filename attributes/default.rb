@@ -24,16 +24,16 @@ else
   default['nodejs']['install_method'] = 'source'
 end
 
-default['nodejs']['version'] = '10.15.3'
+default['nodejs']['version'] = '10.16.3'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = 'db460a63d057ac015b75bb6a879fcbe2fefaaf22afa4b6f6445b9db61ce2270d'
+default['nodejs']['source']['checksum'] = 'db5a5e03a815b84a1266a4b48bb6a6d887175705f84fd2472f0d28e5e305a1f8'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
-default['nodejs']['binary']['checksum']['linux_x64'] = '6c35b85a7cd4188ab7578354277b2b2ca43eacc864a2a16b3669753ec2369d52'
-default['nodejs']['binary']['checksum']['linux_arm64'] = 'c82cd99e01f6e26830f0b3e0465f12f92957ebd69a68c91c03228c2669104359'
+default['nodejs']['binary']['checksum']['linux_x64'] = '2f0397bb81c1d0c9901b9aff82a933257bf60f3992227b86107111a75b9030d9'
+default['nodejs']['binary']['checksum']['linux_arm64'] = '3bab16e7107092e43426e082ee9fd88ef0a43a35816f662f14563bcc5152600d'
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 
