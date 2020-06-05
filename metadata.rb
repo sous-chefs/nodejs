@@ -1,4 +1,3 @@
-# ~FC121
 name 'nodejs'
 maintainer 'redguide'
 maintainer_email 'guilhem@lettron.fr'
@@ -6,7 +5,7 @@ license 'Apache-2.0'
 description 'Installs/Configures node.js'
 source_url 'https://github.com/redguide/nodejs'
 issues_url 'https://github.com/redguide/nodejs/issues'
-chef_version '>= 12.14' if respond_to?(:chef_version)
+chef_version '>= 12.14'
 version '6.0.0'
 
 depends 'build-essential', '>= 5.0'
