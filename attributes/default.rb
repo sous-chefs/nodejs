@@ -17,12 +17,11 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon'
-  default['nodejs']['install_method'] = 'package'
-else
-  default['nodejs']['install_method'] = 'source'
-end
+default['nodejs']['install_method'] = if platform_family?('smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon')
+                                        'package'
+                                      else
+                                        'source'
+                                      end
 
 default['nodejs']['version'] = '10.16.3'
 
