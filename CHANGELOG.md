@@ -2,6 +2,7 @@
 
 ## 7.0.0 (2018-10-11)
 
+- Require Chef Infra Client 14+ and remove the build-essential dependency
 - Updated the default to Node.js v10.16.3
 - Added compatibility with Chef Infra Client 16.2+
 - Removed Foodcritic testing

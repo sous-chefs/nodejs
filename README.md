@@ -20,7 +20,6 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 ### Cookbooks
 
-- build-essential
 - ark
 
 ## Usage
