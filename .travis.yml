@@ -38,9 +38,3 @@ before_script:
   - chef --version
 
 script: KITCHEN_LOCAL_YAML=kitchen.dokken.yml kitchen verify ${INSTANCE}
-
-matrix:
-  include:
-    - script:
-      - delivery local all
-      env: UNIT_AND_LINT=1
