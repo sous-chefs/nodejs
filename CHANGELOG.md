@@ -1,6 +1,10 @@
 # NodeJS Cookbook Changelog
 
-## 7.0.0 (2018-10-11)
+## 7.0.1 (2020-06-04)
+
+- Minor readme fix
+
+## 7.0.0 (2020-06-04)
 
 - Require Chef Infra Client 14+ and remove the build-essential dependency
 - Updated the default to Node.js v10.16.3

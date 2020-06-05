@@ -6,7 +6,7 @@ description 'Installs/Configures node.js'
 source_url 'https://github.com/redguide/nodejs'
 issues_url 'https://github.com/redguide/nodejs/issues'
 chef_version '>= 14'
-version '7.0.0'
+version '7.0.1'
 
 depends 'ark', '>= 2.0.2'
 
