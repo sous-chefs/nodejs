@@ -1,6 +1,6 @@
 # [nodejs-cookbook](https://github.com/redguide/nodejs)
 
-[![CK Version](http://img.shields.io/cookbook/v/nodejs.svg?branch=master)](https://supermarket.chef.io/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs) [![Gitter chat](https://badges.gitter.im/redguide/nodejs.svg)](https://gitter.im/redguide/nodejs)
+[![CK Version](http://img.shields.io/cookbook/v/nodejs.svg?branch=master)](https://supermarket.chef.io/cookbooks/nodejs) [![Build Status](https://img.shields.io/travis/redguide/nodejs.svg)](https://travis-ci.org/redguide/nodejs)
 
 Installs node.js/npm and includes a resource for managing npm packages
 
@@ -16,7 +16,7 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 ### Chef
 
-- Chef 12.14+
+- Chef Infra Client 14+
 
 ### Cookbooks
 
@@ -27,7 +27,7 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 Include the nodejs recipe to install node on your system based on the default installation method:
 
-```chef
+```ruby
 include_recipe "nodejs"
 ```
 
@@ -37,7 +37,7 @@ include_recipe "nodejs"
 
 Install node from packages:
 
-```chef
+```ruby
 node['nodejs']['install_method'] = 'package' # Not necessary because it's the default
 include_recipe "nodejs"
 # Or
@@ -50,7 +50,7 @@ By default this will setup deb/rpm repositories from nodesource.com, which inclu
 
 Install node from official prebuilt binaries:
 
-```chef
+```ruby
 node['nodejs']['install_method'] = 'binary'
 include_recipe "nodejs"
 
@@ -72,7 +72,7 @@ node.default['nodejs']['binary']['checksum'] = '0bd86f2a39221b532172c7d1acb57f0b
 
 Install node from sources:
 
-```chef
+```ruby
 node['nodejs']['install_method'] = 'source'
 include_recipe "nodejs"
 # Or
@@ -83,7 +83,7 @@ include_recipe "nodejs::nodejs_from_source"
 
 Npm is included in nodejs installs by default. By default, we are using it and call it `embedded`. Adding recipe `nodejs::npm` assure you to have npm installed and let you choose install method with `node['nodejs']['npm']['install_method']`
 
-```chef
+```ruby
 include_recipe "nodejs::npm"
 ```
 
@@ -182,7 +182,7 @@ Or add packages via attributes (which accept the same attributes as the LWRP abo
 
 **Author:** Marius Ducea (marius@promethost.com) **Author:** Nathan L Smith (nlloyds@gmail.com) **Author:** Guilhem Lettron (guilhem@lettron.fr) **Author:** Barthelemy Vessemont (bvessemont@gmail.com)
 
-**Copyright:** 2008-2017, Chef Software, Inc.
+**Copyright:** Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
