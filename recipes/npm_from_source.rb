@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-Chef::Recipe.include NodeJs::Helper
+Chef::DSL::Recipe.include NodeJs::Helper
 
 include_recipe 'nodejs::nodejs_from_source'
 
