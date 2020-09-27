@@ -5,6 +5,7 @@
 - resolved cookstyle error: recipes/nodejs_from_binary.rb:19:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: recipes/nodejs_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: recipes/npm_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+- Have ark setup node and npm binaries into PATH
 
 ## 7.0.1 (2020-06-04)
 
