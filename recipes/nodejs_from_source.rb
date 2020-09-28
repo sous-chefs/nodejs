@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-Chef::Recipe.include NodeJs::Helper
+Chef::DSL::Recipe.include NodeJs::Helper
 
 build_essential 'install build tools'
 
