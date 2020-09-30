@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: nodejs
+# Cookbook:: nodejs
 # Attributes:: nodejs
 #
-# Copyright 2010-2012, Promet Solutions
+# Copyright:: 2010-2017, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,26 +17,24 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x'
-  default['nodejs']['install_method'] = 'package'
-else
-  default['nodejs']['install_method'] = 'source'
-end
+default['nodejs']['install_method'] = if platform_family?('smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon')
+                                        'package'
+                                      else
+                                        'source'
+                                      end
 
-default['nodejs']['engine'] = 'node' # or iojs
-
-default['nodejs']['version'] = '6.9.1'
+default['nodejs']['version'] = '10.16.3'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
-default['nodejs']['prefix_url']['iojs'] = 'https://iojs.org/dist/'
 
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = '0bdd8d1305777cc8cd206129ea494d6c6ce56001868dd80147aff531d6df0729'
+default['nodejs']['source']['checksum'] = 'db5a5e03a815b84a1266a4b48bb6a6d887175705f84fd2472f0d28e5e305a1f8'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
-default['nodejs']['binary']['checksum']['linux_x64'] = 'd4eb161e4715e11bbef816a6c577974271e2bddae9cf008744627676ff00036a'
-default['nodejs']['binary']['checksum']['linux_x86'] = 'f9b2ca03016e45bc35d2441a63a73db94d3e7b92350f15577d796467b9f7efb0'
-default['nodejs']['binary']['checksum']['linux_arm64'] = '7aa69b6c8cff578d0d97d5bd4f76941b2fade5476f0408d53828666ee427dd4e'
+default['nodejs']['binary']['checksum']['linux_x64'] = '2f0397bb81c1d0c9901b9aff82a933257bf60f3992227b86107111a75b9030d9'
+default['nodejs']['binary']['checksum']['linux_arm64'] = '3bab16e7107092e43426e082ee9fd88ef0a43a35816f662f14563bcc5152600d'
+default['nodejs']['binary']['append_env_path'] = true
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
+
+default['nodejs']['manage_node'] = true

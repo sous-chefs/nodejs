@@ -1,0 +1,129 @@
+---
+driver:
+  name: dokken
+  privileged: true  # because Docker and SystemD
+  chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
+  chef_license: accept-no-persist
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+  deprecations_as_errors: true
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: amazonlinux
+    driver:
+      image: dokken/amazonlinux
+      pid_one_command: /sbin/init
+
+  - name: amazonlinux-2
+    driver:
+      image: dokken/amazonlinux-2
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: debian-8
+    driver:
+      image: dokken/debian-8
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+  - name: debian-9
+    driver:
+      image: dokken/debian-9
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+  - name: debian-10
+    driver:
+      image: dokken/debian-10
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+  - name: centos-7
+    driver:
+      image: dokken/centos-7
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: centos-8
+    driver:
+      image: dokken/centos-8
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: fedora-latest
+    driver:
+      image: dokken/fedora-latest
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+
+  - name: ubuntu-20.04
+    driver:
+      image: dokken/ubuntu-20.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install python -y
+
+  - name: opensuse-leap-15
+    driver:
+      image: dokken/opensuse-leap-15
+      pid_one_command: /bin/systemd
+
+suites:
+  - name: package
+    run_list:
+      - recipe[test::default]
+  - name: binary
+    run_list:
+      - recipe[test::binary]
+  - name: source
+    run_list:
+      - recipe[test::source]
+    excludes:
+      - centos-6
+    attributes:
+      chef-client:
+        config:
+          ssl_verify_mode: ":verify_none"
+  - name: npm
+    run_list:
+      - recipe[nodejs::npm]
+  - name: npm_embedded
+    run_list:
+      - recipe[nodejs::npm]
+    attributes:
+      nodejs:
+        npm:
+          install_method: embedded
+  - name: npm_source
+    run_list:
+      - recipe[nodejs::npm]
+    attributes:
+      nodejs:
+        npm:
+          install_method: source
+    excludes:
+      - centos-6
+  - name: npm_packages
+    run_list: recipe[nodejs]
+    attributes:
+      nodejs:
+        npm_packages:
+          - name: express
+          - name: socket.io
+            version: 1.0.4
+          - name: express
+            action: uninstall

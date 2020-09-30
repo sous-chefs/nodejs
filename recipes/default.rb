@@ -1,9 +1,9 @@
 #
 # Author:: Marius Ducea (marius@promethost.com)
-# Cookbook Name:: nodejs
+# Cookbook:: nodejs
 # Recipe:: default
 #
-# Copyright 2010-2012, Promet Solutions
+# Copyright:: 2010-2017, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,6 @@
 # limitations under the License.
 #
 
-include_recipe 'nodejs::install'
-include_recipe 'nodejs::npm'
-include_recipe 'nodejs::npm_packages'
+include_recipe 'nodejs::install' if node['nodejs']['manage_node']
+include_recipe 'nodejs::npm' if node['nodejs']['manage_node']
+include_recipe 'nodejs::npm_packages' if node['nodejs']['manage_node']

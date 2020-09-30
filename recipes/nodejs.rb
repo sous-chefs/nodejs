@@ -1,9 +1,9 @@
 #
 # Author:: Marius Ducea (marius@promethost.com)
-# Cookbook Name:: nodejs
+# Cookbook:: nodejs
 # Recipe:: nodejs
 #
-# Copyright 2010-2012, Promet Solutions
+# Copyright:: 2010-2017, Promet Solutions
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,4 @@
 # limitations under the License.
 #
 
-node.default['nodejs']['engine'] = 'node'
-
-include_recipe 'nodejs::install'
+Chef::Log.fatal('The nodejs::nodejs recipe is no longer used. Use nodejs::install to install nodejs instead.')

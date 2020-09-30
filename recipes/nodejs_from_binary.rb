@@ -1,6 +1,6 @@
 #
 # Author:: Julian Wilde (jules@jules.com.au)
-# Cookbook Name:: nodejs
+# Cookbook:: nodejs
 # Recipe:: install_from_binary
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,31 +16,35 @@
 # limitations under the License.
 #
 
-Chef::Recipe.send(:include, NodeJs::Helper)
-
-node.force_override['nodejs']['install_method'] = 'binary' # ~FC019
+Chef::DSL::Recipe.include NodeJs::Helper
 
 # Shamelessly borrowed from http://docs.chef.io/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?
 arch = if node['kernel']['machine'] =~ /armv6l/
+         # FIXME: This should really check the version of node we're looking for
+         # as it seems that they haven't build an `arm-pi` version in a while...
+         # if it's old, return this, otherwise just return `node['kernel']['machine']`
          'arm-pi' # assume a raspberry pi
+       elsif node['kernel']['machine'] =~ /aarch64/
+         'arm64'
+       elsif node['kernel']['machine'] =~ /x86_64/
+         'x64'
+       elsif node['kernel']['machine'] =~ /\d86/
+         'x86'
        else
-         node['kernel']['machine'] =~ /x86_64/ ? 'x64' : 'x86'
+         node['kernel']['machine']
        end
 
-# package_stub is for example: "node-v6.9.1-linux-x64.tar.xz"
-version = "v#{node['nodejs']['version']}/"
-prefix = node['nodejs']['prefix_url'][node['nodejs']['engine']]
+# needed to uncompress the binary
+package 'tar' if platform_family?('rhel', 'fedora', 'amazon', 'suse')
 
-if node['nodejs']['engine'] == 'iojs'
-  filename = "iojs-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
-  archive_name = 'iojs-binary'
-  binaries = ['bin/iojs', 'bin/node']
-else
-  filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.xz"
-  archive_name = 'nodejs-binary'
-  binaries = ['bin/node']
-end
+# package_stub is for example: "node-v6.9.1-linux-x64.tar.gz"
+version = "v#{node['nodejs']['version']}/"
+prefix = node['nodejs']['prefix_url']['node']
+
+filename = "node-v#{node['nodejs']['version']}-linux-#{arch}.tar.gz"
+archive_name = 'nodejs-binary'
+binaries = ['bin/node']
 
 binaries.push('bin/npm') if node['nodejs']['npm']['install_method'] == 'embedded'
 
@@ -57,5 +61,6 @@ ark archive_name do
   version node['nodejs']['version']
   checksum checksum
   has_binaries binaries
+  append_env_path node['nodejs']['binary']['append_env_path']
   action :install
 end

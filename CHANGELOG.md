@@ -1,5 +1,58 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
+- resolved cookstyle error: recipes/nodejs_from_binary.rb:19:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+- resolved cookstyle error: recipes/nodejs_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+- resolved cookstyle error: recipes/npm_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+- Have ark setup node and npm binaries into PATH
+
+## 7.0.1 (2020-06-04)
+
+- Minor readme fix
+
+## 7.0.0 (2020-06-04)
+
+- Require Chef Infra Client 14+ and remove the build-essential dependency
+- Updated the default to Node.js v10.16.3
+- Added compatibility with Chef Infra Client 16.2+
+- Removed Foodcritic testing
+- Updated ChefSpec and Kitchen platforms
+- Resolved multiple minor cookstyle issues in the cookbook
+- Added a vscode editor config
+
+## 6.0.0 (2018-10-11)
+
+- Use the build_essential resource in the source install recipe instead of the build-essential::default recipe. This way we can use the new built-in build_essential resource in Chef 14+
+- Set default version to Node.js v8.12.0
+
+## 5.0.0 (2017-11-15)
+
+- nodejs_npm resource has been converted to a custom resource and renamed to npm_package. The existing resource name will continue to function, but over time code should be updated for the new name. This name change has been made so we can eventually merge this resource into the chef-client.
+- compat_resource cookbook dependency has been removed and this cookbook instead requires Chef 12.14 or later
+- Chef 13 compatibility has been resolved
+- The npm_package resource now properly installs packages when the 'package' property is setA
+- Speed up npm operations by only returning a list of the desired package instead of every npm package
+- Speed up source installation by using multipackage install for the dependencies
+- Remove the broken url_valid? helper which didn't work
+
+## 4.0.0 (2017-07-11)
+
+- Updated the cookbook to require Chef 12.1+ and the compat_resource cookbook
+- Removed support for io.js which has merged back into the node.js project
+- Removed the dependency on homebrew, yum-epel, and apt cookbooks
+- Added node['nodejs']['manage_node'] attribute to use only cookbook's LWRP (required to manage node by nvm)
+- Updated the default repository URLs to be the 6.X repos
+- Added initial support for Suse and Amazon Linux
+- Improved architecture detection to support aarch64
+- Improved readme with examples for fetching your own binaries
+- Added installation of openssl and xz utilities that are needed for the binary install recipe
+- Updated the cookbook license string to be an SPDX compliant string
+- Set the minimum version of the ark cookbook to 2.0.2 in order to support Suse
+- Updated the default version from 6.9.1 to 6.10.2
+- Switched to Delivery local mode for testing
+- Added Integration testing in Travis CI with kitchen-dokken and ChefDK
+
 ## 3.0.0 (2016-11-02)
 
 - Updated the default release to the nodejs 6.9.1\. This requires C++11 extensions to compile, which are only present in GCC 4.8+. Due to this RHEL 5/6 and Ubuntu 12.04 are not supported if using this version.
@@ -75,34 +128,34 @@
 
 - implement installation from package on RedHat - ([@vaskas])
 
-## v1.1.3:
+## v1.1.3
 
 - update default version of node to 0.10.13 - and npm - v1.3.4 ([@jodosha][])
 
-## v1.1.2:
+## v1.1.2
 
 - update default version of node to 0.10.2 - ([@bakins])
 - fully migrated to test-kitchen 1.alpha and vagrant 1.1.x/berkshelf 1.3.1
 
-## v1.1.1:
+## v1.1.1
 
 - update default versions to the latest: node - v0.10.0 and npm - v1.2.14
 - `make_thread` is now a real attribute - ([@ChrisLundquist])
 
-## v1.1.0:
+## v1.1.0
 
 - rewrite the package install; remove rpm support since there are no longer any packages available anywhere
 - add support to install `legacy_packages` from ubuntu repo as well as the latest 0.10.x branch (this is default).
 
-## v1.0.4:
+## v1.0.4
 
 - add support for binary installation method ([@JulesAU])
 
-## v1.0.3:
+## v1.0.3
 
 - unreleased
 
-## v1.0.2:
+## v1.0.2
 
 - add smartos support for package install ([@sax])
 - support to compile with all processors available (default 2 if unknown) - ([@ChrisLundquist])
@@ -110,12 +163,12 @@
 - ensure npm recipe honours the 'source' or 'package' setting - ([@markbirbeck])
 - updated the default versions to the latest stable node/npm
 
-## v1.0.1:
+## v1.0.1
 
 - fixed bug that prevented overwritting the node/npm versions (moved the `src_url`s as local variables instead of attributes) - ([@johannesbecker])
 - updated the default versions to the latest node/npm
 
-## v1.0.0:
+## v1.0.0
 
 - added packages installation support ([@smith])
 
