@@ -25,7 +25,7 @@ provides :npm_package
 # backwards compatibility for the old resource name
 provides :nodejs_npm
 
-property :package, name_property: true
+property :package, String, name_property: true
 property :version, String
 property :path, String
 property :url, String
