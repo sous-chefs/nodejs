@@ -14,20 +14,6 @@ describe 'default recipe on ubuntu 16.04' do
   end
 end
 
-describe 'default recipe on centos 6' do
-  let(:runner) { ChefSpec::ServerRunner.new(platform: 'centos', version: '6') }
-  let(:chef_run) { runner.converge('nodejs::default') }
-
-  it 'includes the package install recipes' do
-    expect(chef_run).to include_recipe('nodejs::nodejs_from_package')
-    expect(chef_run).to include_recipe('nodejs::npm_packages')
-  end
-
-  it 'converges successfully' do
-    expect { :chef_run }.to_not raise_error
-  end
-end
-
 describe 'default recipe on centos 7' do
   let(:runner) { ChefSpec::ServerRunner.new(platform: 'centos', version: '7') }
   let(:chef_run) { runner.converge('nodejs::default') }
