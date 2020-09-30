@@ -50,6 +50,7 @@ end
 npm_package 'from_package_json' do
   path '/home/random'
   json true
+  user 'random'
   npm_token '123-abcde'
-  options ['--production']
+  node_env 'staging' # Test node_env usage
 end

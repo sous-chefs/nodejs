@@ -10,9 +10,13 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "config": "^1.26.2",
     "koa": "^1.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0"
+  },
+  "scripts": {
+    "postinstall": "touch $NODE_ENV"
   }
 }
