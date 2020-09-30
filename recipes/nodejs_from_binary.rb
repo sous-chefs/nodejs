@@ -61,5 +61,6 @@ ark archive_name do
   version node['nodejs']['version']
   checksum checksum
   has_binaries binaries
+  append_env_path node['nodejs']['binary']['append_env_path']
   action :install
 end

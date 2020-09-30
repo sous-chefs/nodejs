@@ -5,6 +5,7 @@
 - resolved cookstyle error: recipes/nodejs_from_binary.rb:19:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: recipes/nodejs_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: recipes/npm_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+- Have ark setup node and npm binaries into PATH
 
 ## 7.0.1 (2020-06-04)
 
@@ -127,34 +128,34 @@
 
 - implement installation from package on RedHat - ([@vaskas])
 
-## v1.1.3:
+## v1.1.3
 
 - update default version of node to 0.10.13 - and npm - v1.3.4 ([@jodosha][])
 
-## v1.1.2:
+## v1.1.2
 
 - update default version of node to 0.10.2 - ([@bakins])
 - fully migrated to test-kitchen 1.alpha and vagrant 1.1.x/berkshelf 1.3.1
 
-## v1.1.1:
+## v1.1.1
 
 - update default versions to the latest: node - v0.10.0 and npm - v1.2.14
 - `make_thread` is now a real attribute - ([@ChrisLundquist])
 
-## v1.1.0:
+## v1.1.0
 
 - rewrite the package install; remove rpm support since there are no longer any packages available anywhere
 - add support to install `legacy_packages` from ubuntu repo as well as the latest 0.10.x branch (this is default).
 
-## v1.0.4:
+## v1.0.4
 
 - add support for binary installation method ([@JulesAU])
 
-## v1.0.3:
+## v1.0.3
 
 - unreleased
 
-## v1.0.2:
+## v1.0.2
 
 - add smartos support for package install ([@sax])
 - support to compile with all processors available (default 2 if unknown) - ([@ChrisLundquist])
@@ -162,12 +163,12 @@
 - ensure npm recipe honours the 'source' or 'package' setting - ([@markbirbeck])
 - updated the default versions to the latest stable node/npm
 
-## v1.0.1:
+## v1.0.1
 
 - fixed bug that prevented overwritting the node/npm versions (moved the `src_url`s as local variables instead of attributes) - ([@johannesbecker])
 - updated the default versions to the latest node/npm
 
-## v1.0.0:
+## v1.0.0
 
 - added packages installation support ([@smith])
 
