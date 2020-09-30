@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-Chef::Recipe.send(:include, NodeJs::Helper)
+Chef::DSL::Recipe.include NodeJs::Helper
 
 # Shamelessly borrowed from http://docs.chef.io/dsl_recipe_method_platform.html
 # Surely there's a more canonical way to get arch?

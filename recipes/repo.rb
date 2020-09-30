@@ -6,7 +6,6 @@ when 'debian'
 
   apt_repository 'node.js' do
     uri node['nodejs']['repo']
-    distribution node['lsb']['codename']
     components ['main']
     keyserver node['nodejs']['keyserver']
     key node['nodejs']['key']

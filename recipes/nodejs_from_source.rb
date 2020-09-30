@@ -18,9 +18,9 @@
 # limitations under the License.
 #
 
-Chef::Recipe.send(:include, NodeJs::Helper)
+Chef::DSL::Recipe.include NodeJs::Helper
 
-include_recipe 'build-essential'
+build_essential 'install build tools'
 
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'

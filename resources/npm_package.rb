@@ -20,6 +20,7 @@
 #
 
 resource_name :npm_package
+provides :npm_package
 
 # backwards compatibility for the old resource name
 provides :nodejs_npm

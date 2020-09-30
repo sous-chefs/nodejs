@@ -17,24 +17,22 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon'
-  default['nodejs']['install_method'] = 'package'
-else
-  default['nodejs']['install_method'] = 'source'
-end
+default['nodejs']['install_method'] = if platform_family?('smartos', 'rhel', 'debian', 'fedora', 'mac_os_x', 'suse', 'amazon')
+                                        'package'
+                                      else
+                                        'source'
+                                      end
 
-default['nodejs']['version'] = '6.10.2'
+default['nodejs']['version'] = '10.16.3'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = '9b897dd6604d50ae5fff25fd14b1c4035462d0598735799e0cfb4f17cb6e0d19'
+default['nodejs']['source']['checksum'] = 'db5a5e03a815b84a1266a4b48bb6a6d887175705f84fd2472f0d28e5e305a1f8'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
-default['nodejs']['binary']['checksum']['linux_x64'] = '35accd2d9ccac747eff0f236e2843bc2198ba7765e2340441d6230861bae4e1b'
-default['nodejs']['binary']['checksum']['linux_x86'] = '6721221fab4e3b3a1be6573900b9e368c7a74ac1c1c3ae982e49c5583e8962e3'
-default['nodejs']['binary']['checksum']['linux_arm64'] = '97de0340b6dbf38e3d995df880a94c58d403c3054676d8fc9192b83a3735f0b8'
+default['nodejs']['binary']['checksum']['linux_x64'] = '2f0397bb81c1d0c9901b9aff82a933257bf60f3992227b86107111a75b9030d9'
+default['nodejs']['binary']['checksum']['linux_arm64'] = '3bab16e7107092e43426e082ee9fd88ef0a43a35816f662f14563bcc5152600d'
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
 
