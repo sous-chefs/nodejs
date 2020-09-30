@@ -1,3 +1,4 @@
+---
 driver:
   name: vagrant
 
@@ -14,56 +15,50 @@ platforms:
     driver_config:
       box: mvbcoding/awslinux
   - name: amazonlinux-2
-  - name: centos-6
   - name: centos-7
   - name: centos-8
   - name: debian-8
   - name: debian-9
   - name: debian-10
-  - name: fedora-latest
   - name: opensuse-leap-15
   - name: ubuntu-16.04
   - name: ubuntu-18.04
   - name: ubuntu-20.04
 
 suites:
-- name: package
-  run_list:
-  - recipe[test::default]
-- name: binary
-  run_list:
-  - recipe[test::binary]
-- name: source
-  run_list:
-  - recipe[test::source]
-  excludes:
-    - centos-6
-- name: npm
-  run_list:
-  - recipe[test::npm]
-- name: npm_embedded
-  run_list:
-  - recipe[test::npm]
-  attributes:
-    nodejs:
-      npm:
-        install_method: embedded
-- name: npm_source
-  run_list:
-  - recipe[test::npm]
-  attributes:
-    nodejs:
-      npm:
-        install_method: source
-  excludes:
-    - centos-6
-- name: npm_packages
-  run_list: recipe[nodejs]
-  attributes:
-    nodejs:
-      npm_packages:
-        - name: express
-        - name: socket.io
-          version: 1.0.4
-        - name: express
-          action: uninstall
+  - name: package
+    run_list:
+      - recipe[test::default]
+  - name: binary
+    run_list:
+      - recipe[test::binary]
+  - name: source
+    run_list:
+      - recipe[test::source]
+  - name: npm
+    run_list:
+      - recipe[nodejs::npm]
+  - name: npm_embedded
+    run_list:
+      - recipe[nodejs::npm]
+    attributes:
+      nodejs:
+        npm:
+          install_method: embedded
+  - name: npm_source
+    run_list:
+      - recipe[nodejs::npm]
+    attributes:
+      nodejs:
+        npm:
+          install_method: source
+  - name: npm_packages
+    run_list: recipe[nodejs]
+    attributes:
+      nodejs:
+        npm_packages:
+          - name: express
+          - name: socket.io
+            version: 1.0.4
+          - name: express
+            action: uninstall
