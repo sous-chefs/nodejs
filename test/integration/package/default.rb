@@ -10,4 +10,26 @@ control 'commands should exist' do
   describe file '/home/random/staging' do
     it { should exist }
   end
+
+  describe command('npm list -json -global') do
+    its('stdout') { should match(/express/) }
+    its('stdout') { should match(/async@0.6.2/) }
+    its('stdout') { should match(/request/) }
+    its('stdout') { should match(/mocha/) }
+  end
+
+  describe command('export NPM_TOKEN="123-abcde" && cd /home/random && npm list -json') do
+    its('stdout') { should match(/koa/) }
+    its('stdout') { should match(/gulp/) }
+  end
+
+  describe command('export NPM_TOKEN="123-abcde" && cd /home/random1 && npm list -json') do
+    its('stdout') { should match(/koa/) }
+    its('stdout') { should match(/gulp/) }
+  end
+
+  describe command('export NPM_TOKEN="123-abcde" && cd /home/random2 && npm list -json') do
+    its('stdout') { should match(/grunt/) }
+    its('stdout') { should match(/vary/) }
+  end
 end
