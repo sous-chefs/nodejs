@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 7.1.0 (2020-10-01)
 
 - resolved cookstyle error: recipes/nodejs_from_binary.rb:19:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: recipes/nodejs_from_source.rb:21:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
