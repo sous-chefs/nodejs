@@ -25,7 +25,7 @@ provides :npm_package
 # backwards compatibility for the old resource name
 provides :nodejs_npm
 
-property :package, name_property: true
+property :package, String, name_property: true
 property :version, String
 property :path, String
 property :url, String
@@ -34,6 +34,7 @@ property :npm_token, String
 property :options, Array, default: []
 property :user, String
 property :group, String
+property :node_env, String
 
 def initialize(*args)
   super
@@ -70,6 +71,7 @@ action_class do
     env_vars['HOME'] = ::Dir.home(new_resource.user) if new_resource.user
     env_vars['USER'] = new_resource.user if new_resource.user
     env_vars['NPM_TOKEN'] = new_resource.npm_token if new_resource.npm_token
+    env_vars['NODE_ENV'] =  new_resource.node_env if new_resource.node_env
 
     env_vars
   end
