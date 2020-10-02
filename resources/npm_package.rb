@@ -34,7 +34,7 @@ property :npm_token, String
 property :options, Array, default: []
 property :user, String
 property :group, String
-property :live_stream, [FalseClass, TrueClass], default: false
+property :live_stream, [false, true], default: false
 property :node_env, String
 
 def initialize(*args)
