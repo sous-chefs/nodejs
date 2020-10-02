@@ -22,7 +22,23 @@ module NodeJs
               Mixlib::ShellOut.new("npm list #{package} -global -json", environment: environment)
             end
 
-      JSON.parse(cmd.run_command.stdout, max_nesting: false)
+      begin
+        JSON.parse(cmd.run_command.stdout, max_nesting: false)
+      rescue JSON::ParserError => e
+        Chef::Log.error("nodejs::library::nodejs_helper::npm_list exception #{e}")
+        false
+      end
+    end
+
+    def url_valid?(list, package)
+      require 'open-uri'
+
+      begin
+        URI.parse(list.fetch(package, {}).fetch('resolved'))
+      rescue KeyError
+        # the package may have been installed without using a url
+        true
+      end
     end
 
     def version_valid?(list, package, version)
@@ -34,7 +50,8 @@ module NodeJs
 
       list = npm_list(package, path, environment)['dependencies']
       # Return true if package installed and installed to good version
-      !list.nil? && list.key?(package) && version_valid?(list, package, version)
+      # see if we really want to add the url check
+      !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
     end
   end
 end
