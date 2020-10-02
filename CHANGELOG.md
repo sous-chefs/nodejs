@@ -1,5 +1,11 @@
 # NodeJS Cookbook Changelog
 
+## unrelease
+
+- Verify the URI of installed packages to help determine if a good URI has been installed
+- Add tests that verify npm-package installed packages
+- Get the example test cookbook working
+
 ## 7.1.0 (2020-10-01)
 
 - resolved cookstyle error: recipes/nodejs_from_binary.rb:19:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`

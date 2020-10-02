@@ -29,7 +29,7 @@ property :package, String, name_property: true
 property :version, String
 property :path, String
 property :url, String
-property :json, [String, true]
+property :json, [String, true, false]
 property :npm_token, String
 property :options, Array, default: []
 property :user, String
