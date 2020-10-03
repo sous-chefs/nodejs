@@ -34,6 +34,7 @@ property :npm_token, String
 property :options, Array, default: []
 property :user, String
 property :group, String
+property :live_stream, [false, true], default: false
 property :node_env, String
 
 def initialize(*args)
@@ -48,6 +49,7 @@ action :install do
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
+    live_stream new_resource.live_stream
     not_if { package_installed? }
   end
 end
@@ -59,6 +61,7 @@ action :uninstall do
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
+    live_stream new_resource.live_stream
     only_if { package_installed? }
   end
 end
