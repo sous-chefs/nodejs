@@ -23,10 +23,6 @@ npm_package 'async' do
   version '0.6.2'
 end
 
-npm_package 'request' do
-  url 'github mikeal/request'
-end
-
 npm_package 'mocha' do
   options ['--force', '--production']
 end

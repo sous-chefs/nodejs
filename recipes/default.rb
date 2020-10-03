@@ -1,4 +1,4 @@
-#
+
 # Author:: Marius Ducea (marius@promethost.com)
 # Cookbook:: nodejs
 # Recipe:: default
