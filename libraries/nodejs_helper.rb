@@ -38,6 +38,8 @@ module NodeJs
       rescue KeyError
         # the package may have been installed without using a url
         true
+      rescue URI::InvalidURIError
+        false
       end
     end
 
