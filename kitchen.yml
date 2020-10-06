@@ -32,6 +32,8 @@ platforms:
 
 suites:
   - name: default
+    excludes:
+      - windows-2016
     run_list:
       - recipe[nodejs::default]
     attributes:
@@ -46,6 +48,8 @@ suites:
           - name: express
             action: :uninstall
   - name: npm_embedded
+    excludes:
+      - windows-2016
     run_list:
       - recipe[nodejs::npm]
     attributes:
@@ -53,6 +57,8 @@ suites:
         npm:
           install_method: embedded
   - name: npm_source
+    excludes:
+      - windows-2016
     run_list:
       - recipe[nodejs::npm]
     attributes:
@@ -60,9 +66,13 @@ suites:
         npm:
           install_method: source
   - name: package
+    excludes:
+      - windows-2016
     run_list:
       - recipe[test::default]
   - name: source
+    excludes:
+      - windows-2016
     run_list:
       - recipe[test::source]
   - name: options
