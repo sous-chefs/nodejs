@@ -1,5 +1,3 @@
-apt_update 'update'
-
 include_recipe 'nodejs::npm'
 include_recipe 'git'
 
