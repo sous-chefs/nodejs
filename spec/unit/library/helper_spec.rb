@@ -10,7 +10,7 @@ describe 'helper methods' do
 
   describe 'npm_dist' do
     it 'should return a url if specified in the node attributes' do
-      n = { 'nodejs': {'npm': {'url': 'get it'}}}
+      n = { 'nodejs': {'npm': {'url': 'get it'}} }
       n = Mash.new(n)
       allow(@mt).to receive(:node).and_return(n)
       expect(@mt.npm_dist()['url']).to eq('get it')
