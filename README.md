@@ -130,6 +130,8 @@ You can specify a `NODE_ENV` environment variable, in the case that some element
 
 You can append more specific options to npm command with `attribute :options` array :
 
+You can specify auto_update as false to stop the npm install command from running and updating an installed package. Running the command will update packages within restrictions imposed by a package.json file. The default behavior is to update automatically.
+
 - use an array of options (w/ dash), they will be added to npm call.
 - ex: `['--production','--force']` or `['--force-latest']`
 

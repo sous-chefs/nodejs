@@ -1,5 +1,9 @@
 # NodeJS Cookbook Changelog
 
+## unreleased
+
+- Add the auto_update option to the npm_package resource. Allows turning off auto_update of npm packages.
+
 ## 7.2.0 (2020-10-07)
 
 - Verify the URI of installed packages to help determine if a good URI has been installed
