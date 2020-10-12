@@ -10,13 +10,13 @@ describe 'helper methods' do
 
   describe 'npm_dist' do
     it 'should return a url if specified in the node attributes' do
-      n = { 'nodejs': { 'npm': {'url': 'get it'}} }
+      n = { 'nodejs': { 'npm': { 'url': 'get it' } } }
       n = Mash.new(n)
       allow(@mt).to receive(:node).and_return(n)
       expect(@mt.npm_dist()['url']).to eq('get it')
     end
     it 'should return a url based on the version' do
-      n = {'nodejs': {'npm': {'url': nil, 'version': '6.14.8'}}}
+      n = { 'nodejs': { 'npm': { 'url': nil, 'version': '6.14.8' } } }
       n = Mash.new(n)
       allow(@mt).to receive(:node).and_return(n)
       expect(@mt.npm_dist()['url']).to eq('https://registry.npmjs.org/npm/-/npm-6.14.8.tgz')
@@ -26,7 +26,7 @@ describe 'helper methods' do
   describe 'npm_list' do
     it 'should list information for a package' do
       allow_any_instance_of(Mixlib::ShellOut).to receive(:run_command).and_return(npmxss)
-      expect(@mt.npm_list('xss')).to eq({'dependencies' => {'xss' => {'from' => 'xss', 'resolved' => 'https://registry.npmjs.org/xss/-/xss-1.0.8.tgz', 'version' => '1.0.8'}}})
+      expect(@mt.npm_list('xss')).to eq({ 'dependencies' => { 'xss' => { 'from' => 'xss', 'resolved' => 'https://registry.npmjs.org/xss/-/xss-1.0.8.tgz', 'version' => '1.0.8' } } })
     end
   end
 
