@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## unreleased
+## Unreleased
 
 - Add the auto_update option to the npm_package resource. Allows turning off auto_update of npm packages.
 
