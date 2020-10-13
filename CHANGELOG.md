@@ -1,5 +1,9 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+- Add rspec tests for the library methods
+- Update the url_invalid? method to return false if it detects and invalid uri
+
 ## 7.2.0 (2020-10-07)
 
 - Verify the URI of installed packages to help determine if a good URI has been installed
