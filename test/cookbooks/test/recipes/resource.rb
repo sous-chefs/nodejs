@@ -25,6 +25,23 @@ npm_package 'async' do
   version '0.6.2'
 end
 
+npm_package 'xss' do
+  version '1.0.7'
+end
+
+npm_package 'xss noupgrade' do
+  package 'xss'
+  auto_update false
+end
+
+npm_package 'minify' do
+  version '5.2.0'
+end
+
+npm_package 'minify upgrade' do
+  package 'minify'
+end
+
 npm_package 'request' do
   url 'github mikeal/request'
 end

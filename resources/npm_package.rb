@@ -36,6 +36,7 @@ property :user, String
 property :group, String
 property :live_stream, [false, true], default: false
 property :node_env, String
+property :auto_update, [true, false], default: true
 
 def initialize(*args)
   super
@@ -50,7 +51,7 @@ action :install do
     group new_resource.group
     environment npm_env_vars
     live_stream new_resource.live_stream
-    not_if { package_installed? }
+    not_if { package_installed? && no_auto_update? }
   end
 end
 
@@ -81,6 +82,10 @@ action_class do
 
   def package_installed?
     new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path, new_resource.npm_token)
+  end
+
+  def no_auto_update?
+    new_resource.package && !new_resource.auto_update
   end
 
   def npm_options
