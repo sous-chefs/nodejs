@@ -1,6 +1,7 @@
 # NodeJS Cookbook Changelog
 
 ## Unreleased
+
 - Add rspec tests for the library methods
 - Update the url_invalid? method to return false if it detects and invalid uri
 
