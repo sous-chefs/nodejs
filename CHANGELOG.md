@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add rspec tests for the library methods
+- Update the url_invalid? method to return false if it detects and invalid uri
 - Add the auto_update option to the npm_package resource. Allows turning off auto_update of npm packages.
 
 ## 7.2.0 (2020-10-07)
