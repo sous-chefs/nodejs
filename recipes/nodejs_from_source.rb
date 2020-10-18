@@ -24,9 +24,10 @@ build_essential 'install build tools'
 
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'
-  package %w(openssl-devel python3 tar)
+  # The ark resource uses and requires python2 for builds
+  package %w(openssl-devel python2 tar)
 when 'debian'
-  package 'libssl-dev python'
+  package %w(libssl-dev python)
 end
 
 version = "v#{node['nodejs']['version']}/"
@@ -42,4 +43,5 @@ ark archive_name do
   checksum node['nodejs']['source']['checksum']
   make_opts ["-j #{node['nodejs']['make_threads']}"]
   action :install_with_make
+  environment(PYTHON: 'python2')
 end

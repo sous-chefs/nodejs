@@ -29,5 +29,8 @@ unless node['nodejs']['packages']
 end
 
 node['nodejs']['packages'].each do |node_pkg|
-  package node_pkg
+  package node_pkg do
+    action node['nodejs']['package_action'][node_pkg] if node['nodejs']['package_action'][node_pkg]
+    options node['nodejs']['package_options'][node_pkg] if node['nodejs']['package_options'][node_pkg]
+  end
 end

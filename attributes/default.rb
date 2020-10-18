@@ -30,6 +30,7 @@ default['nodejs']['version'] = '10.16.3'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
+default['nodejs']['tmpdir'] = '/tmp'
 default['nodejs']['source']['url']      = nil # Auto generated
 default['nodejs']['source']['checksum'] = 'db5a5e03a815b84a1266a4b48bb6a6d887175705f84fd2472f0d28e5e305a1f8'
 

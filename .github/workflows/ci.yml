@@ -48,11 +48,13 @@ jobs:
           - 'ubuntu-1804'
           - 'ubuntu-2004'
         suite:
-          - 'package'
-          - 'binary'
-          - 'npm'
+          - 'default'
           - 'npm-embedded'
-          - 'npm-packages'
+          - 'package'
+          - 'source'
+        exclude:
+          - os: 'centos-7'
+            suite: 'source'
       fail-fast: false
 
     steps:

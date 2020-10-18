@@ -40,10 +40,12 @@ end
 
 npm_package 'minify upgrade' do
   package 'minify'
+  live_stream true
 end
 
 npm_package 'request' do
   url 'github mikeal/request'
+  live_stream true
 end
 
 npm_package 'mocha' do

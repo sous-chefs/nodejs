@@ -1,3 +1,4 @@
+
 control 'commands should exist' do
   describe command('node -v') do
     its('exit_status') { should eq 0 }
@@ -7,11 +8,15 @@ control 'commands should exist' do
     its('exit_status') { should eq 0 }
   end
 
-  describe file '/home/random/staging' do
+  describe command('npx -v') do
+    its('exit_status') { should eq 0 }
+  end
+
+  describe file('/usr/local/bin/npm') do
     it { should exist }
   end
 
-  describe command('npx -v') do
-    its('exit_status') { should eq 0 }
+  describe file('/usr/local/bin/npx') do
+    it { should exist }
   end
 end
