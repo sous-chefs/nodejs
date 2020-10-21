@@ -53,7 +53,7 @@ module NodeJs
       list = npm_list(package, path, environment)['dependencies']
       # Return true if package installed and installed to good version
       # see if we really want to add the url check
-      !list && !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
+      !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
     end
   end
 end
