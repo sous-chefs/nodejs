@@ -25,8 +25,6 @@ module NodeJs
       begin
         JSON.parse(cmd.run_command.stdout, max_nesting: false)
       rescue JSON::ParserError => e
-        puts 'DEBUG'
-        puts "#{cmd.run_command.stdout}"
         Chef::Log.error("nodejs::library::nodejs_helper::npm_list exception #{e}")
         false
       end
@@ -55,7 +53,7 @@ module NodeJs
       list = npm_list(package, path, environment)['dependencies']
       # Return true if package installed and installed to good version
       # see if we really want to add the url check
-      !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
+      !list && !list.nil? && list.key?(package) && version_valid?(list, package, version) && url_valid?(list, package)
     end
   end
 end
