@@ -40,13 +40,14 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'amazonlinux-2'
-          - 'centos-7'
-          - 'centos-8'
-          - 'debian-9'
-          - 'debian-10'
-          - 'ubuntu-1804'
-          - 'ubuntu-2004'
+          # - 'amazonlinux-2'
+          # - 'centos-7'
+          # - 'centos-8'
+          # - 'debian-9'
+          # - 'debian-10'
+          - 'opensuse-leap-15'
+          # - 'ubuntu-1804'
+          # - 'ubuntu-2004'
         suite:
           - 'default'
           - 'npm-embedded'
