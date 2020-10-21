@@ -25,6 +25,8 @@ module NodeJs
       begin
         JSON.parse(cmd.run_command.stdout, max_nesting: false)
       rescue JSON::ParserError => e
+        puts "DEBUG"
+        puts "#{cmd.run_command.stdout}"
         Chef::Log.error("nodejs::library::nodejs_helper::npm_list exception #{e}")
         false
       end
