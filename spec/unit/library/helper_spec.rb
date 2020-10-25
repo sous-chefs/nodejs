@@ -30,7 +30,7 @@ describe 'helper methods' do
     end
     it 'should handle bad output fomr the npm list command' do
       allow_any_instance_of(Mixlib::ShellOut).to receive(:run_command).and_return(npminvalid)
-      expect(@mt.npm_list('other')).to eq({ })
+      expect(@mt.npm_list('other')).to eq({})
     end
   end
 
