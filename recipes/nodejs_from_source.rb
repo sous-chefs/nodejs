@@ -28,6 +28,8 @@ when 'rhel', 'fedora', 'amazon'
   package %w(openssl-devel python2 tar)
 when 'debian'
   package %w(libssl-dev python)
+when 'suse'
+  package %w(python)
 end
 
 version = "v#{node['nodejs']['version']}/"

@@ -45,6 +45,7 @@ jobs:
           - 'centos-8'
           - 'debian-9'
           - 'debian-10'
+          - 'opensuse-leap-15'
           - 'ubuntu-1804'
           - 'ubuntu-2004'
         suite:
@@ -54,6 +55,8 @@ jobs:
           - 'source'
         exclude:
           - os: 'centos-7'
+            suite: 'source'
+          - os: 'opensuse-leap-15'
             suite: 'source'
       fail-fast: false
 
