@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Enable builds for opensuse-leap-15
+- Enable source builds for centos 7
 - Add a library method test
 
 ## 7.3.0 (2020-10-21)

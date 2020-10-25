@@ -55,8 +55,6 @@ jobs:
           - 'package'
           - 'source'
         exclude:
-          - os: 'centos-7'
-            suite: 'source'
           - os: 'opensuse-leap-15'
             suite: 'source'
       fail-fast: false
