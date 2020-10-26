@@ -1,9 +1,14 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
+- Enable builds for opensuse-leap-15
+- Add a library method test
+
 ## 7.3.0 (2020-10-21)
 
 - Add rspec tests for the library methods
-- Update the url_invalid? method to return false if it detects and invalid uri
+- Update the url_invalid? method to return false if it detects an invalid uri
 - Add the auto_update option to the npm_package resource. Allows turning off auto_update of npm packages.
 - Allow actions and options for OS package installation to be specified as attributes
 - Add the live_stream parameter to the npm_package execution to get better installation diagnostics

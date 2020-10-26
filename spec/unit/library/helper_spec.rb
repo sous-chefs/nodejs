@@ -28,6 +28,10 @@ describe 'helper methods' do
       allow_any_instance_of(Mixlib::ShellOut).to receive(:run_command).and_return(npmxss)
       expect(@mt.npm_list('xss')).to eq({ 'dependencies' => { 'xss' => { 'from' => 'xss', 'resolved' => 'https://registry.npmjs.org/xss/-/xss-1.0.8.tgz', 'version' => '1.0.8' } } })
     end
+    it 'should handle bad output fomr the npm list command' do
+      allow_any_instance_of(Mixlib::ShellOut).to receive(:run_command).and_return(npminvalid)
+      expect(@mt.npm_list('other')).to eq({})
+    end
   end
 
   describe 'url_valid?' do
@@ -145,6 +149,13 @@ def npmglobal
   os
 end
 
+def npminvalid
+  os = OpenStruct.new
+  os.stdout =
+  'Invalid return'
+  os
+end
+
 def npmxss
   os = OpenStruct.new
   os.stdout =
@@ -154,7 +165,7 @@ def npmxss
         "version": "1.0.8",
         "from": "xss",
         "resolved": "https://registry.npmjs.org/xss/-/xss-1.0.8.tgz"
-      }
+     }
     }
   }'
   os
