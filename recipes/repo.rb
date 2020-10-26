@@ -10,6 +10,11 @@ when 'debian'
     keyserver node['nodejs']['keyserver']
     key node['nodejs']['key']
   end
+when 'fedora'
+  yum_repository 'node.js' do
+    description 'nodesource.com nodejs repository'
+    baseurl node['nodejs']['repo']
+  end
 when 'rhel', 'amazon'
   yum_repository 'node.js' do
     description 'nodesource.com nodejs repository'

@@ -9,4 +9,9 @@ when 'rhel', 'amazon'
   release_ver = platform?('amazon') ? 6 : node['platform_version'].to_i
   default['nodejs']['repo']         = "https://rpm.nodesource.com/pub_10.x/el/#{release_ver}/$basearch"
   default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL'
+when 'fedora'
+  default['nodejs']['install_repo'] = true
+  release_ver = node['platform_version'].to_i
+  default['nodejs']['repo']         = "https://rpm.nodesource.com/pub_10.x/fc/#{release_ver}/$basearch"
+  default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/fc/NODESOURCE-GPG-SIGNING-KEY-EL'
 end
