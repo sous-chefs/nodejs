@@ -3,7 +3,7 @@
 ## Unreleased
 
 - Enable builds for opensuse-leap-15
-- add a library method test
+- Add a library method test
 
 ## 7.3.0 (2020-10-21)
 
