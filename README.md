@@ -198,9 +198,9 @@ Or add packages via attributes (which accept the same attributes as the LWRP abo
 
 ## License & Authors
 
-**Author:** Marius Ducea (marius@promethost.com) 
-**Author:** Nathan L Smith (nlloyds@gmail.com) 
-**Author:** Guilhem Lettron (guilhem@lettron.fr) 
+**Author:** Marius Ducea (marius@promethost.com)
+**Author:** Nathan L Smith (nlloyds@gmail.com)
+**Author:** Guilhem Lettron (guilhem@lettron.fr)
 **Author:** Barthelemy Vessemont (bvessemont@gmail.com)
 
 **Copyright:** Chef Software, Inc.
