@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- resolved cookstyle error: attributes/packages.rb:15:55 convention: `Layout/TrailingEmptyLines`
+- resolved cookstyle error: test/cookbooks/test/recipes/resource.rb:118:1 convention: `Layout/TrailingEmptyLines`
 - Enable builds for opensuse-leap-15
 - Add a library method test
 
