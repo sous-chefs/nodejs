@@ -1,5 +1,7 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
 ## 7.3.1 - *2020-12-31*
 
 - resolved cookstyle error: attributes/packages.rb:15:55 convention: `Layout/TrailingEmptyLines`
