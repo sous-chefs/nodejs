@@ -115,4 +115,3 @@ npm_package 'from_package_json' do
   npm_token '123-abcde'
   options ['--development']
 end
-
