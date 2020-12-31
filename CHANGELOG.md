@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 7.3.1 - *2020-12-31*
 
 - resolved cookstyle error: attributes/packages.rb:15:55 convention: `Layout/TrailingEmptyLines`
 - resolved cookstyle error: test/cookbooks/test/recipes/resource.rb:118:1 convention: `Layout/TrailingEmptyLines`
@@ -179,7 +179,7 @@
 
 ## v1.0.3
 
-- unreleased
+- 7.3.1 - *2020-12-31*
 
 ## v1.0.2
 
