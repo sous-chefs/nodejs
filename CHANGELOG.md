@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- resolved cookstyle error: resources/npm_package.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+
 ## 7.3.3 - *2021-08-30*
 
 - Standardise files with files in sous-chefs/repo-management

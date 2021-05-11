@@ -21,6 +21,7 @@
 
 resource_name :npm_package
 provides :npm_package
+unified_mode true
 
 # backwards compatibility for the old resource name
 provides :nodejs_npm
