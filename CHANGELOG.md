@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 7.3.2 - *2021-06-01*
 
 ## 7.3.1 - *2020-12-31*
 
