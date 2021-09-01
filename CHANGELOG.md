@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Update metadata and README to Sous Chef
 - Cookstyle fixes
 
 ## 7.3.3 - *2021-08-30*
