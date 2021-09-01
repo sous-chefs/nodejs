@@ -2,14 +2,7 @@
 
 ## Unreleased
 
-- resolved cookstyle error: attributes/default.rb:20:1 convention: `Style/ConditionalAssignment`
-- resolved cookstyle error: attributes/default.rb:21:1 convention: `Layout/CaseIndentation`
-- resolved cookstyle error: attributes/default.rb:22:3 convention: `Layout/IndentationWidth`
-- resolved cookstyle error: attributes/default.rb:23:1 convention: `Layout/CaseIndentation`
-- resolved cookstyle error: attributes/default.rb:24:3 convention: `Layout/IndentationWidth`
-- resolved cookstyle error: attributes/default.rb:25:1 convention: `Layout/ElseAlignment`
-- resolved cookstyle error: attributes/default.rb:26:3 convention: `Layout/IndentationWidth`
-- resolved cookstyle error: resources/npm_package.rb:1:1 refactor: `Chef/Deprecations/ResourceWithoutUnifiedTrue`
+- Cookstyle fixes
 
 ## 7.3.3 - *2021-08-30*
 
