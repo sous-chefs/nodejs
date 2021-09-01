@@ -25,7 +25,7 @@ Note: Source installs require GCC 4.8+, which is not included on older distro re
 
 ### Chef
 
-- Chef Infra Client 14+
+- Chef Infra Client 15.3+
 
 ### Cookbooks
 

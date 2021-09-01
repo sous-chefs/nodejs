@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Update metadata and README to Sous Chef
+- Enable unified_mode by default and require at least Chef Infra Client 15.3
 - Cookstyle fixes
 
 ## 7.3.3 - *2021-08-30*

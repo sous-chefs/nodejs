@@ -6,7 +6,7 @@ description       'Installs/Configures node.js'
 version           '7.3.3'
 source_url        'https://github.com/sous-chefs/nodejs'
 issues_url        'https://github.com/sous-chefs/nodejs/issues'
-chef_version      '>= 14'
+chef_version      '>= 15.3'
 
 supports 'amazon'
 supports 'centos'
