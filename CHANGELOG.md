@@ -1,5 +1,7 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
 ## 8.0.0 - *2021-09-02*
 
 - Update metadata and README to Sous Chef
