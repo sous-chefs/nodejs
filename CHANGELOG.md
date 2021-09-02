@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 8.0.0 - *2021-09-02*
 
 - Update metadata and README to Sous Chef
 - Enable unified_mode by default and require at least Chef Infra Client 15.3
