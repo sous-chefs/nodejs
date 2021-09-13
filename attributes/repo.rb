@@ -6,7 +6,7 @@ when 'debian'
   default['nodejs']['key']          = '1655a0ab68576280'
 when 'rhel', 'fedora', 'amazon'
   default['nodejs']['install_repo'] = true
-  release_ver = platform?('amazon') ? 6 : node['platform_version'].to_i
+  release_ver = platform?('amazon') ? 7 : node['platform_version'].to_i
   default['nodejs']['repo']         = "https://rpm.nodesource.com/pub_14.x/el/#{release_ver}/$basearch"
   default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL'
 end

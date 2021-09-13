@@ -3,6 +3,9 @@
 ## Unreleased
 
 - Update the default version to 14 LTS
+- Remove testing for EOL platforms
+- Add Debian 11 testing
+- Fix release version to use for Amazon Linux
 
 ## 8.0.0 - *2021-09-02*
 
