@@ -2,6 +2,31 @@
 
 ## Unreleased
 
+## 9.0.0 - *2021-09-13*
+
+- Update the default version to 14 LTS
+- Remove testing for EOL platforms
+- Add Debian 11 testing
+- Fix release version to use for Amazon Linux
+
+## 8.0.0 - *2021-09-02*
+
+- Update metadata and README to Sous Chef
+- Enable unified_mode by default and require at least Chef Infra Client 15.3
+- Cookstyle fixes
+
+## 7.3.3 - *2021-08-30*
+
+- Standardise files with files in sous-chefs/repo-management
+
+## 7.3.2 - *2021-06-01*
+
+- Standardise files with files in sous-chefs/repo-management
+
+## 7.3.1 - *2020-12-31*
+
+- resolved cookstyle error: attributes/packages.rb:15:55 convention: `Layout/TrailingEmptyLines`
+- resolved cookstyle error: test/cookbooks/test/recipes/resource.rb:118:1 convention: `Layout/TrailingEmptyLines`
 - Enable builds for opensuse-leap-15
 - Enable source builds for centos 7
 - Add a library method test
@@ -178,7 +203,7 @@
 
 ## v1.0.3
 
-- unreleased
+- 7.3.1 - *2020-12-31*
 
 ## v1.0.2
 
