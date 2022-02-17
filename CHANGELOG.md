@@ -2,7 +2,12 @@
 
 ## Unreleased
 
-Standardise files with files in sous-chefs/repo-management
+- Standardise files with files in sous-chefs/repo-management
+
+## 9.0.1 - *2022-02-08*
+
+- Remove delivery folder
+
 
 ## 9.0.0 - *2021-09-13*
 
