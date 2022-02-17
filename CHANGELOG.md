@@ -37,6 +37,7 @@
 - resolved cookstyle error: attributes/packages.rb:15:55 convention: `Layout/TrailingEmptyLines`
 - resolved cookstyle error: test/cookbooks/test/recipes/resource.rb:118:1 convention: `Layout/TrailingEmptyLines`
 - Enable builds for opensuse-leap-15
+- Enable source builds for centos 7
 - Add a library method test
 
 ## 7.3.0 (2020-10-21)

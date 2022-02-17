@@ -32,6 +32,13 @@ when 'suse'
   package %w(python)
 end
 
+if platform_family?('rhel') && node['platform_version'].to_i == 7
+  package 'devtoolset-7-gcc-c++'
+  ENV['PATH'] = '/opt/rh/devtoolset-7/root/usr/bin:' + ENV['PATH']
+  ENV['CC'] = '/opt/rh/devtoolset-7/root/usr/bin/gcc'
+  ENV['CXX'] = '/opt/rh/devtoolset-7/root/usr/bin/g++'
+end
+
 version = "v#{node['nodejs']['version']}/"
 prefix = node['nodejs']['prefix_url']['node']
 filename = "node-v#{node['nodejs']['version']}.tar.gz"
