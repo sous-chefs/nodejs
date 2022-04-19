@@ -4,6 +4,7 @@
 
 - Remove delivery and move to calling RSpec directly via a reusable workflow
 - Update tested platforms
+- Disable upstream DNF module on EL8 based systems
 
 ## 9.0.2 - *2022-02-17*
 

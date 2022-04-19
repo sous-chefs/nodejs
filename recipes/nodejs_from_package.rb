@@ -28,6 +28,12 @@ unless node['nodejs']['packages']
   return
 end
 
+if platform_family?('rhel', 'fedora') && node['platform_version'].to_i >= 8 && !node['nodejs']['dnf_module']
+  dnf_module 'nodejs' do
+    action :disable
+  end
+end
+
 node['nodejs']['packages'].each do |node_pkg|
   package node_pkg do
     action node['nodejs']['package_action'][node_pkg] if node['nodejs']['package_action'][node_pkg]

@@ -1,8 +1,12 @@
+os_family = os.family
 
 control 'commands should exist' do
   describe command('node -v') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match /^v14\.*/ }
+    # No upstream repository so it installs the OS version
+    unless os_family.match?(/suse|fedora/)
+      its('stdout') { should match /^v14\.*/ }
+    end
   end
 
   describe command('npm -v') do
