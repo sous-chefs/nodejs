@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Remove delivery and move to calling RSpec directly via a reusable workflow
+
 ## 9.0.2 - *2022-02-17*
 
 - Standardise files with files in sous-chefs/repo-management
