@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Update to NodeJS 17.x
 - Remove delivery and move to calling RSpec directly via a reusable workflow
 - Update tested platforms
 - Disable upstream DNF module on EL8 based systems

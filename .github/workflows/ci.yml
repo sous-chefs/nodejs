@@ -34,6 +34,8 @@ jobs:
           - 'package'
           - 'source'
         exclude:
+          - os: 'amazonlinux-2'
+            suite: 'source'
           - os: 'centos-7'
             suite: 'source'
           - os: 'opensuse-leap-15'
