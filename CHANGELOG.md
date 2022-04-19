@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Remove delivery and move to calling RSpec directly via a reusable workflow
+- Update tested platforms
 
 ## 9.0.2 - *2022-02-17*
 
