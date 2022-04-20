@@ -44,6 +44,8 @@ jobs:
             suite: 'source'
           - os: 'opensuse-leap-15'
             suite: 'source'
+          - os: 'ubuntu-1804'
+            suite: 'source'
       fail-fast: false
 
     steps:
