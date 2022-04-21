@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 10.0.0 - *2022-04-21*
 
 - Update to NodeJS 17.x
 - Remove delivery and move to calling RSpec directly via a reusable workflow
