@@ -13,7 +13,7 @@ control 'commands should exist' do
 
   describe command('npm list -json -global') do
     its('stdout') { should match(/express/) }
-    its('stdout') { should match(/async@0.6.2/) }
+    its('stdout') { should match(/"async": {\n\s*"version": "0.6.2"/) }
     its('stdout') { should match(/request/) }
     its('stdout') { should match(/mocha/) }
   end

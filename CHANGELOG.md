@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Update to NodeJS 17.x
+- Remove delivery and move to calling RSpec directly via a reusable workflow
+- Update tested platforms
+- Disable upstream DNF module on EL8 based systems
+
 ## 9.0.2 - *2022-02-17*
 
 - Standardise files with files in sous-chefs/repo-management
@@ -9,7 +14,6 @@
 ## 9.0.1 - *2022-02-08*
 
 - Remove delivery folder
-
 
 ## 9.0.0 - *2021-09-13*
 

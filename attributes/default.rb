@@ -26,17 +26,17 @@ default['nodejs']['install_method'] = case node['platform_family']
                                         'source'
                                       end
 
-default['nodejs']['version'] = '14.17.6'
+default['nodejs']['version'] = '17.9.0'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
 default['nodejs']['tmpdir'] = '/tmp'
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = 'f64559c87faa2f1ce93c3d2cd09723af254ec320a53cbfd1a2ba8fba28e488d0'
+default['nodejs']['source']['checksum'] = '25d8c6559456d548823e3f7f4fae7dc8c7d5a0f7772c79c8d902528e801ba09a'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
-default['nodejs']['binary']['checksum']['linux_x64'] = '3bbe4faf356738d88b45be222bf5e858330541ff16bd0d4cfad36540c331461b'
-default['nodejs']['binary']['checksum']['linux_arm64'] = '3355eae15582be48f6be0910e279abbf2324f4538d3ccb2da7e66edab6e6b0fe'
+default['nodejs']['binary']['checksum']['linux_x64'] = '8c9f4c95c254336fcb2c768e746f4316b8176adc0fb599cbbb460d0933991d12'
+default['nodejs']['binary']['checksum']['linux_arm64'] = 'd4acf5c0380c96c867428d0232666d3327dc5fa83a694d7b63f728a76ece84b2'
 default['nodejs']['binary']['append_env_path'] = true
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2

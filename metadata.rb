@@ -23,3 +23,4 @@ supports 'windows'
 
 depends 'ark', '>= 2.0.2'
 depends 'chocolatey', '>= 3.0'
+depends 'yum', '>= 7.2'

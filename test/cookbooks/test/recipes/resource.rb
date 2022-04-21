@@ -109,9 +109,10 @@ template '/home/random1/package.json' do
 end
 
 # Test npm_token usage (for NPM private repositories)
-npm_package 'from_package_json' do
+npm_package 'from_package_json_private' do
   path '/home/random1'
   json true
   npm_token '123-abcde'
   options ['--development']
+  node_env 'development'
 end
