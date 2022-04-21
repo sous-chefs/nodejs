@@ -114,5 +114,5 @@ npm_package 'from_package_json_private' do
   json true
   npm_token '123-abcde'
   options ['--development']
-  node_env 'production'
+  node_env 'development'
 end
