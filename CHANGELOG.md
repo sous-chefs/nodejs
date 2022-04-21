@@ -1,5 +1,7 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
 ## 10.0.0 - *2022-04-21*
 
 - Update to NodeJS 17.x
