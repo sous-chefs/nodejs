@@ -25,7 +25,7 @@ control 'commands should exist' do
     end
   end
 
-  describe command('npm list -json -global') do
+  describe command('npm list -json --location=global') do
     its('stdout') { should_not match(/"express"/) }
     its('stdout') { should match(/"socket.io"/) }
   end

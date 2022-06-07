@@ -11,18 +11,18 @@ control 'commands should exist' do
     it { should exist }
   end
 
-  describe command('npm list -json -global') do
+  describe command('npm list -json --location=global') do
     its('stdout') { should match(/express/) }
     its('stdout') { should match(/"async": {\n\s*"version": "0.6.2"/) }
     its('stdout') { should match(/request/) }
     its('stdout') { should match(/mocha/) }
   end
 
-  describe command('npm list xss -json -global') do
+  describe command('npm list xss -json --location=globall') do
     its('stdout') { should match(/"version":\s*"1.0.7"/) }
   end
 
-  describe command('npm list minify -json -global') do
+  describe command('npm list minify -json --location=global') do
     its('stdout') { should_not match(/"version":\s*"5.2.0"/) }
   end
 
