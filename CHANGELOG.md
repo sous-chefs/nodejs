@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- To ensure consistent environment between `npm install` and `npm list`, pass same environment variables.
+
 ## 10.0.0 - *2022-04-21*
 
 - Update to NodeJS 17.x
