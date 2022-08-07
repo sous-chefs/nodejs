@@ -4,6 +4,7 @@
 
 - Standardise files with files in sous-chefs/repo-management
 - Default to using EL 9 repo for Fedora
+- CI: Remove Fedora from source suite
 
 ## 10.0.0 - *2022-04-21*
 
