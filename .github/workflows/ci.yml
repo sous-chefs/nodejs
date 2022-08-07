@@ -42,6 +42,8 @@ jobs:
             suite: 'source'
           - os: 'centos-7'
             suite: 'source'
+          - os: 'fedora-latest'
+            suite: 'source'
           - os: 'opensuse-leap-15'
             suite: 'source'
           - os: 'ubuntu-1804'
