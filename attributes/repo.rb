@@ -11,6 +11,6 @@ when 'rhel', 'amazon'
   default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL'
 when 'fedora'
   default['nodejs']['install_repo'] = true
-  default['nodejs']['repo']         = 'https://rpm.nodesource.com/pub_17.x/fc/$releasever/$basearch'
+  default['nodejs']['repo']         = 'https://rpm.nodesource.com/pub_17.x/el/9/$basearch'
   default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL'
 end
