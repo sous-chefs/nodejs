@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 10.0.1 - *2022-08-07*
 
 - Standardise files with files in sous-chefs/repo-management
 - Default to using EL 9 repo for Fedora
