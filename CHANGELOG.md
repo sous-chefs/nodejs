@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 10.1.0 - *2022-08-08*
 
 - To ensure consistent environment between `npm install` and `npm list`, pass same environment variables.
 
