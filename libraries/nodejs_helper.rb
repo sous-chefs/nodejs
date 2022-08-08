@@ -47,9 +47,7 @@ module NodeJs
       (version ? list[package]['version'] == version : true)
     end
 
-    def npm_package_installed?(package, version = nil, path = nil, npm_token = nil)
-      environment = { 'NPM_TOKEN' => npm_token } if npm_token
-
+    def npm_package_installed?(package, version = nil, path = nil, environment = {})
       list = npm_list(package, path, environment)['dependencies']
       # Return true if package installed and installed to good version
       # see if we really want to add the url check

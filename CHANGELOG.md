@@ -4,6 +4,10 @@
 
 - Compensate for NPM CLI deprecating `-global` and use `--location=global
 
+## 10.1.0 - *2022-08-08*
+
+- To ensure consistent environment between `npm install` and `npm list`, pass same environment variables.
+
 ## 10.0.1 - *2022-08-07*
 
 - Standardise files with files in sous-chefs/repo-management
