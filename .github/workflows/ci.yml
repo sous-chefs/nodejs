@@ -1,7 +1,7 @@
 ---
 name: ci
 
-'on':
+"on":
   pull_request:
   push:
     branches: [main]
@@ -21,42 +21,42 @@ jobs:
     strategy:
       matrix:
         os:
-          - 'almalinux-8'
-          - 'amazonlinux-2'
-          - 'centos-7'
-          - 'centos-stream-8'
-          - 'debian-10'
-          - 'debian-11'
-          - 'fedora-latest'
-          - 'opensuse-leap-15'
-          - 'rockylinux-8'
-          - 'ubuntu-1804'
-          - 'ubuntu-2004'
+          - "almalinux-8"
+          - "amazonlinux-2"
+          - "centos-7"
+          - "centos-stream-8"
+          - "debian-10"
+          - "debian-11"
+          - "fedora-latest"
+          - "opensuse-leap-15"
+          - "rockylinux-8"
+          - "ubuntu-1804"
+          - "ubuntu-2004"
         suite:
-          - 'default'
-          - 'npm-embedded'
-          - 'package'
-          - 'source'
+          - "default"
+          - "npm-embedded"
+          - "package"
+          - "source"
         exclude:
-          - os: 'amazonlinux-2'
-            suite: 'source'
-          - os: 'centos-7'
-            suite: 'source'
-          - os: 'fedora-latest'
-            suite: 'source'
-          - os: 'opensuse-leap-15'
-            suite: 'source'
-          - os: 'ubuntu-1804'
-            suite: 'source'
+          - os: "amazonlinux-2"
+            suite: "source"
+          - os: "centos-7"
+            suite: "source"
+          - os: "fedora-latest"
+            suite: "source"
+          - os: "opensuse-leap-15"
+            suite: "source"
+          - os: "ubuntu-1804"
+            suite: "source"
       fail-fast: false
 
     steps:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Install Chef
-        uses: actionshub/chef-install@main
+        uses: actionshub/chef-install@2.0.4
       - name: Dokken
-        uses: actionshub/test-kitchen@main
+        uses: actionshub/test-kitchen@2.1.0
         env:
           CHEF_LICENSE: accept-no-persist
           KITCHEN_LOCAL_YAML: kitchen.dokken.yml
