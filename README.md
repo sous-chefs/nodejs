@@ -118,17 +118,17 @@ note: This resource was previously named nodejs_npm. Calls to that resource name
 
 - npm registry:
 
-  - name: `property :package`
-  - version: `property :version` (optional)
+   - name: `property :package`
+   - version: `property :version` (optional)
 
 - url: `property :url`
 
-  - for git use `git://{your_repo}`
+   - for git use `git://{your_repo}`
 
 - from a json (package.json by default): `property :json`
 
-  - use `true` for default
-  - use a `String` to specify json file
+   - use `true` for default
+   - use a `String` to specify json file
 
 Packages can be installed globally (by default) or in a directory (by using `attribute :path`)
 

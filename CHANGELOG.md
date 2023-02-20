@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+mdl now requires 3 spaces for an unordered list indentation [MDL007](https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md007---unordered-list-indentation)
+
 ## 10.1.4 - *2023-02-20*
 
 Standardise files with files in sous-chefs/repo-management
