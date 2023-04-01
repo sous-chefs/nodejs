@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 10.1.7 - *2023-04-01*
 
 Standardise files with files in sous-chefs/repo-management
 
