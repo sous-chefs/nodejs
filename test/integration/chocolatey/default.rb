@@ -7,7 +7,7 @@ control 'commands should exist' do
     its('exit_status') { should eq 0 }
   end
 
-  describe command('npm list -json -global') do
+  describe command('npm list -json --location=global') do
     its('stdout') { should match(/express/) }
     its('stdout') { should match(/async@0.6.2/) }
     its('stdout') { should match(/request/) }

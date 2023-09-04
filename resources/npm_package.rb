@@ -91,7 +91,7 @@ action_class do
 
   def npm_options
     options = ''
-    options << ' -global' unless new_resource.path
+    options << ' --location=global' unless new_resource.path
     new_resource.options.each do |option|
       options << " #{option}"
     end

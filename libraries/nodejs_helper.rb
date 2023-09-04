@@ -19,7 +19,7 @@ module NodeJs
       cmd = if path
               Mixlib::ShellOut.new("npm list #{package} -json", cwd: path, environment: environment)
             else
-              Mixlib::ShellOut.new("npm list #{package} -global -json", environment: environment)
+              Mixlib::ShellOut.new("npm list #{package} --location=global -json", environment: environment)
             end
 
       begin
