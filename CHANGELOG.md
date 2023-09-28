@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 10.1.15 - *2023-09-28*
 
 ## 10.1.14 - *2023-09-04*
 
