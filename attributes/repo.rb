@@ -1,9 +1,10 @@
 case node['platform_family']
 when 'debian'
   default['nodejs']['install_repo'] = true
-  default['nodejs']['repo']         = 'https://deb.nodesource.com/node_17.x'
+  default['nodejs']['repo']         = 'https://deb.nodesource.com/node_18.x'
   default['nodejs']['keyserver']    = 'keyserver.ubuntu.com'
-  default['nodejs']['key']          = '1655a0ab68576280'
+  default['nodejs']['distribution'] = 'nodistro'
+  default['nodejs']['key']          = '2F59B5F99B1BE0B4'
 when 'rhel', 'amazon'
   default['nodejs']['install_repo'] = true
   release_ver = platform?('amazon') ? 7 : node['platform_version'].to_i
