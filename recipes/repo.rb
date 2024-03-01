@@ -1,21 +1,28 @@
 case node['platform_family']
 when 'debian'
+  # Install necessary packages for downloading and verifying new repository information
+  package %w{ca-certificates curl gnupg}
+  # Create a directory for the new repository's keyring, if it doesn't exist
   directory '/etc/apt/keyrings'
-
+  # Download the new repository's GPG key and save it in the keyring directory
   execute 'add nodejs gpg key' do
     command "curl -fsSL #{node['nodejs']['key']} | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg"
     not_if { ::File.exist? '/etc/apt/keyrings/nodesource.gpg' }
   end
-
+  
   package 'nodejs-apt-transport-https' do
     package_name 'apt-transport-https'
   end
 
-  apt_repository 'nodesource' do
+  repo = apt_repository 'nodesource' do
     uri node['nodejs']['repo']
     components ['main']
     distribution node['nodejs']['distribution']
-    options ['signed-by=/etc/apt/keyrings/nodesource.gpg']
+  end
+  if Chef::VERSION >= Gem::Version.new('18.3.0')
+    repo.options = ['signed-by=/etc/apt/keyrings/nodesource.gpg']
+  else
+    repo.key = '2F59B5F99B1BE0B4'
   end
 when 'rhel', 'fedora', 'amazon'
   yum_repository 'nodesource-nodejs' do
