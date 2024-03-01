@@ -300,16 +300,17 @@ Standardise files with files in sous-chefs/repo-management
 
 - added packages installation support ([@smith])
 
-[@bakins]: https://github.com/bakins
-[@chrislundquist]: https://github.com/ChrisLundquist
-[@gmccue]: https://github.com/gmccue
-[@johannesbecker]: https://github.com/johannesbecker
-[@julesau]: https://github.com/JulesAU
-[@markbirbeck]: https://github.com/markbirbeck
-[@predominant]: https://github.com/predominant
-[@robertkowalski]: https://github.com/robertkowalski
-[@sax]: https://github.com/sax
-[@sjlu]: https://github.com/sjlu
-[@smith]: https://github.com/smith
-[@vaskas]: https://github.com/vaskas
-[@wanelo-pair]: https://github.com/wanelo-pair
+[@bakins]: https://github.com/bakins (Brian Akins)
+[@chrislundquist]: https://github.com/ChrisLundquist (Chris Lundquist)
+[@gmccue]: https://github.com/gmccue (Gregory McCue)
+[@johannesbecker]: https://github.com/johannesbecker (Johannes Becker)
+[@julesau]: https://github.com/JulesAU (https://github.com/JulesAU)
+[@markbirbeck]: https://github.com/markbirbeck (Mark Birbeck)
+[@predominant]: https://github.com/predominant (Graham Weldon)
+[@robertkowalski]: https://github.com/robertkowalski (Robert Kowalski)
+[@sax]: https://github.com/sax (Eric Saxby)
+[@sjlu]: https://github.com/sjlu (Steven Lu)
+[@smith]: https://github.com/smith (Nathan L Smith)
+[@stissot]: https://github.com/stissot (Sylvain Tissot)
+[@vaskas]: https://github.com/vaskas (Vasily Mikhaylichenko)
+[@wanelo-pair]: https://github.com/wanelo-pair (wanelo-pair)
