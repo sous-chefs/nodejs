@@ -26,7 +26,7 @@ default['nodejs']['install_method'] = case node['platform_family']
                                         'source'
                                       end
 
-default['nodejs']['version'] = '17.9.0'
+default['nodejs']['version'] = '18.19.1'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
