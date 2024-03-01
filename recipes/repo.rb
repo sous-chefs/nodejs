@@ -1,7 +1,7 @@
 case node['platform_family']
 when 'debian'
   # Install necessary packages for downloading and verifying new repository information
-  package %w{ca-certificates curl gnupg}
+  package %w(ca-certificates curl gnupg)
   # Create a directory for the new repository's keyring, if it doesn't exist
   directory '/etc/apt/keyrings'
   # Download the new repository's GPG key and save it in the keyring directory
@@ -9,7 +9,7 @@ when 'debian'
     command "curl -fsSL #{node['nodejs']['key']} | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg"
     not_if { ::File.exist? '/etc/apt/keyrings/nodesource.gpg' }
   end
-  
+
   package 'nodejs-apt-transport-https' do
     package_name 'apt-transport-https'
   end
