@@ -19,8 +19,8 @@ platforms:
   - name: debian-11
   - name: opensuse-leap-15
   - name: rockylinux-8
-  - name: ubuntu-18.04
   - name: ubuntu-20.04
+  - name: ubuntu-22.04
   - name: windows-2016
     driver:
       gui: false
