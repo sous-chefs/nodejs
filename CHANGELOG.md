@@ -2,7 +2,11 @@
 
 ## Unreleased
 
-Standardise files with files in sous-chefs/repo-management
+- Standardise files with files in sous-chefs/repo-management
+- Default install Node 18.9.1
+- Package recipe using new `nodistro` NodeSource repository
+- Add support for Alma Linux 9
+- Drop support for Amazon Linux 2, CentOS 7
 
 ## 10.1.15 - *2023-09-28*
 
