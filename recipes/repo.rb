@@ -14,16 +14,31 @@ when 'debian'
     package_name 'apt-transport-https'
   end
 
-  repo = apt_repository 'nodesource' do
-    uri node['nodejs']['repo']
-    components ['main']
-    distribution node['nodejs']['distribution']
+  # Prefer nodesource over Ubuntu universe packages by giving a higher priority (default 500)
+  apt_preference 'nodesource' do
+    glob '*'
+    pin 'origin deb.nodesource.com'
+    pin_priority '600'
   end
+
   if Chef::VERSION >= Gem::Version.new('18.3.0')
-    repo.options = ['signed-by=/etc/apt/keyrings/nodesource.gpg']
+    apt_repository 'nodesource' do
+      uri node['nodejs']['repo']
+      components ['main']
+      options ['signed-by=/etc/apt/keyrings/nodesource.gpg']
+      distribution node['nodejs']['distribution']
+    end
   else
-    repo.key = '2F59B5F99B1BE0B4'
+    # Chef Infra < 18.3 doesn't support options attribute, fallback to (deprecated) apt-key method
+    apt_repository 'nodesource' do
+      uri node['nodejs']['repo']
+      components ['main']
+      key '2F59B5F99B1BE0B4'
+      keyserver 'keyserver.ubuntu.com'
+      distribution node['nodejs']['distribution']
+    end
   end
+
 when 'rhel', 'fedora', 'amazon'
   yum_repository 'nodesource-nodejs' do
     description 'nodesource.com nodejs repository'
