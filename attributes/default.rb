@@ -32,11 +32,11 @@ default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
 default['nodejs']['tmpdir'] = '/tmp'
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = '25d8c6559456d548823e3f7f4fae7dc8c7d5a0f7772c79c8d902528e801ba09a'
+default['nodejs']['source']['checksum'] = '637aa3f779a5a733657d4dde220747b82ab699075635990a9a611b00d2c20b09'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
-default['nodejs']['binary']['checksum']['linux_x64'] = '8c9f4c95c254336fcb2c768e746f4316b8176adc0fb599cbbb460d0933991d12'
-default['nodejs']['binary']['checksum']['linux_arm64'] = 'd4acf5c0380c96c867428d0232666d3327dc5fa83a694d7b63f728a76ece84b2'
+default['nodejs']['binary']['checksum']['linux_x64'] = '724802c45237477dbe5777923743e6c77906830cae03a82b5653ebd75b301dda'
+default['nodejs']['binary']['checksum']['linux_arm64'] = '2913e8544d95c8be9e6034c539ec0584014532166a088bf742629756c3ec42e2'
 default['nodejs']['binary']['append_env_path'] = true
 
 default['nodejs']['make_threads'] = node['cpu'] ? node['cpu']['total'].to_i : 2
