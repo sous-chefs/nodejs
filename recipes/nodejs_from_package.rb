@@ -31,6 +31,7 @@ end
 if platform_family?('rhel', 'fedora') && node['platform_version'].to_i >= 8 && !node['nodejs']['dnf_module']
   dnf_module 'nodejs' do
     action :disable
+    only_if 'dnf module list nodejs'
   end
 end
 

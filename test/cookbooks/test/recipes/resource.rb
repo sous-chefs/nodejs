@@ -57,6 +57,10 @@ git '/home/random2/grunt' do
   user 'random2'
 end
 
+directory '/home/random2/.npm' do
+  owner 'random2'
+end
+
 npm_package 'Install the grunt package' do
   path '/home/random2'
   package 'grunt'
@@ -85,6 +89,10 @@ file '/home/random/.npmrc' do
   user 'random'
 end
 
+directory '/home/random/.npm' do
+  owner 'random'
+end
+
 # Test npm_token usage (for NPM private repositories)
 npm_package 'from_package_json' do
   path '/home/random'
@@ -108,10 +116,15 @@ template '/home/random1/package.json' do
   user 'random1'
 end
 
+directory '/home/random1/.npm' do
+  owner 'random1'
+end
+
 # Test npm_token usage (for NPM private repositories)
 npm_package 'from_package_json_private' do
   path '/home/random1'
   json true
+  user 'random1'
   npm_token '123-abcde'
   options ['--development']
   node_env 'development'
