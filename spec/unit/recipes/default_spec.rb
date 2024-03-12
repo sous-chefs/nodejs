@@ -58,7 +58,11 @@ end
 
 describe 'default recipe on fedora' do
   let(:runner) { ChefSpec::ServerRunner.new(platform: 'fedora') }
-  let(:chef_run) { runner.converge('nodejs::default') }
+  let(:chef_run) {
+    stub_command("dnf module list nodejs").and_return(0)
+    runner.converge('nodejs::default')
+  }
+
 
   it 'includes the package install recipes' do
     expect(chef_run).to include_recipe('nodejs::nodejs_from_package')
