@@ -26,17 +26,17 @@ control 'commands should exist' do
     its('stdout') { should_not match(/"version":\s*"5.2.0"/) }
   end
 
-  describe command('export NPM_TOKEN="123-abcde" && cd /home/random && npm list -json') do
+  describe bash('export NPM_TOKEN="123-abcde" && cd /home/random && npm list -json') do
     its('stdout') { should match(/koa/) }
     its('stdout') { should match(/gulp/) }
   end
 
-  describe command('export NPM_TOKEN="123-abcde" && cd /home/random1 && npm list -json') do
+  describe bash('export NPM_TOKEN="123-abcde" && cd /home/random1 && npm list -json') do
     its('stdout') { should match(/koa/) }
     its('stdout') { should match(/gulp/) }
   end
 
-  describe command('export NPM_TOKEN="123-abcde" && cd /home/random2 && npm list -json') do
+  describe bash('export NPM_TOKEN="123-abcde" && cd /home/random2 && npm list -json') do
     its('stdout') { should match(/grunt/) }
     its('stdout') { should match(/vary/) }
   end

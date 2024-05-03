@@ -5,7 +5,7 @@ control 'commands should exist' do
     its('exit_status') { should eq 0 }
     # No upstream repository so it installs the OS version
     unless os_family == 'suse'
-      its('stdout') { should match /^v17\.*/ }
+      its('stdout') { should match /^v18\.*/ }
     end
   end
 
@@ -13,7 +13,7 @@ control 'commands should exist' do
     its('exit_status') { should eq 0 }
     # No upstream repository so it installs the OS version
     unless os_family == 'suse'
-      its('stdout') { should match /^8\.*/ }
+      its('stdout') { should match /^10\.*/ }
     end
   end
 
@@ -21,7 +21,7 @@ control 'commands should exist' do
     its('exit_status') { should eq 0 }
     # No upstream repository so it installs the OS version
     unless os_family == 'suse'
-      its('stdout') { should match /^8\.*/ }
+      its('stdout') { should match /^10\.*/ }
     end
   end
 

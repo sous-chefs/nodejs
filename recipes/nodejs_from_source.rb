@@ -24,10 +24,9 @@ build_essential 'install build tools'
 
 case node['platform_family']
 when 'rhel', 'fedora', 'amazon'
-  # The ark resource uses and requires python2 for builds
   package %w(openssl-devel python3 tar)
 when 'debian'
-  package %w(libssl-dev python)
+  package %w(libssl-dev python3)
 when 'suse'
   package %w(python)
 end
