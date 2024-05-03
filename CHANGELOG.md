@@ -2,6 +2,32 @@
 
 ## Unreleased
 
+## 10.1.17 - *2024-05-03*
+
+## 10.1.16 - *2024-05-03*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.15 - *2023-09-28*
+
+## 10.1.14 - *2023-09-04*
+
+## 10.1.13 - *2023-09-04*
+
+## 10.1.12 - *2023-05-17*
+
+## 10.1.11 - *2023-04-17*
+
+## 10.1.10 - *2023-04-07*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.9 - *2023-04-01*
+
+## 10.1.8 - *2023-04-01*
+
+## 10.1.7 - *2023-04-01*
+
 Standardise files with files in sous-chefs/repo-management
 
 ## 10.1.6 - *2023-03-20*
