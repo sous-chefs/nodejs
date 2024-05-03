@@ -1,6 +1,6 @@
 # NodeJS Cookbook Changelog
 
-## Unreleased
+## 10.1.17 - *2024-05-03*
 
 ## 10.1.16 - *2024-05-03*
 
