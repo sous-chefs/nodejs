@@ -4,10 +4,8 @@ PreCommit:
     enabled: true
   YamlLint:
     enabled: true
-    required_executable: "yamllint"
   ChefSpec:
     enabled: true
-    required_executable: "chef"
     command: ["chef", "exec", "rspec"]
   Cookstyle:
     enabled: true
@@ -15,8 +13,7 @@ PreCommit:
     command: ["cookstyle"]
   MarkdownLint:
     enabled: false
-    required_executable: "npx"
-    command: ["npx", "markdownlint-cli2", "'**/*.md'"]
+    command: ["echo $HOME", "npx", "markdownlint-cli2", "'**/*.md'"]
     include: ["**/*.md"]
 
 CommitMsg:

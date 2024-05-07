@@ -38,11 +38,7 @@ Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
-Standardise files with files in sous-chefs/repo-management
-
 ## 10.1.4 - *2023-02-20*
-
-Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
@@ -302,14 +298,11 @@ Standardise files with files in sous-chefs/repo-management
 
 [@bakins]: https://github.com/bakins
 [@chrislundquist]: https://github.com/ChrisLundquist
-[@gmccue]: https://github.com/gmccue
 [@johannesbecker]: https://github.com/johannesbecker
 [@julesau]: https://github.com/JulesAU
 [@markbirbeck]: https://github.com/markbirbeck
-[@predominant]: https://github.com/predominant
 [@robertkowalski]: https://github.com/robertkowalski
 [@sax]: https://github.com/sax
-[@sjlu]: https://github.com/sjlu
 [@smith]: https://github.com/smith
 [@vaskas]: https://github.com/vaskas
 [@wanelo-pair]: https://github.com/wanelo-pair
