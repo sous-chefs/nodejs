@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Update test matrix check success of the integration stage
+
 ## 10.1.19 - *2024-11-18*
 
 Standardise files with files in sous-chefs/repo-management
