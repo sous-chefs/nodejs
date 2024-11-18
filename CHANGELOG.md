@@ -8,6 +8,10 @@
 - Add support for Alma Linux 9
 - Drop support for Amazon Linux 2, CentOS 7
 
+## 10.1.20 - *2024-11-18*
+
+- Update test matrix check success of the integration stage
+
 ## 10.1.19 - *2024-11-18*
 
 Standardise files with files in sous-chefs/repo-management
