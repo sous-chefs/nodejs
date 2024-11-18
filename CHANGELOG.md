@@ -4,6 +4,70 @@
 
 - Compensate for NPM CLI deprecating `-global` and use `--location=global
 
+## 10.1.19 - *2024-11-18*
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.18 - *2024-05-07*
+
+## 10.1.17 - *2024-05-03*
+
+## 10.1.16 - *2024-05-03*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.15 - *2023-09-28*
+
+## 10.1.14 - *2023-09-04*
+
+## 10.1.13 - *2023-09-04*
+
+## 10.1.12 - *2023-05-17*
+
+## 10.1.11 - *2023-04-17*
+
+## 10.1.10 - *2023-04-07*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.9 - *2023-04-01*
+
+## 10.1.8 - *2023-04-01*
+
+## 10.1.7 - *2023-04-01*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.6 - *2023-03-20*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.5 - *2023-03-15*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.4 - *2023-02-20*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.3 - *2023-02-15*
+
+## 10.1.2 - *2023-02-14*
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.1 - *2022-12-08*
+
+Standardise files with files in sous-chefs/repo-management
+
 ## 10.1.0 - *2022-08-08*
 
 - To ensure consistent environment between `npm install` and `npm list`, pass same environment variables.
@@ -250,14 +314,11 @@
 
 [@bakins]: https://github.com/bakins
 [@chrislundquist]: https://github.com/ChrisLundquist
-[@gmccue]: https://github.com/gmccue
 [@johannesbecker]: https://github.com/johannesbecker
 [@julesau]: https://github.com/JulesAU
 [@markbirbeck]: https://github.com/markbirbeck
-[@predominant]: https://github.com/predominant
 [@robertkowalski]: https://github.com/robertkowalski
 [@sax]: https://github.com/sax
-[@sjlu]: https://github.com/sjlu
 [@smith]: https://github.com/smith
 [@vaskas]: https://github.com/vaskas
 [@wanelo-pair]: https://github.com/wanelo-pair
