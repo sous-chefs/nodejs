@@ -8,6 +8,26 @@
 - Add support for Alma Linux 9
 - Drop support for Amazon Linux 2, CentOS 7
 
+## 10.1.19 - *2024-11-18*
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+Standardise files with files in sous-chefs/repo-management
+
+## 10.1.18 - *2024-05-07*
+
+## 10.1.17 - *2024-05-03*
+
+## 10.1.16 - *2024-05-03*
+
+Standardise files with files in sous-chefs/repo-management
+
 ## 10.1.15 - *2023-09-28*
 
 ## 10.1.14 - *2023-09-04*
@@ -38,11 +58,7 @@ Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 
-Standardise files with files in sous-chefs/repo-management
-
 ## 10.1.4 - *2023-02-20*
-
-Standardise files with files in sous-chefs/repo-management
 
 Standardise files with files in sous-chefs/repo-management
 

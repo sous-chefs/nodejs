@@ -5,3 +5,5 @@ config:
   reference-links-images: false # MD052
   link-image-reference-definitions:
     ignored_definitions: ["@gmccue", "@predominant", "@sjlu", "@stissot"] # MD053
+ignores:
+  - .github/copilot-instructions.md
