@@ -1,5 +1,7 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
 ## 10.1.22 - *2024-11-19*
 
 - Update default version to current LTS
