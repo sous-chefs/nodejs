@@ -22,13 +22,24 @@ Chef::DSL::Recipe.include NodeJs::Helper
 
 build_essential 'install build tools'
 
-case node['platform_family']
+case node['platform']
 when 'rhel', 'fedora', 'amazon'
   # The ark resource uses and requires python2 for builds
   package %w(openssl-devel python3 tar)
+# debian-12 & ubuntu 2204 need python 3
 when 'debian'
-  package %w(libssl-dev python)
-when 'suse'
+  if node['platform_version'].to_i >= 12
+    package %w(libssl-dev python3)
+  else
+    package %w(libssl-dev python)
+  end
+when 'ubuntu'
+  if node['platform_version'].to_f >= 22.04
+    package %w(libssl-dev python3)
+  else
+    package %w(libssl-dev python)
+  end
+else
   package %w(python)
 end
 

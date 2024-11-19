@@ -26,13 +26,13 @@ default['nodejs']['install_method'] = case node['platform_family']
                                         'source'
                                       end
 
-default['nodejs']['version'] = '17.9.0'
+default['nodejs']['version'] = '22.11.0'
 
 default['nodejs']['prefix_url']['node'] = 'https://nodejs.org/dist/'
 
 default['nodejs']['tmpdir'] = '/tmp'
 default['nodejs']['source']['url']      = nil # Auto generated
-default['nodejs']['source']['checksum'] = '25d8c6559456d548823e3f7f4fae7dc8c7d5a0f7772c79c8d902528e801ba09a'
+default['nodejs']['source']['checksum'] = '24e5130fa7bc1eaab218a0c9cb05e03168fa381bb9e3babddc6a11f655799222'
 
 default['nodejs']['binary']['url'] = nil # Auto generated
 default['nodejs']['binary']['checksum']['linux_x64'] = '8c9f4c95c254336fcb2c768e746f4316b8176adc0fb599cbbb460d0933991d12'
