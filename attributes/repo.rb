@@ -2,15 +2,11 @@ case node['platform_family']
 when 'debian'
   default['nodejs']['install_repo'] = true
   default['nodejs']['repo']         = 'https://deb.nodesource.com/node_20.x'
-  default['nodejs']['keyserver']    = 'keyserver.ubuntu.com'
-  default['nodejs']['key']          = '1655a0ab68576280'
-when 'rhel', 'amazon'
+  default['nodejs']['distribution'] = 'nodistro'
+  default['nodejs']['key']          = 'https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key'
+when 'rhel', 'amazon', 'fedora'
   default['nodejs']['install_repo'] = true
-  release_ver = platform?('amazon') ? 7 : node['platform_version'].to_i
-  default['nodejs']['repo']         = "https://rpm.nodesource.com/pub_20.x/el/#{release_ver}/$basearch"
-  default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL'
-when 'fedora'
-  default['nodejs']['install_repo'] = true
-  default['nodejs']['repo']         = 'https://rpm.nodesource.com/pub_20.x/el/9/$basearch'
-  default['nodejs']['key']          = 'https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL'
+  node_version = platform?('amazon') ? '17.x' : '20.x'
+  default['nodejs']['repo']         = "https://rpm.nodesource.com/pub_#{node_version}/nodistro/nodejs/$basearch"
+  default['nodejs']['key']          = 'https://rpm.nodesource.com/gpgkey/ns-operations-public.key'
 end

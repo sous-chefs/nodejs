@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Add support for new NodeSource repository (Thanks to @stissot)
+- Rework source install packages
+- Update SUSE packages
+
 ## 10.1.22 - *2024-11-19*
 
 - Update default version to current LTS
