@@ -2,36 +2,8 @@
 driver:
   name: vagrant
 
-provisioner:
-  name: chef_zero
-  deprecations_as_errors: true
-  chef_license: accept-no-persist
-
-verifier:
-  name: inspec
-
-platforms:
-  - name: almalinux-8
-  - name: amazonlinux-2
-  - name: centos-7
-  - name: centos-stream-8
-  - name: debian-10
-  - name: debian-11
-  - name: opensuse-leap-15
-  - name: rockylinux-8
-  - name: ubuntu-18.04
-  - name: ubuntu-20.04
-  - name: windows-2016
-    driver:
-      gui: false
-      box: tas50/windows_2016
-      customize:
-        memory: 2048
-
 suites:
   - name: default
-    excludes:
-      - windows-2016
     run_list:
       - recipe[nodejs::default]
     attributes:
@@ -46,8 +18,6 @@ suites:
           - name: express
             action: :uninstall
   - name: npm_embedded
-    excludes:
-      - windows-2016
     run_list:
       - recipe[nodejs::npm]
     attributes:
@@ -55,8 +25,6 @@ suites:
         npm:
           install_method: embedded
   - name: npm_source
-    excludes:
-      - windows-2016
     run_list:
       - recipe[nodejs::npm]
     attributes:
@@ -64,18 +32,12 @@ suites:
         npm:
           install_method: source
   - name: package
-    excludes:
-      - windows-2016
     run_list:
       - recipe[test::default]
   - name: source
-    excludes:
-      - windows-2016
     run_list:
       - recipe[test::source]
   - name: options
-    includes:
-      - ubuntu-20.04
     run_list:
       - recipe[nodejs]
     attributes:
@@ -88,8 +50,3 @@ suites:
           acpid: "--force-yes"
         package_action:
           adcli: :nothing
-  - name: chocolatey
-    includes:
-      - windows-2016
-    run_list:
-      - recipe[test::chocolatey]
