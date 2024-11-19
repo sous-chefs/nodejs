@@ -1,5 +1,7 @@
 # NodeJS Cookbook Changelog
 
+## Unreleased
+
 ## 10.1.21 - *2024-11-19*
 
 - Update CI platforms
