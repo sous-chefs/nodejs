@@ -57,6 +57,10 @@ git '/home/random2/grunt' do
   user 'random2'
 end
 
+directory '/home/random2/.npm' do
+  owner 'random2'
+end
+
 npm_package 'Install the grunt package' do
   path '/home/random2'
   package 'grunt'
@@ -69,6 +73,10 @@ npm_package 'Install the vary package from a tgz url' do
   package 'vary'
   json 'https://registry.npmjs.org/vary/-/vary-1.1.2.tgz'
   user 'random2'
+end
+
+directory '/home/random/.npm' do
+  owner 'random'
 end
 
 # Create a package.json file for the test user
@@ -92,6 +100,10 @@ npm_package 'from_package_json' do
   user 'random'
   npm_token '123-abcde'
   node_env 'staging' # Test node_env usage
+end
+
+directory '/home/random1/.npm' do
+  owner 'random1'
 end
 
 # Create an .npmrc file for the test user
