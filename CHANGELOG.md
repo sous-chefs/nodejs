@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- resolved cookstyle error: recipes/nodejs_from_source.rb:26:6 refactor: `Chef/Correctness/InvalidPlatformInCase`
 ## 10.1.22 - *2024-11-19*
 
 - Update default version to current LTS
