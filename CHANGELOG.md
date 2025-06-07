@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+Standardise files with files in sous-chefs/repo-management
+
 ## 10.2.0 - *2024-11-20*
 
 - Add support for new NodeSource repository (Thanks to @stissot)
