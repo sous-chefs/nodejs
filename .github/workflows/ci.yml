@@ -34,13 +34,18 @@ jobs:
         suite:
           - "default"
           - "npm-embedded"
+          - "npm-source"
           - "package"
           - "source"
         exclude:
           - os: "amazonlinux-2023"
             suite: "source"
+          - os: "amazonlinux-2023"
+            suite: "npm-source"
           - os: "fedora-latest"
             suite: "source"
+          - os: "fedora-latest"
+            suite: "npm-source"
       fail-fast: false
 
     steps:
