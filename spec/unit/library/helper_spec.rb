@@ -13,13 +13,13 @@ describe 'helper methods' do
       n = { 'nodejs': { 'npm': { 'url': 'get it' } } }
       n = Mash.new(n)
       allow(@mt).to receive(:node).and_return(n)
-      expect(@mt.npm_dist()['url']).to eq('get it')
+      expect(@mt.npm_dist['url']).to eq('get it')
     end
     it 'should return a url based on the version' do
       n = { 'nodejs': { 'npm': { 'url': nil, 'version': '6.14.8' } } }
       n = Mash.new(n)
       allow(@mt).to receive(:node).and_return(n)
-      expect(@mt.npm_dist()['url']).to eq('https://registry.npmjs.org/npm/-/npm-6.14.8.tgz')
+      expect(@mt.npm_dist['url']).to eq('https://registry.npmjs.org/npm/-/npm-6.14.8.tgz')
     end
   end
 
@@ -92,14 +92,14 @@ end
 def npmempty
   os = OpenStruct.new
   os.stdout =
-  '{}'
+    '{}'
   os
 end
 
 def npmglobal
   os = OpenStruct.new
   os.stdout =
-  '{
+    '{
     "dependencies": {
       "dtrace": {
         "version": "0.0.0",
@@ -152,14 +152,14 @@ end
 def npminvalid
   os = OpenStruct.new
   os.stdout =
-  'Invalid return'
+    'Invalid return'
   os
 end
 
 def npmxss
   os = OpenStruct.new
   os.stdout =
-  '{
+    '{
     "dependencies": {
       "xss": {
         "version": "1.0.8",
@@ -174,7 +174,7 @@ end
 def npmcssfilter
   os = OpenStruct.new
   os.stdout =
-  '{
+    '{
     "dependencies": {
       "xss": {
         "version": "1.0.8",
