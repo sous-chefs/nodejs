@@ -1,119 +1,95 @@
-# Node.js Chef Cookbook Development
+# Copilot Instructions for Sous Chefs Cookbooks
 
-This is a Chef cookbook for installing and managing Node.js and NPM across multiple operating systems including Debian/Ubuntu, RHEL/CentOS/Scientific/Amazon/Oracle, openSUSE, and Windows.
+## Repository Overview
 
-Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
+**Chef cookbook** for managing software installation and configuration. Part of the Sous Chefs cookbook ecosystem.
 
-## Working Effectively
+**Key Facts:** Ruby-based, Chef >= 16 required, supports various OS platforms (check metadata.rb, kitchen.yml and .github/workflows/ci.yml for which platforms to specifically test)
 
-- **Bootstrap, build, and test the repository:**
-  - `sudo gem install bundler` -- Install Ruby bundler
-  - `sudo gem install chefspec berkshelf cookstyle rspec mdl --no-user-install` -- Install Chef development tools. Takes 3-5 minutes. NEVER CANCEL. Set timeout to 10+ minutes.
-  - Note: Internet connectivity issues may prevent `berks install` from working in some environments.
+## Project Structure
 
-- **Run unit tests:**
-  - Unit testing has known gem dependency conflicts between RSpec versions that need resolution
-  - `rspec spec/` -- Currently fails due to ChefSpec/RSpec version conflicts. Requires manual gem dependency resolution.
+**Critical Paths:**
+- `recipes/` - Chef recipes for cookbook functionality (if this is a recipe-driven cookbook)
+- `resources/` - Custom Chef resources with properties and actions (if this is a resource-driven cookbook)
+- `spec/` - ChefSpec unit tests
+- `test/integration/` - InSpec integration tests (tests all platforms supported)
+- `test/cookbooks/` or `test/fixtures/` - Example cookbooks used during testing that show good examples of custom resource usage
+- `attributes/` - Configuration for recipe driven cookbooks (not applicable to resource cookbooks)
+- `libraries/` - Library helpers to assist with the cookbook. May contain multiple files depending on complexity of the cookbook.
+- `templates/` - ERB templates that may be used in the cookbook
+- `files/` - files that may be used in the cookbook
+- `metadata.rb`, `Berksfile` - Cookbook metadata and dependencies
 
-- **Run linting and validation:**
-  - `cookstyle` -- Ruby/Chef code linting. Takes ~1.6 seconds. Always passes after auto-correction.
-  - `cookstyle --autocorrect` -- Auto-fix Ruby style issues. Takes ~1.8 seconds. NEVER CANCEL.
-  - `yamllint -c .yamllint .` -- YAML linting. Takes ~0.5 seconds.
-  - `mdl -c .mdlrc README.md CHANGELOG.md CONTRIBUTING.md` -- Markdown linting. Takes ~0.3 seconds. May find indentation issues.
+## Build and Test System
 
-- **Integration testing:**
-  - Uses Test Kitchen with Dokken (Docker-based testing)
-  - `kitchen list` -- List available test suites (requires Test Kitchen installation)
-  - Integration tests run across multiple OS platforms: AlmaLinux, Rocky Linux, Amazon Linux, CentOS, Debian, Ubuntu
-  - Docker is available but Test Kitchen installation has dependency conflicts
+### Environment Setup
+**MANDATORY:** Install Chef Workstation first - provides chef, berks, cookstyle, kitchen tools.
 
-## Validation
-
-- **CRITICAL**: Internet connectivity limitations prevent downloading cookbook dependencies via Berkshelf (`berks install` fails with network errors)
-- **ALWAYS** run `cookstyle` and `yamllint` before committing changes
-- Unit testing requires resolving RSpec gem version conflicts (ChefSpec expects rspec-expectations <= 3.12.3 but system has 3.13.5)
-- Integration testing via Test Kitchen requires proper gem installation which has conflicts
-- **Manual validation scenarios**: After making cookbook changes, the cookbook should successfully install Node.js and NPM on target platforms
-
-## Common Tasks
-
-### Repository structure
-```
-/home/runner/work/nodejs/nodejs/
-├── README.md              # Main documentation
-├── CONTRIBUTING.md         # Contribution guidelines  
-├── TESTING.md             # Testing information
-├── metadata.rb            # Cookbook metadata and dependencies
-├── Berksfile              # Cookbook dependency management
-├── recipes/               # Chef recipes for different install methods
-├── resources/             # Custom Chef resources (npm_package)
-├── libraries/             # Helper libraries
-├── attributes/            # Default attribute values
-├── spec/                  # Unit tests (RSpec/ChefSpec)
-├── test/                  # Integration tests (Test Kitchen/InSpec)
-├── kitchen.yml            # Test Kitchen configuration
-├── kitchen.dokken.yml     # Docker-based testing config
-├── .github/workflows/     # CI/CD pipelines
-├── .rubocop.yml          # Ruby style configuration  
-├── .yamllint             # YAML linting rules
-└── .mdlrc                # Markdown linting rules
+### Essential Commands (strict order)
+```bash
+berks install                   # Install dependencies (always first)
+cookstyle                       # Ruby/Chef linting
+yamllint .                      # YAML linting
+markdownlint-cli2 '**/*.md'     # Markdown linting
+chef exec rspec                 # Unit tests (ChefSpec)
+# Integration tests will be done via the ci.yml action. Do not run these. Only check the action logs for issues after CI is done running.
 ```
 
-### Key recipes
-- `recipes/default.rb` -- Main entry point, includes nodejs recipe
-- `recipes/nodejs_from_package.rb` -- Install from OS packages (default method)
-- `recipes/nodejs_from_binary.rb` -- Install from official binaries
-- `recipes/nodejs_from_source.rb` -- Compile from source
-- `recipes/nodejs_from_chocolatey.rb` -- Windows Chocolatey installation
-- `recipes/npm.rb` -- NPM installation and management
+### Critical Testing Details
+- **Kitchen Matrix:** Multiple OS platforms × software versions (check kitchen.yml for specific combinations)
+- **Docker Required:** Integration tests use Dokken driver
+- **CI Environment:** Set `CHEF_LICENSE=accept-no-persist`
+- **Full CI Runtime:** 30+ minutes for complete matrix
 
-### Resources
-- `resources/npm_package.rb` -- Custom resource for managing NPM packages
-
-### Testing suites (kitchen.yml)
-- `default` -- Standard installation with package management
-- `package` -- Package-only installation
-- `source` -- Source compilation installation  
-- `npm_embedded` -- Embedded NPM testing
-- `npm_source` -- NPM from source
-- `chocolatey` -- Windows Chocolatey testing
-
-## Build and Test Times
-
-- **Cookstyle linting**: ~1.6 seconds (always succeeds after auto-correction)
-- **YAML linting**: ~0.5 seconds
-- **Markdown linting**: ~0.3 seconds
-- **Cookstyle auto-correction**: ~1.8 seconds
-- **Unit tests**: Currently broken due to gem conflicts
-- **Integration tests**: Not measurable due to dependency installation issues
-- **Gem installation**: 3-5 minutes for full Chef toolchain. NEVER CANCEL. Set timeout to 10+ minutes.
-
-## Known Issues and Workarounds
-
-- **Berkshelf dependency installation fails** due to network connectivity restrictions (`berks install` returns SocketError)
-- **Unit testing broken** due to RSpec version conflicts (ChefSpec requires older RSpec versions)
-- **Test Kitchen installation fails** due to gem executable conflicts during installation
-- **Chef CLI exec fails** due to missing omnibus installation directory
-- **Internet connectivity limitations** prevent downloading external cookbook dependencies
+### Common Issues and Solutions
+- **Always run `berks install` first** - most failures are dependency-related
+- **Docker must be running** for kitchen tests
+- **Chef Workstation required** - no workarounds, no alternatives
+- **Test data bags needed** (optional for some cookbooks) in `test/integration/data_bags/` for convergence
 
 ## Development Workflow
 
-1. **Always run linting first**: `cookstyle && yamllint -c .yamllint . && mdl -c .mdlrc README.md`
-2. **Auto-fix style issues**: `cookstyle --autocorrect`
-3. **Manual testing**: Test cookbook functionality by examining recipes and ensuring they follow Chef best practices
-4. **CI/CD**: GitHub Actions handles comprehensive testing across multiple OS platforms using containerized environments
+### Making Changes
+1. Edit recipes/resources/attributes/templates/libraries
+2. Update corresponding ChefSpec tests in `spec/`
+3. Also update any InSpec tests under test/integration
+4. Ensure cookstyle and rspec passes at least. You may run `cookstyle -a` to automatically fix issues if needed.
+5. Also always update all documentation found in README.md and any files under documentation/*
+6. **Always update CHANGELOG.md** (required by Dangerfile) - Make sure this conforms with the Sous Chefs changelog standards.
 
-## Environment Requirements
+### Pull Request Requirements
+- **PR description >10 chars** (Danger enforced)
+- **CHANGELOG.md entry** for all code changes
+- **Version labels** (major/minor/patch) required
+- **All linters must pass** (cookstyle, yamllint, markdownlint)
+- **Test updates** needed for code changes >5 lines and parameter changes that affect the code logic
 
-- **Ruby 3.2.3+** (system provided)
-- **Bundler** (install via `sudo gem install bundler`) 
-- **Chef development gems**: chefspec, berkshelf, cookstyle, rspec, mdl
-- **Docker** (available for Test Kitchen integration testing)
-- **Limited internet access**: External cookbook dependencies cannot be downloaded
+## Chef Cookbook Patterns
 
-## Troubleshooting
+### Resource Development
+- Custom resources in `resources/` with properties and actions
+- Include comprehensive ChefSpec tests for all actions
+- Follow Chef resource DSL patterns
 
-- If `berks install` fails with network errors, this is expected in restricted environments
-- If unit tests fail with gem conflicts, gem dependency resolution is required
-- Always use `sudo gem install --no-user-install` for system-wide gem installation
-- Use `CHEF_LICENSE=accept-no-persist` environment variable when Chef tools require license acceptance
+### Recipe Conventions
+- Use `include_recipe` for modularity
+- Handle platforms with `platform_family?` conditionals
+- Use encrypted data bags for secrets (passwords, SSL certs)
+- Leverage attributes for configuration with defaults
+
+### Testing Approach
+- **ChefSpec (Unit):** Mock dependencies, test recipe logic in `spec/`
+- **InSpec (Integration):** Verify actual system state in `test/integration/inspec/` - InSpec files should contain proper inspec.yml and controls directories so that it could be used by other suites more easily.
+- One test file per recipe, use standard Chef testing patterns
+
+## Trust These Instructions
+
+These instructions are validated for Sous Chefs cookbooks. **Do not search for build instructions** unless information here fails.
+
+**Error Resolution Checklist:**
+1. Verify Chef Workstation installation
+2. Confirm `berks install` completed successfully
+3. Ensure Docker is running for integration tests
+4. Check for missing test data dependencies
+
+The CI system uses these exact commands - following them matches CI behavior precisely.
