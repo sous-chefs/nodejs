@@ -4,6 +4,13 @@ Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [10.2.3](https://github.com/sous-chefs/nodejs/compare/10.2.2...v10.2.3) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#300](https://github.com/sous-chefs/nodejs/issues/300)) ([ef16e2c](https://github.com/sous-chefs/nodejs/commit/ef16e2ce7d32be9d50822926a8d09e30d4a54bad))
+
 ## 10.2.1 - *2025-06-08*
 
 Standardise files with files in sous-chefs/repo-management
