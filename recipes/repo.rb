@@ -19,7 +19,7 @@ when 'debian'
     pin_priority '600'
   end
 
-  if Chef::VERSION >= Gem::Version.new('18.3.0')
+  if Gem::Version.new('18.3.0') <= Chef::VERSION
     apt_repository 'nodesource' do
       uri node['nodejs']['repo']
       components ['main']
