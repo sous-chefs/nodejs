@@ -28,8 +28,8 @@ jobs:
           - "centos-stream-9"
           - "centos-stream-10"
           - "debian-12"
-          - "ubuntu-22.04"
-          - "ubuntu-24.04"
+          - "ubuntu-2204"
+          - "ubuntu-2404"
         suite:
           - "default"
           - "npm-embedded"
