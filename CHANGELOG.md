@@ -4,6 +4,13 @@ Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## Unreleased
+
+### Bug Fixes
+
+* Fix npm_from_source recipe to use :install action instead of :install_with_make - npm is a JavaScript package without Makefile ([#232](https://github.com/sous-chefs/nodejs/issues/232))
+* Update CI platform names to match kitchen.dokken.yml configuration (ubuntu-22.04, ubuntu-24.04, debian-12)
+
 ## [10.2.3](https://github.com/sous-chefs/nodejs/compare/10.2.2...v10.2.3) (2025-10-15)
 
 

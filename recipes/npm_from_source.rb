@@ -28,5 +28,6 @@ ark 'npm' do
   url dist['url']
   checksum dist['checksum']
   version dist['version']
-  action :install_with_make
+  has_binaries ['bin/npm', 'bin/npx']
+  action :install
 end
