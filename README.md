@@ -16,19 +16,19 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 ### Platforms
 
-- Debian/Ubuntu
-- RHEL family/Fedora/Amazon Linux
-- macOS where platform packages are available
-- Windows through Chocolatey
+* Debian/Ubuntu
+* RHEL family/Fedora/Amazon Linux
+* macOS where platform packages are available
+* Windows through Chocolatey
 
 ### Chef
 
-- Chef Infra Client 15.3+
+* Chef Infra Client 15.3+
 
 ### Cookbooks
 
-- ark
-- chocolatey
+* ark
+* chocolatey
 
 ## Usage
 
@@ -77,11 +77,11 @@ See [migration.md](migration.md) for the breaking recipe/attribute migration gui
 
 ## Resources
 
-- [nodejs_install](documentation/nodejs_install.md)
-- [nodejs_repository](documentation/nodejs_repository.md)
-- [nodejs_npm_install](documentation/nodejs_npm_install.md)
-- [nodejs_npm_packages](documentation/nodejs_npm_packages.md)
-- [npm_package](documentation/nodejs_npm_package.md)
+* [nodejs_install](documentation/nodejs_install.md)
+* [nodejs_repository](documentation/nodejs_repository.md)
+* [nodejs_npm_install](documentation/nodejs_npm_install.md)
+* [nodejs_npm_packages](documentation/nodejs_npm_packages.md)
+* [npm_package](documentation/nodejs_npm_package.md)
 
 ## Contributors
 
@@ -91,19 +91,19 @@ This project exists thanks to all the people who [contribute.](https://opencolle
 
 Thank you to all our backers!
 
-![https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40)
+![<https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40>)
 
 ### Sponsors
 
 Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
 
-![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/2/website](https://opencollective.com/sous-chefs/sponsor/2/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/3/website](https://opencollective.com/sous-chefs/sponsor/3/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/4/website](https://opencollective.com/sous-chefs/sponsor/4/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/5/website](https://opencollective.com/sous-chefs/sponsor/5/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/6/website](https://opencollective.com/sous-chefs/sponsor/6/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/7/website](https://opencollective.com/sous-chefs/sponsor/7/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/8/website](https://opencollective.com/sous-chefs/sponsor/8/avatar.svg?avatarHeight=100)
-![https://opencollective.com/sous-chefs/sponsor/9/website](https://opencollective.com/sous-chefs/sponsor/9/avatar.svg?avatarHeight=100)
+![<https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/2/website](https://opencollective.com/sous-chefs/sponsor/2/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/3/website](https://opencollective.com/sous-chefs/sponsor/3/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/4/website](https://opencollective.com/sous-chefs/sponsor/4/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/5/website](https://opencollective.com/sous-chefs/sponsor/5/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/6/website](https://opencollective.com/sous-chefs/sponsor/6/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/7/website](https://opencollective.com/sous-chefs/sponsor/7/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/8/website](https://opencollective.com/sous-chefs/sponsor/8/avatar.svg?avatarHeight=100>)
+![<https://opencollective.com/sous-chefs/sponsor/9/website](https://opencollective.com/sous-chefs/sponsor/9/avatar.svg?avatarHeight=100>)

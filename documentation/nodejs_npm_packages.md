@@ -4,16 +4,16 @@ Installs or removes a collection of npm packages.
 
 ## Actions
 
-| Action | Description |
-|--------|-------------|
+| Action     | Description                                                      |
+| ---------- | ---------------------------------------------------------------- |
 | `:install` | Converges each package entry with its requested action. Default. |
-| `:remove` | Removes each listed package. |
+| `:remove`  | Removes each listed package.                                     |
 
 ## Properties
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `packages` | Array | `[]` | Array of package hashes. Use `name` for package name and any `npm_package` property for options. |
+| Property   | Type   | Default   | Description                                                                                      |
+| ---------- | ------ | --------- | ------------------------------------------------------------------------------------------------ |
+| `packages` | Array  | `[]`      | Array of package hashes. Use `name` for package name and any `npm_package` property for options. |
 
 ## Examples
 

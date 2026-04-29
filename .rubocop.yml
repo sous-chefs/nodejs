@@ -1,2 +1,6 @@
 require:
   - cookstyle
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'

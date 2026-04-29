@@ -8,16 +8,16 @@ The cookbook no longer exposes `nodejs::default`, `nodejs::install`, `nodejs::re
 
 ## Recipe to Resource Mapping
 
-| Before | After |
-|--------|-------|
-| `include_recipe 'nodejs::default'` | `nodejs_install 'nodejs'` plus optional `nodejs_npm_packages` |
-| `include_recipe 'nodejs::repo'` | `nodejs_repository 'nodesource'` |
-| `include_recipe 'nodejs::nodejs_from_package'` | `nodejs_install 'nodejs' do install_method 'package' end` |
-| `include_recipe 'nodejs::nodejs_from_binary'` | `nodejs_install 'nodejs' do install_method 'binary' end` |
-| `include_recipe 'nodejs::nodejs_from_source'` | `nodejs_install 'nodejs' do install_method 'source' end` |
-| `include_recipe 'nodejs::nodejs_from_chocolatey'` | `nodejs_install 'nodejs' do install_method 'chocolatey' end` |
-| `include_recipe 'nodejs::npm'` | `nodejs_npm_install 'npm'` |
-| `node['nodejs']['npm_packages']` | `nodejs_npm_packages 'packages'` |
+| Before                                            | After                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------- |
+| `include_recipe 'nodejs::default'`                | `nodejs_install 'nodejs'` plus optional `nodejs_npm_packages` |
+| `include_recipe 'nodejs::repo'`                   | `nodejs_repository 'nodesource'`                              |
+| `include_recipe 'nodejs::nodejs_from_package'`    | `nodejs_install 'nodejs' do install_method 'package' end`     |
+| `include_recipe 'nodejs::nodejs_from_binary'`     | `nodejs_install 'nodejs' do install_method 'binary' end`      |
+| `include_recipe 'nodejs::nodejs_from_source'`     | `nodejs_install 'nodejs' do install_method 'source' end`      |
+| `include_recipe 'nodejs::nodejs_from_chocolatey'` | `nodejs_install 'nodejs' do install_method 'chocolatey' end`  |
+| `include_recipe 'nodejs::npm'`                    | `nodejs_npm_install 'npm'`                                    |
+| `node['nodejs']['npm_packages']`                  | `nodejs_npm_packages 'packages'`                              |
 
 ## Examples
 
