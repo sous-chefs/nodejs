@@ -6,7 +6,7 @@ control 'nodejs-source-01' do
 
   describe command('node -v') do
     its('exit_status') { should eq 0 }
-    its('stdout') { should match(/^v24\./) }
+    its('stdout') { should match(/^v20\./) }
   end
 
   describe command('npm -v') do

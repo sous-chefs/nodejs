@@ -73,7 +73,13 @@ action_class do
   end
 
   def package_installed?
+    return package_json_installed? if new_resource.json == true
+
     new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path, npm_env_vars)
+  end
+
+  def package_json_installed?
+    new_resource.path && ::File.exist?(::File.join(new_resource.path, 'node_modules'))
   end
 
   def no_auto_update?
