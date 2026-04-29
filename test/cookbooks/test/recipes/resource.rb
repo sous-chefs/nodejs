@@ -1,7 +1,12 @@
-apt_update 'update'
+# frozen_string_literal: true
 
-include_recipe 'nodejs::npm'
+apt_update 'update' if platform_family?('debian')
 include_recipe 'git'
+
+nodejs_npm_install 'embedded npm' do
+  install_method 'embedded'
+  install_node false
+end
 
 user 'random' do
   manage_home true
@@ -18,7 +23,7 @@ user 'random2' do
   home '/home/random2'
 end
 
-# global "express" using the old resource name
+# global "express" using the old resource alias
 nodejs_npm 'express'
 
 npm_package 'async' do

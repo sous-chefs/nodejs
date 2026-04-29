@@ -1,0 +1,69 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+describe 'nodejs_install' do
+  step_into :nodejs_install, :nodejs_repository
+
+  context 'package install on ubuntu' do
+    platform 'ubuntu', '24.04'
+
+    recipe do
+      nodejs_install 'nodejs'
+    end
+
+    it { is_expected.to create_nodejs_repository('nodesource') }
+    it { is_expected.to install_package('nodejs') }
+  end
+
+  context 'package install on rocky linux' do
+    platform 'rocky', '9'
+
+    recipe do
+      nodejs_install 'nodejs'
+    end
+
+    it { is_expected.to disable_dnf_module('nodejs') }
+    it { is_expected.to install_package('nodejs') }
+    it { is_expected.to install_package('nodejs-devel') }
+  end
+
+  context 'binary install' do
+    platform 'ubuntu', '24.04'
+
+    recipe do
+      nodejs_install 'nodejs' do
+        install_method 'binary'
+      end
+    end
+
+    it { is_expected.to install_ark('nodejs-binary') }
+  end
+
+  context 'source install' do
+    platform 'ubuntu', '24.04'
+
+    recipe do
+      nodejs_install 'nodejs' do
+        install_method 'source'
+        make_threads 2
+      end
+    end
+
+    it { is_expected.to install_build_essential('install build tools') }
+    it { is_expected.to install_package(%w(libssl-dev python3)) }
+    it { is_expected.to install_with_make_ark('nodejs-source') }
+  end
+
+  context 'chocolatey install' do
+    platform 'windows', '2022'
+
+    recipe do
+      nodejs_install 'nodejs' do
+        install_method 'chocolatey'
+      end
+    end
+
+    it { is_expected.to upgrade_chocolatey_package('nodejs-lts') }
+  end
+end

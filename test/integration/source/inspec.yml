@@ -1,0 +1,7 @@
+---
+name: source
+title: Source Resource Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verifies source installation
+version: 1.0.0

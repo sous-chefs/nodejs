@@ -1,0 +1,7 @@
+---
+name: package
+title: Package Resource Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verifies package install and npm package resources
+version: 1.0.0

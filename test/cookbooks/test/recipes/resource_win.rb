@@ -1,4 +1,10 @@
-include_recipe 'nodejs::npm'
+# frozen_string_literal: true
+
+nodejs_npm_install 'embedded npm' do
+  install_method 'embedded'
+  install_node false
+end
+
 include_recipe 'git'
 
 user 'random' do

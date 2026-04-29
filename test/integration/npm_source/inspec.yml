@@ -1,0 +1,7 @@
+---
+name: npm_source
+title: Source npm Resource Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verifies npm source installation
+version: 1.0.0
