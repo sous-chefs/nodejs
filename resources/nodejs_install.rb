@@ -116,6 +116,11 @@ action_class do
   def disable_dnf_module?
     new_resource.disable_dnf_module &&
       platform_family?('rhel', 'fedora') &&
-      node['platform_version'].to_i >= 8
+      node['platform_version'].to_i >= 8 &&
+      dnf_module_available?('nodejs')
+  end
+
+  def dnf_module_available?(module_name)
+    shell_out!("dnf -q module list #{module_name}", returns: [0, 1]).stdout.match?(/^#{Regexp.escape(module_name)}\s/m)
   end
 end

@@ -23,7 +23,33 @@ describe 'nodejs_install' do
       nodejs_install 'nodejs'
     end
 
+    before do
+      stubs_for_provider('nodejs_install[nodejs]') do |provider|
+        allow(provider).to receive_shell_out('dnf -q module list nodejs', returns: [0, 1])
+          .and_return(double(stdout: "nodejs 20 common [d]\n", error!: nil))
+      end
+    end
+
     it { is_expected.to disable_dnf_module('nodejs') }
+    it { is_expected.to install_package('nodejs') }
+    it { is_expected.to install_package('nodejs-devel') }
+  end
+
+  context 'package install when the nodejs dnf module is unavailable' do
+    platform 'rocky', '9'
+
+    recipe do
+      nodejs_install 'nodejs'
+    end
+
+    before do
+      stubs_for_provider('nodejs_install[nodejs]') do |provider|
+        allow(provider).to receive_shell_out('dnf -q module list nodejs', returns: [0, 1])
+          .and_return(double(stdout: '', error!: nil))
+      end
+    end
+
+    it { is_expected.not_to disable_dnf_module('nodejs') }
     it { is_expected.to install_package('nodejs') }
     it { is_expected.to install_package('nodejs-devel') }
   end
