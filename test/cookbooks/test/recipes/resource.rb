@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 apt_update 'update' if platform_family?('debian')
-include_recipe 'git'
+
+package 'git'
 
 nodejs_npm_install 'embedded npm' do
   install_method 'embedded'

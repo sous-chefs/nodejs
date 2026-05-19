@@ -5,7 +5,7 @@ nodejs_npm_install 'embedded npm' do
   install_node false
 end
 
-include_recipe 'git'
+chocolatey_package 'git'
 
 user 'random' do
   manage_home true
