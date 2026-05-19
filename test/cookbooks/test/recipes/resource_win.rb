@@ -1,5 +1,11 @@
-include_recipe 'nodejs::npm'
-include_recipe 'git'
+# frozen_string_literal: true
+
+nodejs_npm_install 'embedded npm' do
+  install_method 'embedded'
+  install_node false
+end
+
+chocolatey_package 'git'
 
 user 'random' do
   manage_home true

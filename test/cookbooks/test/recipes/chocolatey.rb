@@ -1,3 +1,7 @@
-node.default['nodejs']['install_method'] = 'chocolatey'
-include_recipe 'nodejs::default'
+# frozen_string_literal: true
+
+nodejs_install 'nodejs' do
+  install_method 'chocolatey'
+end
+
 include_recipe 'test::resource_win'

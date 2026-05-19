@@ -2,51 +2,64 @@
 driver:
   name: vagrant
 
+provisioner:
+  name: chef_infra
+  product_name: chef
+  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  channel: stable
+  install_strategy: once
+  chef_license: accept
+  enforce_idempotency: <%= ENV['ENFORCE_IDEMPOTENCY'] || true %>
+  multiple_converge: <%= ENV['MULTIPLE_CONVERGE'] || 2 %>
+  deprecations_as_errors: true
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'auto' %>
+
+verifier:
+  name: inspec
+  sudo: true
+
+x-run_lists:
+  default: &default_run_list
+    - recipe[test::default]
+  package: &package_run_list
+    - recipe[test::package]
+  source: &source_run_list
+    - recipe[test::source]
+  npm_embedded: &npm_embedded_run_list
+    - recipe[test::npm_embedded]
+  npm_source: &npm_source_run_list
+    - recipe[test::npm_source]
+
+x-verifiers:
+  default: &default_verifier
+    inspec_tests:
+      - path: test/integration/default
+  package: &package_verifier
+    inspec_tests:
+      - path: test/integration/package
+  source: &source_verifier
+    inspec_tests:
+      - path: test/integration/source
+  npm_embedded: &npm_embedded_verifier
+    inspec_tests:
+      - path: test/integration/npm_embedded
+  npm_source: &npm_source_verifier
+    inspec_tests:
+      - path: test/integration/npm_source
+
 suites:
   - name: default
-    run_list:
-      - recipe[nodejs::default]
-    attributes:
-      nodejs:
-        manage_node: true
-        npm:
-          install_method: embedded
-        npm_packages:
-          - name: express
-          - name: socket.io
-            version: 1.0.4
-          - name: express
-            action: :uninstall
+    run_list: *default_run_list
+    verifier: *default_verifier
   - name: npm_embedded
-    run_list:
-      - recipe[nodejs::npm]
-    attributes:
-      nodejs:
-        npm:
-          install_method: embedded
+    run_list: *npm_embedded_run_list
+    verifier: *npm_embedded_verifier
   - name: npm_source
-    run_list:
-      - recipe[nodejs::npm]
-    attributes:
-      nodejs:
-        npm:
-          install_method: source
+    run_list: *npm_source_run_list
+    verifier: *npm_source_verifier
   - name: package
-    run_list:
-      - recipe[test::default]
+    run_list: *package_run_list
+    verifier: *package_verifier
   - name: source
-    run_list:
-      - recipe[test::source]
-  - name: options
-    run_list:
-      - recipe[nodejs]
-    attributes:
-      nodejs:
-        packages:
-          - nodejs
-          - acpid
-          - adcli
-        package_options:
-          acpid: "--force-yes"
-        package_action:
-          adcli: :nothing
+    run_list: *source_run_list
+    verifier: *source_verifier

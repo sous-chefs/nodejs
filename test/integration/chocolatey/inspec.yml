@@ -1,0 +1,7 @@
+---
+name: chocolatey
+title: Chocolatey Resource Tests
+maintainer: Sous Chefs
+license: Apache-2.0
+summary: Verifies Windows Chocolatey installation where feasible
+version: 1.0.0

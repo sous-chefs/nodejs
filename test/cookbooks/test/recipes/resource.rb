@@ -1,7 +1,13 @@
-apt_update 'update'
+# frozen_string_literal: true
 
-include_recipe 'nodejs::npm'
-include_recipe 'git'
+apt_update 'update' if platform_family?('debian')
+
+package 'git'
+
+nodejs_npm_install 'embedded npm' do
+  install_method 'embedded'
+  install_node false
+end
 
 user 'random' do
   manage_home true
@@ -18,15 +24,19 @@ user 'random2' do
   home '/home/random2'
 end
 
-# global "express" using the old resource name
-nodejs_npm 'express'
+# global "express" using the old resource alias
+nodejs_npm 'express' do
+  auto_update false
+end
 
 npm_package 'async' do
   version '0.6.2'
+  auto_update false
 end
 
 npm_package 'xss' do
   version '1.0.7'
+  auto_update false
 end
 
 npm_package 'xss noupgrade' do
@@ -36,20 +46,24 @@ end
 
 npm_package 'minify' do
   version '5.2.0'
+  auto_update false
 end
 
 npm_package 'minify upgrade' do
   package 'minify'
   live_stream true
+  auto_update false
 end
 
 npm_package 'request' do
   url 'github mikeal/request'
   live_stream true
+  auto_update false
 end
 
 npm_package 'mocha' do
   options ['--force', '--production']
+  auto_update false
 end
 
 git '/home/random2/grunt' do
@@ -66,6 +80,7 @@ npm_package 'Install the grunt package' do
   package 'grunt'
   json '/home/random2/grunt'
   user 'random2'
+  auto_update false
 end
 
 npm_package 'Install the vary package from a tgz url' do
@@ -73,6 +88,7 @@ npm_package 'Install the vary package from a tgz url' do
   package 'vary'
   json 'https://registry.npmjs.org/vary/-/vary-1.1.2.tgz'
   user 'random2'
+  auto_update false
 end
 
 directory '/home/random/.npm' do
@@ -100,6 +116,7 @@ npm_package 'from_package_json' do
   user 'random'
   npm_token '123-abcde'
   node_env 'staging' # Test node_env usage
+  auto_update false
 end
 
 directory '/home/random1/.npm' do
@@ -127,4 +144,5 @@ npm_package 'from_package_json_private' do
   npm_token '123-abcde'
   options ['--development']
   node_env 'development'
+  auto_update false
 end

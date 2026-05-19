@@ -1,4 +1,6 @@
 
+# frozen_string_literal: true
+
 require 'rspec_helper'
 require 'mixlib/shellout'
 require 'ostruct'
@@ -9,17 +11,12 @@ describe 'helper methods' do
   end
 
   describe 'npm_dist' do
-    it 'should return a url if specified in the node attributes' do
-      n = { 'nodejs': { 'npm': { 'url': 'get it' } } }
-      n = Mash.new(n)
-      allow(@mt).to receive(:node).and_return(n)
-      expect(@mt.npm_dist['url']).to eq('get it')
+    it 'should return a url if specified' do
+      expect(@mt.npm_dist('latest', 'get it')['url']).to eq('get it')
     end
+
     it 'should return a url based on the version' do
-      n = { 'nodejs': { 'npm': { 'url': nil, 'version': '6.14.8' } } }
-      n = Mash.new(n)
-      allow(@mt).to receive(:node).and_return(n)
-      expect(@mt.npm_dist['url']).to eq('https://registry.npmjs.org/npm/-/npm-6.14.8.tgz')
+      expect(@mt.npm_dist('6.14.8')['url']).to eq('https://registry.npmjs.org/npm/-/npm-6.14.8.tgz')
     end
   end
 

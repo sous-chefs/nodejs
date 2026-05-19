@@ -1,5 +1,9 @@
-apt_update 'update'
+# frozen_string_literal: true
 
-node.default['nodejs']['install_method'] = 'package'
+apt_update 'update' if platform_family?('debian')
 
-include_recipe 'nodejs::default'
+nodejs_install 'nodejs' do
+  install_method 'package'
+end
+
+include_recipe 'test::resource'

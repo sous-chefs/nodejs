@@ -321,13 +321,13 @@ Standardise files with files in sous-chefs/repo-management
 
 * added packages installation support ([@smith])
 
-[@bakins]: https://github.com/bakins
-[@chrislundquist]: https://github.com/ChrisLundquist
-[@johannesbecker]: https://github.com/johannesbecker
-[@julesau]: https://github.com/JulesAU
-[@markbirbeck]: https://github.com/markbirbeck
-[@robertkowalski]: https://github.com/robertkowalski
-[@sax]: https://github.com/sax
-[@smith]: https://github.com/smith
-[@vaskas]: https://github.com/vaskas
-[@wanelo-pair]: https://github.com/wanelo-pair
+[@bakins]: <https://github.com/bakins>
+[@chrislundquist]: <https://github.com/ChrisLundquist>
+[@johannesbecker]: <https://github.com/johannesbecker>
+[@julesau]: <https://github.com/JulesAU>
+[@markbirbeck]: <https://github.com/markbirbeck>
+[@robertkowalski]: <https://github.com/robertkowalski>
+[@sax]: <https://github.com/sax>
+[@smith]: <https://github.com/smith>
+[@vaskas]: <https://github.com/vaskas>
+[@wanelo-pair]: <https://github.com/wanelo-pair>

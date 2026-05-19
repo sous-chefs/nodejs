@@ -1,29 +1,8 @@
-#
-# Cookbook:: nodejs
-# Resource:: npm
-#
-# Author:: Sergey Balbeko <sergey@balbeko.com>
-#
-# Copyright:: 2012-2017, Sergey Balbeko
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+# frozen_string_literal: true
 
-resource_name :npm_package
 provides :npm_package
 unified_mode true
 
-# backwards compatibility for the old resource name
 provides :nodejs_npm
 
 property :package, String, name_property: true
@@ -31,7 +10,7 @@ property :version, String
 property :path, String
 property :url, String
 property :json, [String, true, false]
-property :npm_token, String
+property :npm_token, String, sensitive: true
 property :options, Array, default: []
 property :user, String
 property :group, String
@@ -39,10 +18,7 @@ property :live_stream, [false, true], default: false
 property :node_env, String
 property :auto_update, [true, false], default: true
 
-def initialize(*args)
-  super
-  @run_context.include_recipe 'nodejs::npm' if node['nodejs']['manage_node']
-end
+default_action :install
 
 action :install do
   execute "install NPM package #{new_resource.package}" do
@@ -52,7 +28,8 @@ action :install do
     group new_resource.group
     environment npm_env_vars
     live_stream new_resource.live_stream
-    not_if { package_installed? && no_auto_update? }
+    sensitive true if new_resource.npm_token
+    not_if { no_auto_update? && package_installed? }
   end
 end
 
@@ -64,6 +41,20 @@ action :uninstall do
     group new_resource.group
     environment npm_env_vars
     live_stream new_resource.live_stream
+    sensitive true if new_resource.npm_token
+    only_if { package_installed? }
+  end
+end
+
+action :remove do
+  execute "uninstall NPM package #{new_resource.package}" do
+    cwd new_resource.path
+    command "npm uninstall #{npm_options}"
+    user new_resource.user
+    group new_resource.group
+    environment npm_env_vars
+    live_stream new_resource.live_stream
+    sensitive true if new_resource.npm_token
     only_if { package_installed? }
   end
 end
@@ -82,7 +73,13 @@ action_class do
   end
 
   def package_installed?
+    return package_json_installed? if new_resource.json == true
+
     new_resource.package && npm_package_installed?(new_resource.package, new_resource.version, new_resource.path, npm_env_vars)
+  end
+
+  def package_json_installed?
+    new_resource.path && ::File.exist?(::File.join(new_resource.path, 'node_modules'))
   end
 
   def no_auto_update?
@@ -90,7 +87,7 @@ action_class do
   end
 
   def npm_options
-    options = ''
+    options = +''
     options << ' -global' unless new_resource.path
     new_resource.options.each do |option|
       options << " #{option}"

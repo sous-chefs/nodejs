@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Dir.glob('libraries/*.rb').each do |lib|
   require_relative "../#{lib}"
 end
