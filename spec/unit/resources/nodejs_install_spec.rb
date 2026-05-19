@@ -76,9 +76,37 @@ describe 'nodejs_install' do
       end
     end
 
+    before do
+      stub_command('command -v python').and_return(false)
+      stub_command('command -v python3').and_return(true)
+    end
+
     it { is_expected.to install_build_essential('install build tools') }
-    it { is_expected.to install_package(%w(libssl-dev python3)) }
+    it { is_expected.to install_package('libssl-dev') }
+    it { is_expected.to install_package('python3') }
+    it { is_expected.to create_link('/usr/local/bin/python') }
     it { is_expected.to install_with_make_ark('nodejs-source') }
+  end
+
+  context 'source install on rocky linux' do
+    platform 'rocky', '9'
+
+    recipe do
+      nodejs_install 'nodejs' do
+        install_method 'source'
+      end
+    end
+
+    before do
+      stub_command('command -v dnf').and_return(true)
+      stub_command('command -v python').and_return(false)
+      stub_command('command -v python3').and_return(false)
+    end
+
+    it { is_expected.to install_package('openssl-devel') }
+    it { is_expected.to install_package('tar') }
+    it { is_expected.to run_execute('install python3 build package') }
+    it { is_expected.not_to install_package('python3') }
   end
 
   context 'chocolatey install' do

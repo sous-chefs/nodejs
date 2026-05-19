@@ -47,6 +47,10 @@ module NodeJs
       end
     end
 
+    def dnf_python_package?(package_name)
+      package_name == 'python3' && platform_family?('rhel', 'fedora', 'amazon')
+    end
+
     def default_make_threads
       node['cpu'] ? node['cpu']['total'].to_i : 2
     end

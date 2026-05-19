@@ -56,7 +56,23 @@ action :install do
   when 'source'
     build_essential 'install build tools'
 
-    package(new_resource.build_packages || default_build_packages)
+    (new_resource.build_packages || default_build_packages).each do |pkg|
+      if dnf_python_package?(pkg)
+        execute 'install python3 build package' do
+          command 'dnf -y install python3'
+          not_if 'command -v python3'
+          only_if 'command -v dnf'
+        end
+      else
+        package pkg
+      end
+    end
+
+    link '/usr/local/bin/python' do
+      to '/usr/bin/python3'
+      not_if 'command -v python'
+      only_if 'command -v python3'
+    end
 
     ark 'nodejs-source' do
       url nodejs_source_url(new_resource.version, new_resource.prefix_url, new_resource.source_url)
