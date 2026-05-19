@@ -77,8 +77,10 @@ describe 'nodejs_install' do
     end
 
     before do
-      stub_command('command -v python').and_return(false)
-      stub_command('command -v python3').and_return(true)
+      allow(::File).to receive(:exist?).and_call_original
+      allow(::File).to receive(:exist?).with('/usr/bin/python').and_return(false)
+      allow(::File).to receive(:exist?).with('/usr/local/bin/python').and_return(false)
+      allow(::File).to receive(:exist?).with('/usr/bin/python3').and_return(true)
     end
 
     it { is_expected.to install_build_essential('install build tools') }
@@ -99,8 +101,11 @@ describe 'nodejs_install' do
 
     before do
       stub_command('command -v dnf').and_return(true)
-      stub_command('command -v python').and_return(false)
       stub_command('command -v python3').and_return(false)
+      allow(::File).to receive(:exist?).and_call_original
+      allow(::File).to receive(:exist?).with('/usr/bin/python').and_return(false)
+      allow(::File).to receive(:exist?).with('/usr/local/bin/python').and_return(false)
+      allow(::File).to receive(:exist?).with('/usr/bin/python3').and_return(false)
     end
 
     it { is_expected.to install_package('openssl-devel') }

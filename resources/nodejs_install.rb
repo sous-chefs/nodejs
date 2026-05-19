@@ -70,8 +70,8 @@ action :install do
 
     link '/usr/local/bin/python' do
       to '/usr/bin/python3'
-      not_if 'command -v python'
-      only_if 'command -v python3'
+      not_if { ::File.exist?('/usr/bin/python') || ::File.exist?('/usr/local/bin/python') }
+      only_if { ::File.exist?('/usr/bin/python3') }
     end
 
     ark 'nodejs-source' do
