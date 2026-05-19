@@ -19,6 +19,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v6
       - name: Install Chef
-        uses: actionshub/chef-install@main
+        uses: sous-chefs/.github/.github/actions/install-workstation@6.0.0
       - name: Install cookbooks
         run: berks install
