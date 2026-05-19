@@ -4,7 +4,7 @@ provides :nodejs_repository
 unified_mode true
 
 property :repo_name, String, name_property: true
-property :node_major, [String, Integer], default: NodeJs::Helper::DEFAULT_NODE_MAJOR
+property :node_major, [String, Integer], default: '24'
 property :apt_uri, String
 property :apt_distribution, String, default: 'nodistro'
 property :apt_components, Array, default: ['main']

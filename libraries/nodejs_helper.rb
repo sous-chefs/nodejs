@@ -2,14 +2,6 @@
 
 module NodeJs
   module Helper
-    DEFAULT_NODE_VERSION = '24.15.0' unless const_defined?(:DEFAULT_NODE_VERSION)
-    DEFAULT_NODE_MAJOR = '24' unless const_defined?(:DEFAULT_NODE_MAJOR)
-    DEFAULT_SOURCE_CHECKSUM = '729de494dd2872e5a3a6c32a1cd156a5413d4aca2772b2d873ee86bb5531bcd9' unless const_defined?(:DEFAULT_SOURCE_CHECKSUM)
-    DEFAULT_BINARY_CHECKSUMS = {
-      'linux_x64' => '44836872d9aec49f1e6b52a9a922872db9a2b02d235a616a5681b6a85fec8d89',
-      'linux_arm64' => '73afc234d558c24919875f51c2d1ea002a2ada4ea6f83601a383869fefa64eed',
-    }.freeze unless const_defined?(:DEFAULT_BINARY_CHECKSUMS)
-
     def default_install_method
       case node['platform_family']
       when 'debian', 'rhel', 'fedora', 'amazon', 'mac_os_x', 'suse'

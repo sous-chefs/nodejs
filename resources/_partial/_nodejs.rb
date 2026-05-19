@@ -1,2 +1,2 @@
-property :version, String, default: NodeJs::Helper::DEFAULT_NODE_VERSION
+property :version, String, default: '24.15.0'
 property :prefix_url, String, default: 'https://nodejs.org/dist/'

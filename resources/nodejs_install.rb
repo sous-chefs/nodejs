@@ -12,9 +12,13 @@ property :package_action, [Symbol, String], default: :install
 property :package_options, [String, nil]
 property :disable_dnf_module, [true, false], default: true
 property :source_url, [String, nil]
-property :source_checksum, [String, nil], default: NodeJs::Helper::DEFAULT_SOURCE_CHECKSUM
+property :source_checksum, [String, nil], default: '729de494dd2872e5a3a6c32a1cd156a5413d4aca2772b2d873ee86bb5531bcd9'
 property :binary_url, [String, nil]
-property :binary_checksums, Hash, default: NodeJs::Helper::DEFAULT_BINARY_CHECKSUMS
+property :binary_checksums, Hash,
+         default: {
+           'linux_x64' => '44836872d9aec49f1e6b52a9a922872db9a2b02d235a616a5681b6a85fec8d89',
+           'linux_arm64' => '73afc234d558c24919875f51c2d1ea002a2ada4ea6f83601a383869fefa64eed',
+         }
 property :append_env_path, [true, false], default: true
 property :make_threads, [Integer, String, nil], default: nil
 property :build_packages, [Array, nil], default: nil
