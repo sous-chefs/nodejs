@@ -4,6 +4,22 @@ Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [11.0.0](https://github.com/sous-chefs/nodejs/compare/v10.2.3...v11.0.0) (2026-05-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate nodejs to custom resources ([#306](https://github.com/sous-chefs/nodejs/issues/306))
+
+### Features
+
+* migrate nodejs to custom resources ([#306](https://github.com/sous-chefs/nodejs/issues/306)) ([a941d0f](https://github.com/sous-chefs/nodejs/commit/a941d0f729fad8b386cd8886ad9c232ed41b57e5))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#300](https://github.com/sous-chefs/nodejs/issues/300)) ([ef16e2c](https://github.com/sous-chefs/nodejs/commit/ef16e2ce7d32be9d50822926a8d09e30d4a54bad))
+
 ## [10.2.3](https://github.com/sous-chefs/nodejs/compare/10.2.2...v10.2.3) (2025-10-15)
 
 
