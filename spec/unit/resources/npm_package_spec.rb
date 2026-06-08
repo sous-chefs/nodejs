@@ -11,7 +11,7 @@ describe 'npm_package' do
       npm_package 'express'
     end
 
-    it { is_expected.to run_execute('install NPM package express').with(command: 'npm install  -global express') }
+    it { is_expected.to run_execute('install NPM package express').with(command: 'npm install -global express') }
   end
 
   context 'install a versioned package' do
@@ -22,7 +22,7 @@ describe 'npm_package' do
       end
     end
 
-    it { is_expected.to run_execute('install NPM package async').with(command: 'npm install  -global --production async@0.6.2') }
+    it { is_expected.to run_execute('install NPM package async').with(command: 'npm install -global --production async@0.6.2') }
   end
 
   context 'install with the legacy alias' do
@@ -30,6 +30,6 @@ describe 'npm_package' do
       nodejs_npm 'mocha'
     end
 
-    it { is_expected.to run_execute('install NPM package mocha').with(command: 'npm install  -global mocha') }
+    it { is_expected.to run_execute('install NPM package mocha').with(command: 'npm install -global mocha') }
   end
 end
