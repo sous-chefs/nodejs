@@ -1,0 +1,218 @@
+{
+  "revision_id": "a737da59d8a425378c1fd9aa57db96a66e25ef0aa3472a3942fc7fb7d7b6d1a6",
+  "name": "nodejs",
+  "run_list": [
+    "recipe[test::default]"
+  ],
+  "named_run_lists": {
+    "chocolatey": [
+      "recipe[test::chocolatey]"
+    ],
+    "default": [
+      "recipe[test::default]"
+    ],
+    "npm_embedded": [
+      "recipe[test::npm_embedded]"
+    ],
+    "npm_source": [
+      "recipe[test::npm_source]"
+    ],
+    "package": [
+      "recipe[test::package]"
+    ],
+    "resource": [
+      "recipe[test::resource]"
+    ],
+    "resource_win": [
+      "recipe[test::resource_win]"
+    ],
+    "source": [
+      "recipe[test::source]"
+    ]
+  },
+  "included_policy_locks": [
+
+  ],
+  "cookbook_locks": {
+    "ark": {
+      "version": "6.0.33",
+      "identifier": "eeafb5783903b488d06186bbeeebbbce9d28663a",
+      "dotted_decimal_identifier": "67184238398079924.38509714123517675.206496074327610",
+      "cache_key": "ark-6.0.33-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.33/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/ark/versions/6.0.33/download",
+        "version": "6.0.33"
+      }
+    },
+    "chocolatey": {
+      "version": "3.0.0",
+      "identifier": "fa3d995554cb8665aa4354799f65bef0b23e4042",
+      "dotted_decimal_identifier": "70436472948575110.28616178804563813.209940991852610",
+      "cache_key": "chocolatey-3.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/chocolatey/versions/3.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/chocolatey/versions/3.0.0/download",
+        "version": "3.0.0"
+      }
+    },
+    "git": {
+      "version": "13.0.0",
+      "identifier": "a6427fa05f25a0173630863f33921aef6ac52f76",
+      "dotted_decimal_identifier": "46797962052838816.6533506502964114.29615590813558",
+      "cache_key": "git-13.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/13.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/git/versions/13.0.0/download",
+        "version": "13.0.0"
+      }
+    },
+    "nodejs": {
+      "version": "11.0.0",
+      "identifier": "be5a4eb37cad409596f5b0ce51be802931493231",
+      "dotted_decimal_identifier": "53579539640266048.42105753507353022.140914408895025",
+      "source": ".",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "1fd6263af927dd17e62f355b2ef6e9dfaa7fb180",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/chore/migrate-to-policyfile"
+        ]
+      },
+      "source_options": {
+        "path": "."
+      }
+    },
+    "seven_zip": {
+      "version": "4.2.12",
+      "identifier": "822a7fb602d9288239027e36d98d8de2ae37c465",
+      "dotted_decimal_identifier": "36638474975238440.36654429842626957.156004725015653",
+      "cache_key": "seven_zip-4.2.12-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.12/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/seven_zip/versions/4.2.12/download",
+        "version": "4.2.12"
+      }
+    },
+    "test": {
+      "version": "0.1.0",
+      "identifier": "16e5805a32be38c45090a5e78039f8b4407aa079",
+      "dotted_decimal_identifier": "6444788919483960.55257677624213561.273453059580025",
+      "source": "test/cookbooks/test",
+      "cache_key": null,
+      "scm_info": {
+        "scm": "git",
+        "remote": null,
+        "revision": "1fd6263af927dd17e62f355b2ef6e9dfaa7fb180",
+        "working_tree_clean": false,
+        "published": true,
+        "synchronized_remote_branches": [
+          "origin/chore/migrate-to-policyfile"
+        ]
+      },
+      "source_options": {
+        "path": "test/cookbooks/test"
+      }
+    },
+    "yum": {
+      "version": "8.0.0",
+      "identifier": "a4f3da1691d5c1bcd08e339bed45d3babcbf420a",
+      "dotted_decimal_identifier": "46430014187623873.53146604791393605.232798984028682",
+      "cache_key": "yum-8.0.0-supermarket.chef.io",
+      "origin": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/8.0.0/download",
+      "source_options": {
+        "artifactserver": "https://supermarket.chef.io:443/api/v1/cookbooks/yum/versions/8.0.0/download",
+        "version": "8.0.0"
+      }
+    }
+  },
+  "default_attributes": {
+
+  },
+  "override_attributes": {
+
+  },
+  "solution_dependencies": {
+    "Policyfile": [
+      [
+        "ark",
+        "= 6.0.33"
+      ],
+      [
+        "chocolatey",
+        "= 3.0.0"
+      ],
+      [
+        "git",
+        "= 13.0.0"
+      ],
+      [
+        "nodejs",
+        ">= 0.0.0"
+      ],
+      [
+        "seven_zip",
+        "= 4.2.12"
+      ],
+      [
+        "test",
+        ">= 0.0.0"
+      ],
+      [
+        "yum",
+        "= 8.0.0"
+      ]
+    ],
+    "dependencies": {
+      "ark (6.0.33)": [
+        [
+          "seven_zip",
+          ">= 3.1.0"
+        ]
+      ],
+      "chocolatey (3.0.0)": [
+
+      ],
+      "git (13.0.0)": [
+        [
+          "ark",
+          ">= 0.0.0"
+        ]
+      ],
+      "nodejs (11.0.0)": [
+        [
+          "ark",
+          ">= 2.0.2"
+        ],
+        [
+          "chocolatey",
+          ">= 3.0.0"
+        ],
+        [
+          "yum",
+          ">= 7.2.0"
+        ]
+      ],
+      "seven_zip (4.2.12)": [
+
+      ],
+      "test (0.1.0)": [
+        [
+          "git",
+          ">= 0.0.0"
+        ],
+        [
+          "nodejs",
+          ">= 0.0.0"
+        ]
+      ],
+      "yum (8.0.0)": [
+
+      ]
+    }
+  }
+}
