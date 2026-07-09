@@ -18,18 +18,6 @@ verifier:
   name: inspec
   sudo: true
 
-x-run_lists:
-  default: &default_run_list
-    - recipe[test::default]
-  package: &package_run_list
-    - recipe[test::package]
-  source: &source_run_list
-    - recipe[test::source]
-  npm_embedded: &npm_embedded_run_list
-    - recipe[test::npm_embedded]
-  npm_source: &npm_source_run_list
-    - recipe[test::npm_source]
-
 x-verifiers:
   default: &default_verifier
     inspec_tests:
@@ -49,17 +37,22 @@ x-verifiers:
 
 suites:
   - name: default
-    run_list: *default_run_list
+    provisioner:
+      named_run_list: default
     verifier: *default_verifier
   - name: npm_embedded
-    run_list: *npm_embedded_run_list
+    provisioner:
+      named_run_list: npm_embedded
     verifier: *npm_embedded_verifier
   - name: npm_source
-    run_list: *npm_source_run_list
+    provisioner:
+      named_run_list: npm_source
     verifier: *npm_source_verifier
   - name: package
-    run_list: *package_run_list
+    provisioner:
+      named_run_list: package
     verifier: *package_verifier
   - name: source
-    run_list: *source_run_list
+    provisioner:
+      named_run_list: source
     verifier: *source_verifier
