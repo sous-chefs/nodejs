@@ -4,6 +4,13 @@ Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [11.0.1](https://github.com/sous-chefs/nodejs/compare/v11.0.0...v11.0.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* migrate to Policyfile ([#315](https://github.com/sous-chefs/nodejs/issues/315)) ([0a481e2](https://github.com/sous-chefs/nodejs/commit/0a481e22c2dcb811800219f96d24ba95bca583da))
+
 ## [11.0.0](https://github.com/sous-chefs/nodejs/compare/v10.2.3...v11.0.0) (2026-05-19)
 
 
