@@ -1,5 +1,5 @@
 {
-  "revision_id": "a737da59d8a425378c1fd9aa57db96a66e25ef0aa3472a3942fc7fb7d7b6d1a6",
+  "revision_id": "3c3bb733c3faf413150026a21132e193591e5f87f98d46e7b8444f899c0aafbc",
   "name": "nodejs",
   "run_list": [
     "recipe[test::default]"
@@ -68,19 +68,20 @@
       }
     },
     "nodejs": {
-      "version": "11.0.0",
-      "identifier": "be5a4eb37cad409596f5b0ce51be802931493231",
-      "dotted_decimal_identifier": "53579539640266048.42105753507353022.140914408895025",
+      "version": "11.0.1",
+      "identifier": "bde67d285febc4682e78acca340cc93ca9ac660a",
+      "dotted_decimal_identifier": "53452195820989380.29324493407794188.221262381868554",
       "source": ".",
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": "1fd6263af927dd17e62f355b2ef6e9dfaa7fb180",
-        "working_tree_clean": false,
+        "remote": "git@github.com:sous-chefs/nodejs.git",
+        "revision": "9719a5f713ddbe294e80f51e53cd23a93d777437",
+        "working_tree_clean": true,
         "published": true,
         "synchronized_remote_branches": [
-          "origin/chore/migrate-to-policyfile"
+          "origin/HEAD -> origin/main",
+          "origin/main"
         ]
       },
       "source_options": {
@@ -106,12 +107,13 @@
       "cache_key": null,
       "scm_info": {
         "scm": "git",
-        "remote": null,
-        "revision": "1fd6263af927dd17e62f355b2ef6e9dfaa7fb180",
-        "working_tree_clean": false,
+        "remote": "git@github.com:sous-chefs/nodejs.git",
+        "revision": "9719a5f713ddbe294e80f51e53cd23a93d777437",
+        "working_tree_clean": true,
         "published": true,
         "synchronized_remote_branches": [
-          "origin/chore/migrate-to-policyfile"
+          "origin/HEAD -> origin/main",
+          "origin/main"
         ]
       },
       "source_options": {
@@ -160,7 +162,7 @@
       ],
       [
         "test",
-        ">= 0.0.0"
+        "= 0.1.0"
       ],
       [
         "yum",
@@ -183,7 +185,7 @@
           ">= 0.0.0"
         ]
       ],
-      "nodejs (11.0.0)": [
+      "nodejs (11.0.1)": [
         [
           "ark",
           ">= 2.0.2"
