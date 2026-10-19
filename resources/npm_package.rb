@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'shellwords'
+
 provides :npm_package
 unified_mode true
 
@@ -23,7 +25,7 @@ default_action :install
 action :install do
   execute "install NPM package #{new_resource.package}" do
     cwd new_resource.path
-    command "npm install #{npm_options}"
+    command Shellwords.join(['npm', 'install', *npm_options])
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
@@ -36,7 +38,7 @@ end
 action :uninstall do
   execute "uninstall NPM package #{new_resource.package}" do
     cwd new_resource.path
-    command "npm uninstall #{npm_options}"
+    command Shellwords.join(['npm', 'uninstall', *npm_options])
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
@@ -49,7 +51,7 @@ end
 action :remove do
   execute "uninstall NPM package #{new_resource.package}" do
     cwd new_resource.path
-    command "npm uninstall #{npm_options}"
+    command Shellwords.join(['npm', 'uninstall', *npm_options])
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
@@ -87,12 +89,11 @@ action_class do
   end
 
   def npm_options
-    options = +''
-    options << ' -global' unless new_resource.path
-    new_resource.options.each do |option|
-      options << " #{option}"
-    end
-    options << " #{npm_package}"
+    options = []
+    options << '-global' unless new_resource.path
+    options.concat(new_resource.options)
+    options << npm_package if npm_package
+    options
   end
 
   def npm_package
