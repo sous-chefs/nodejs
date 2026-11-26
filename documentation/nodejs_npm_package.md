@@ -44,3 +44,6 @@ nodejs_npm 'mocha' do
   options ['--production']
 end
 ```
+
+Use npm's `github:owner/repo` form for GitHub sources. The legacy
+`github owner/repo` form is still accepted.
