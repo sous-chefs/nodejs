@@ -6,9 +6,13 @@ name: ci
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   lint-unit:
-    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@9.0.0
+    uses: sous-chefs/.github/.github/workflows/lint-unit.yml@9.0.1
     permissions:
       contents: read
       checks: write
@@ -53,7 +57,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v7
       - name: Install Chef
-        uses: sous-chefs/.github/.github/actions/install-workstation@9.0.0
+        uses: sous-chefs/.github/.github/actions/install-workstation@9.0.1
       - name: Dokken
         uses: actionshub/test-kitchen@3.0.0
         env:
