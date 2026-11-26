@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'shellwords'
-
 module NodeJs
   module Helper
     def default_install_method
@@ -95,11 +93,9 @@ module NodeJs
 
     def npm_list(package, path = nil, environment = {})
       require 'json'
-      cmd = if path
-              Mixlib::ShellOut.new(Shellwords.join(['npm', 'list', package, '-json']), cwd: path, environment: environment)
-            else
-              Mixlib::ShellOut.new(Shellwords.join(['npm', 'list', package, '-global', '-json']), environment: environment)
-            end
+      args = ['npm', 'list', package, '-json']
+      args << '-global' unless path
+      cmd = Mixlib::ShellOut.new(*args, cwd: path, environment: environment)
 
       begin
         JSON.parse(cmd.run_command.stdout, max_nesting: false)

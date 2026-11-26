@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'shellwords'
-
 provides :npm_package
 unified_mode true
 
@@ -25,7 +23,7 @@ default_action :install
 action :install do
   execute "install NPM package #{new_resource.package}" do
     cwd new_resource.path
-    command Shellwords.join(['npm', 'install', *npm_options])
+    command ['npm', 'install', *npm_options]
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
@@ -38,7 +36,7 @@ end
 action :uninstall do
   execute "uninstall NPM package #{new_resource.package}" do
     cwd new_resource.path
-    command Shellwords.join(['npm', 'uninstall', *npm_options])
+    command ['npm', 'uninstall', *npm_options]
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
@@ -51,7 +49,7 @@ end
 action :remove do
   execute "uninstall NPM package #{new_resource.package}" do
     cwd new_resource.path
-    command Shellwords.join(['npm', 'uninstall', *npm_options])
+    command ['npm', 'uninstall', *npm_options]
     user new_resource.user
     group new_resource.group
     environment npm_env_vars
@@ -91,8 +89,9 @@ action_class do
   def npm_options
     options = []
     options << '-global' unless new_resource.path
-    options.concat(new_resource.options)
-    options << npm_package if npm_package
+    options.concat(new_resource.options.map(&:to_s))
+    package = npm_package
+    options << package if package
     options
   end
 
@@ -100,7 +99,8 @@ action_class do
     if new_resource.json
       new_resource.json.is_a?(String) ? new_resource.json : nil
     elsif new_resource.url
-      new_resource.url
+      # npm expects a single package spec for a GitHub repository.
+      new_resource.url.sub(%r{\Agithub[ \t]+(?=[\w.-]+/[\w.-]+(?:#\S+)?\z)}, 'github:')
     elsif new_resource.package
       new_resource.version ? "#{new_resource.package}@#{new_resource.version}" : new_resource.package
     else
