@@ -4,6 +4,13 @@ Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 Standardise files with files in sous-chefs/repo-management
 
+## [11.0.2](https://github.com/sous-chefs/nodejs/compare/v11.0.1...v11.0.2) (2026-11-26)
+
+
+### Bug Fixes
+
+* harden npm shell commands ([#309](https://github.com/sous-chefs/nodejs/issues/309)) ([f7d4395](https://github.com/sous-chefs/nodejs/commit/f7d4395683c90981dbb19b4fa35a0edc45d9d5c6))
+
 ## [11.0.1](https://github.com/sous-chefs/nodejs/compare/v11.0.0...v11.0.1) (2026-07-09)
 
 
